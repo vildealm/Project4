@@ -1,0 +1,23 @@
+type Person {
+    id: Int!
+    last_name: String!
+    first_name: String!
+    age: Int!
+    location: String!
+    description: String!
+}
+
+input personFilter{
+    age: Int
+    location: String
+}
+
+type Query {
+    nameSearch(name: String!, orderBy: String!, pageNumber: Int!): [Person]
+    persons(orderBy: String!, pageNumber: Int!): [Person!]!
+    filterSearch(filter: personFilter, orderBy: String!, pageNumber: Int!): [Person]
+}
+
+type Mutation{
+    register(last_name: String!, first_name: String!, age:Int!, location: String!, description: String!): Boolean
+}
