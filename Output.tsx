@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import {SearchBar} from '@types/react-native-element'; 
+import { StyleSheet, Text, TextInput, View } from 'react-native';
+import {SearchBar} from 'react-native-elements'; 
 import { GET_ALL } from './resolvers';
 import { QueryResult, useLazyQuery, useQuery } from 'react-apollo';
 import Person from './Person';
@@ -83,11 +83,21 @@ export default function Output() {
     
     return (
         <View>
-            <SearchBar placeholder="Search ..."/> 
+            <TextInput style={styles.searchField} placeholder="Search..."> </TextInput>
             <View> 
             {setPerson(allResults)}
             </View>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    searchField: {
+      color: 'red',
+      backgroundColor: "white",
+      borderWidth: 1,
+      padding: 10,
+      width: 200
+    }
+  });
 
