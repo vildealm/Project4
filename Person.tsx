@@ -20,10 +20,10 @@ const Person = (props: any) => {
     
     useEffect(() => {
         setPerson([props.first_name,props.last_name, props.age, props.location, props.description]);
-    }, [setPerson, props]);
+    }, []);
     return (
 
-    <View className="person" onClick={()=> togglePopUp(true)}> 
+    <View > 
     {togglePop ? <PopUpPerson 
                     first_name={props.first_name} 
                     last_name={props.last_name} 
@@ -31,8 +31,10 @@ const Person = (props: any) => {
                     age={props.age} 
                     description={props.description}
                 /> : null}
-                {props.first_name} {props.last_name} <p className = "age"> Age: {props.age}</p>
+                <Text>{props.first_name} {props.last_name} Age: {props.age}</Text>
     </View>
     )
 }
 export default Person;
+
+//className="person" onClick={()=> togglePopUp(true)}

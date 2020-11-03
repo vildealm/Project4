@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { GET_ALL } from './resolvers';
 import { QueryResult, useLazyQuery, useQuery } from 'react-apollo';
+import Person from './Person';
 
 function setPerson(queryResult: QueryResult){
 
@@ -18,7 +19,6 @@ function setPerson(queryResult: QueryResult){
     if(queryResult.error){
         return <p>{queryResult.error}</p>;
     }
-    
     if(queryResult.data !== undefined){
         if(queryResult.data.persons !== undefined){
             queryResult.data.persons.map(({id, first_name, last_name, age, location, description}: any) => {
@@ -29,7 +29,7 @@ function setPerson(queryResult: QueryResult){
                 person.location = location;
                 person.description = description;
                 if(!ids.includes(person.id)){
-                    people.push(person);
+                    people.push(<Person first_name= {person.first_name} last_name = {person.last_name} location = {person.location} age= {person.age} description = {person.description}/>);
                     ids.push(person.id);
                 }
             });
@@ -43,7 +43,7 @@ function setPerson(queryResult: QueryResult){
                 person.location = location;
                 person.description = description;
                 if(!ids.includes(person.id)){
-                    people.push(person);
+                    people.push(<Person first_name= {person.first_name} last_name = {person.last_name} location = {person.location} age= {person.age} description = {person.description}/>);
                     ids.push(person.id);
                 }
             });
@@ -57,13 +57,14 @@ function setPerson(queryResult: QueryResult){
                 person.location = location;
                 person.description = description;
                 if(!ids.includes(person.id)){
-                    people.push(person);
+                    people.push(<Person first_name= {person.first_name} last_name = {person.last_name} location = {person.location} age= {person.age} description = {person.description}/>);
                     ids.push(person.id);
                 }
             });
         }
+        return people;
     }
-    return people; 
+    
 }
 
 
@@ -80,10 +81,9 @@ export default function Output() {
         persons();
         }, []);
     
-    let people = setPerson(allResults);
     return (
         <View>
-            {people.map((people: { first_name:any, last_name:any, age:any, location: any }) => <Text>{people.first_name} {people.last_name} {people.age} {people.location}</Text>)}
+            {setPerson(allResults)}
         </View>
     )
 }
