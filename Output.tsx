@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import {SearchBar} from '@types/react-native-element'; 
 import { GET_ALL } from './resolvers';
 import { QueryResult, useLazyQuery, useQuery } from 'react-apollo';
 import Person from './Person';
@@ -15,7 +16,7 @@ function setPerson(queryResult: QueryResult){
         age: Number,
         location: String,
         description: String
-    }
+    } 
     if(queryResult.error){
         return <p>{queryResult.error}</p>;
     }
@@ -63,8 +64,7 @@ function setPerson(queryResult: QueryResult){
             });
         }
         return people;
-    }
-    
+    }  
 }
 
 
@@ -83,7 +83,11 @@ export default function Output() {
     
     return (
         <View>
+            <SearchBar placeholder="Search ..."/> 
+            <View> 
             {setPerson(allResults)}
+            </View>
         </View>
     )
 }
+
