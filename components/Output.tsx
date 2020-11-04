@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { SearchBar } from 'react-native-elements';
-import { GET_ALL, GET_PERSON } from './resolvers';
+import { GET_ALL, GET_PERSON } from '../resolvers';
 import gql from 'graphql-tag';
 import { QueryResult, useLazyQuery, useQuery } from 'react-apollo';
 import Person from './Person';
@@ -109,7 +109,7 @@ export default function Output() {
         <View style={styles.container}>
             <View>
                 <SearchBar
-                    containerStyle={{paddingHorizontal: 5}}
+                    round
                     style={styles.searchField}
                     placeholder="Search..."
                     onChangeText={(input) => getSearchVal(input)}
@@ -126,13 +126,13 @@ export default function Output() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        flexDirection: 'column',
         alignItems: 'center',
+        margin: 50
     },
     searchField: {
-        borderWidth: 2,
+        borderColor: '#d9ecf2',
         padding: 10,
+        backgroundColor: '#d9ecf2'
     }
 });
 

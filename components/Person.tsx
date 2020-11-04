@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import React from 'react';
-import {PopUpPerson}  from './PopUpPerson';
+import {PopUpPerson}  from '../PopUpPerson';
 import { StyleSheet, Text, View } from 'react-native';
 
 

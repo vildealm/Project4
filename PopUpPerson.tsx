@@ -18,7 +18,7 @@ export const PopUpPerson = (props: any) => {
     person.location = props.location;
     person.description = props.description;
     return(
-        <View className="popUp">
+        <View style={styles.popup}>
             <img src={imageText} className='closeBtn' height="50" width="50" alt="closeButton"/>
             <Text>{person.first_name} {person.last_name}</Text>
             <Text>Age: {person.age}</Text>
@@ -27,3 +27,8 @@ export const PopUpPerson = (props: any) => {
         </View>
     )
 }
+const styles = StyleSheet.create({
+    popup: {
+        margin: 10
+    }
+});
