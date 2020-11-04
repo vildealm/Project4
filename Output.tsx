@@ -109,10 +109,12 @@ export default function Output() {
         <View style={styles.container}>
             <View>
                 <SearchBar
+                    containerStyle={{paddingHorizontal: 5}}
                     style={styles.searchField}
                     placeholder="Search..."
                     onChangeText={(input) => getSearchVal(input)}
                     value={name}
+
                 />
                 <View style={{ margin: 'auto', alignItems: 'center' }}>
                     {setPerson(checkStatus(activeFilter))}
@@ -129,9 +131,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     searchField: {
-        backgroundColor: '#d9ecf2',
         borderWidth: 2,
-        padding: 10
+        padding: 10,
     }
 });
 
