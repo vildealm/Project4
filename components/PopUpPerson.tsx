@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-const imageText = require("./icon/close.png") as string;
+const imageText = require("../icon/close.png") as string;
 
 //Functionality for the "Add-person popup"
 export const PopUpPerson = (props: any) => {

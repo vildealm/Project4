@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { GET_ALL, GET_PERSON } from '../resolvers';
 import gql from 'graphql-tag';
@@ -114,11 +114,13 @@ export default function Output() {
                     placeholder="Search..."
                     onChangeText={(input) => getSearchVal(input)}
                     value={name}
-
+                    containerStyle={{width: 300}}
                 />
+                
                 <View style={{ margin: 'auto', alignItems: 'center' }}>
                     {setPerson(checkStatus(activeFilter))}
                 </View>
+    
             </View>
         </View>
     )

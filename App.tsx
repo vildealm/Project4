@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import ApolloClient, { InMemoryCache } from 'apollo-boost';
 import {ApolloProvider} from 'react-apollo'; 
 import Output from './components/Output';
@@ -15,11 +15,14 @@ export default function App() {
   return (
     <ApolloProvider client = {client}>
       <View style={styles.container}>
+        <ScrollView> 
         <Text style={styles.header}>Finder</Text>
-        <Text >Are we gonna fight or are we gonna make out?</Text>
+        <Text style={{textAlign: 'center', fontFamily: 'Copperplate'}}>Are we gonna fight or are we gonna make out?</Text>
         <Output/>
         <StatusBar style="auto" />
+        </ScrollView>
         <AddPerson/> 
+        
       </View>
     </ApolloProvider>
   );
@@ -39,6 +42,11 @@ const styles = StyleSheet.create({
     color: 'black',
     letterSpacing: 1,
     fontSize: 36,
-    fontFamily: 'Georgia', 
+    fontFamily: 'Copperplate', 
+    marginTop: 70,
+    textAlign: 'center',
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 5
   },
 });

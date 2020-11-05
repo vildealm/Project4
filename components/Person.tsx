@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import React from 'react';
-import {PopUpPerson}  from '../PopUpPerson';
-import { StyleSheet, Text, View } from 'react-native';
+import {PopUpPerson}  from './PopUpPerson';
+import { StyleSheet, ScrollView, Text, View } from 'react-native';
 
 
 const Person = (props: any) => {
@@ -23,7 +23,7 @@ const Person = (props: any) => {
     }, []);
     return (
 
-    <View > 
+    <View style={styles.personBox}> 
     {togglePop ? <PopUpPerson 
                     first_name={props.first_name} 
                     last_name={props.last_name} 
@@ -31,10 +31,29 @@ const Person = (props: any) => {
                     age={props.age} 
                     description={props.description}
                 /> : null}
-                <Text>{props.first_name} {props.last_name} Age: {props.age}</Text>
+                <Text style={{fontWeight: "bold", fontFamily: 'Copperplate'}}> {props.first_name} {props.last_name} </Text> 
+                <Text style={{fontFamily: 'Copperplate'}}> Age: {props.age}</Text>
     </View>
     )
 }
 export default Person;
+
+const styles = StyleSheet.create({
+    personBox: {
+    margin: 10,
+    padding:10,
+    color: 'black',
+    backgroundColor: 'white',
+    fontSize: 15,
+    shadowColor: "#000",
+    shadowOffset: {
+        width: 0,
+        height: 4,
+    },
+    elevation: 5, 
+    shadowOpacity: 0.33,
+    shadowRadius: 5,
+    }
+})
 
 //className="person" onClick={()=> togglePopUp(true)}

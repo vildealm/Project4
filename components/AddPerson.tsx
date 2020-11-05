@@ -5,7 +5,7 @@ import { Button } from 'react-native-elements';
 const AddPerson = () => {
     return (
         <View> 
-            <Button title="+ Add a person" buttonStyle={{backgroundColor: '#50a2ac', padding: 15}} titleStyle={{fontFamily:'Georgia'}} style={styles.addPerson}> </Button>
+            <Button title="+" buttonStyle={{backgroundColor: '#c2575e', padding: 15, right: 0}} titleStyle={{fontFamily:'Georgia'}} style={styles.addPerson}> </Button>
         </View>
     )
 }
@@ -14,9 +14,8 @@ export default AddPerson;
 
 const styles = StyleSheet.create({
     addPerson: {
-        right:0,
-        bottom: 0, 
-        margin: 10,
+        position: 'relative',  
+        margin: 5,
         fontSize: 20,
         padding: 5,
         shadowColor: "#000",
