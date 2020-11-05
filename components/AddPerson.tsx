@@ -14,7 +14,6 @@ export default AddPerson;
 
 const styles = StyleSheet.create({
     addPerson: {
-        position: 'relative',  
         margin: 5,
         fontSize: 20,
         padding: 5,

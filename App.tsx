@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Dimensions } from 'react-native';
 import ApolloClient, { InMemoryCache } from 'apollo-boost';
 import {ApolloProvider} from 'react-apollo'; 
 import Output from './components/Output';
@@ -15,14 +15,17 @@ export default function App() {
   return (
     <ApolloProvider client = {client}>
       <View style={styles.container}>
-        <ScrollView> 
-        <Text style={styles.header}>Finder</Text>
+        <ScrollView style={{marginHorizontal: 0}}> 
+        <Text style={styles.header}>Findr</Text>
         <Text style={{textAlign: 'center', fontFamily: 'Copperplate'}}>Are we gonna fight or are we gonna make out?</Text>
-        <Output/>
-        <StatusBar style="auto" />
-        </ScrollView>
-        <AddPerson/> 
-        
+          <View style={{flexDirection: 'row'}}> 
+            <Output/>
+            <StatusBar style='auto'/>
+          <View style={{justifyContent: 'flex-end', marginRight: 20}}> 
+              <AddPerson/> 
+          </View>
+          </View>
+          </ScrollView>
       </View>
     </ApolloProvider>
   );
@@ -35,8 +38,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#d9ecf2',
     alignItems: 'center',
     justifyContent: 'center',
-    borderBottomColor: 'black', 
-    borderBottomWidth: 2, 
+    width: Dimensions.get('screen').width, 
+    height: Dimensions.get('screen').height
   },
   header: {
     color: 'black',

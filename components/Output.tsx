@@ -5,6 +5,7 @@ import { GET_ALL, GET_PERSON } from '../resolvers';
 import gql from 'graphql-tag';
 import { QueryResult, useLazyQuery, useQuery } from 'react-apollo';
 import Person from './Person';
+import AddPerson from './AddPerson';
 
 function setPerson(queryResult: QueryResult) {
 
@@ -107,21 +108,19 @@ export default function Output() {
 
     return (
         <View style={styles.container}>
-            <View>
+            <View style={styles.searchWrapper}>
                 <SearchBar
                     round
                     style={styles.searchField}
                     placeholder="Search..."
                     onChangeText={(input) => getSearchVal(input)}
                     value={name}
-                    containerStyle={{width: 300}}
+                    containerStyle={{width: 300, backgroundColor:'#d9ecf2' }}
                 />
-                
-                <View style={{ margin: 'auto', alignItems: 'center' }}>
+             </View>
+                <View style={{ margin: 'auto', alignItems: 'center'}}>
                     {setPerson(checkStatus(activeFilter))}
                 </View>
-    
-            </View>
         </View>
     )
 }
@@ -129,12 +128,15 @@ export default function Output() {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        margin: 50
     },
     searchField: {
-        borderColor: '#d9ecf2',
         padding: 10,
-        backgroundColor: '#d9ecf2'
+        backgroundColor: '#d9ecf2',
+        fontFamily: 'Copperplate',
+    },
+    searchWrapper: {
+        marginLeft: 50,
+        marginTop: 30
     }
 });
 
