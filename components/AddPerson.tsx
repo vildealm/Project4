@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, TextInput, Alert, Modal, View, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, TextInput, Dimensions, Modal, View, TouchableHighlight } from 'react-native';
 import { Button } from 'react-native-elements';
 import {useForm} from 'react-hook-form'; 
 import {AddPersonPopUp} from './AddPersonPopUp'; 
+const {height, width} = Dimensions.get('window');
 
 
 
@@ -16,7 +17,7 @@ export default function AddPerson() {
                 transparent={true}
                 visible={modalVisible}
             >
-              <AddPersonPopUp setModalOpen={setModalVisible}/> 
+              <AddPersonPopUp setModalVisible={setModalVisible}/> 
             </Modal>
             <TouchableHighlight style={styles.openButton}
                 onPress={() => {

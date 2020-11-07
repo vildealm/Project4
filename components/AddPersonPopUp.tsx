@@ -2,8 +2,8 @@ import gql from 'graphql-tag';
 import { useMutation, useApolloClient, useLazyQuery } from 'react-apollo';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, TextInput, Alert, Modal, View, TouchableHighlight } from 'react-native';
-import { Button, } from 'react-native-elements';
-import {useForm} from 'react-hook-form'; 
+import { Button,Divider } from 'react-native-elements';
+import { useForm, Controller } from 'react-hook-form';
 
 const ADD_PERSON = gql`
   mutation register($last_name: String!, $first_name: String!, $age: Int!, $location: String!, $description: String!) {
@@ -15,62 +15,127 @@ interface StateProps {
     setModalVisible(val: boolean): void;
 }
 
+interface IFormInputs {
+    first_name: string;
+    last_name: string;
+    age: number;
+    location: string;
+    description: string;
+}
+
 export const AddPersonPopUp = (props: StateProps) => {
-    const onSubmit = (data: string | undefined) => {
-        Alert.alert("Form Data", data);
-    }; 
+    const onSubmit = ({first_name, last_name, age, location, description}:IFormInputs) => {
+        console.log(first_name, last_name, age, location, description);
+        Alert.alert("Success!")
+    };
     const [addPerson, { error, data }] = useMutation(ADD_PERSON,
         { variables: { first_name: "first_name", last_name: 'last_name', age: 'age', location: 'location', description: 'description' } });
 
-    const {register, handleSubmit, setValue} = useForm(); 
+    const {handleSubmit, setValue, control } = useForm<IFormInputs>();
 
-    useEffect(() => {
-        register("first_name");
-        register('last_name');
-        register('age');
-        register('location');
-        register('decription');
-    }, [register]); 
-
- return (
-    <View style={styles.centeredView}>
-    <View style={styles.modalView}>
-        <Text style={styles.modalText}>Add a person!</Text>
-        <View> 
-            <Text style={styles.modalText}>Firstname</Text>
-            <TextInput style={styles.modalText} onChangeText={text => {
-                setValue("first_name", text)
-            }}/>
-            <Text style={styles.modalText}>Lastname</Text>
-            <TextInput style={styles.modalText} onChangeText={text => {
-                setValue("last_name", text)
-            }}/>
-            <Text style={styles.modalText}>Age</Text>
-            <TextInput style={styles.modalText} onChangeText={text => {
-                setValue("age", text)
-            }}/>
-            <Text style={styles.modalText}>Location</Text>
-            <TextInput style={styles.modalText} onChangeText={text => {
-                setValue("location", text)
-            }}/> 
-            <Text style={styles.modalText}>Description</Text>
-            <TextInput style={styles.modalText} onChangeText={text => {
-                setValue("description", text)
-            }}/>
+    return (
+       
+        <View style={styles.centeredView}>
+            
+            <View style={styles.modalView}>
+                
+                <Text style={styles.modalText}>Add a person!</Text>
+                
+                <View>
+                    <Text style={styles.modalText}>Firstname</Text>
+                    <Controller
+                        control={control}
+                        render={({ onChange, onBlur, value }) => (
+                            <TextInput
+                                style={styles.modalText}
+                                onBlur={onBlur}
+                                placeholder="Firstname"
+                                onChangeText={value => onChange(value)}
+                                value={value}
+                            />
+                        )}
+                        name="first_name"
+                        rules={{ required: true }}
+                        defaultValue=""
+                    />
+                    
+                    <Text style={styles.modalText}>Lastname</Text>
+                    <Controller
+                        control={control}
+                        render={({ onChange, onBlur, value }) => (
+                            <TextInput
+                                style={styles.modalText}
+                                placeholder="Lastname"
+                                onBlur={onBlur}
+                                onChangeText={value => onChange(value)}
+                                value={value}
+                            />
+                        )}
+                        name="last_name"
+                        rules={{ required: true }}
+                        defaultValue=""
+                    />
+                    <Text style={styles.modalText}>Age</Text>
+                    <Controller
+                        control={control}
+                        render={({ onChange, onBlur, value }) => (
+                            <TextInput
+                                placeholder="Age"
+                                style={styles.modalText}
+                                onBlur={onBlur}
+                                onChangeText={value => onChange(value)}
+                                value={value}
+                            />
+                        )}
+                        name="age"
+                        rules={{ required: true }}
+                        defaultValue=""
+                    />
+                    <Text style={styles.modalText}>Location</Text>
+                    <Controller
+                        control={control}
+                        render={({ onChange, onBlur, value }) => (
+                            <TextInput
+                                placeholder="Location"
+                                style={styles.modalText}
+                                onBlur={onBlur}
+                                onChangeText={value => onChange(value)}
+                                value={value}
+                            />
+                        )}
+                        name="location"
+                        rules={{ required: true }}
+                        defaultValue=""
+                    />
+                    <Text style={styles.modalText}>Description</Text>
+                    <Controller
+                        control={control}
+                        render={({ onChange, onBlur, value }) => (
+                            <TextInput
+                                style={styles.modalText}
+                                onBlur={onBlur}
+                                onChangeText={value => onChange(value)}
+                                value={value}
+                            />
+                        )}
+                        name="description"
+                        rules={{ required: true }}
+                        defaultValue=""
+                    />
+               
+                <TouchableHighlight
+                    style={{ ...styles.openButton, backgroundColor: "#a6dcef" }}
+                    onPress={() => {
+                        handleSubmit(onSubmit);
+                        props.setModalVisible(false);
+                    }}
+                >
+                    <Text style={styles.textStyle}>Submit</Text>
+                </TouchableHighlight>
+                </View>
+            </View>
         </View>
-
-        <TouchableHighlight
-            style={{ ...styles.openButton, backgroundColor: "#a6dcef" }}
-            onPress={() => {
-                //handleSubmit(onSubmit); 
-                props.setModalVisible(false); 
-            }}
-        >
-            <Text style={styles.textStyle}>Submit</Text>
-        </TouchableHighlight>
-    </View>
-</View>
- )
+    )
 }
 const styles = StyleSheet.create({
     openButton: {
@@ -85,22 +150,29 @@ const styles = StyleSheet.create({
         elevation: 5,
         shadowOpacity: 0.33,
         shadowRadius: 5,
+        margin: 15
     },
     textStyle: {
         color: "white",
         fontWeight: "bold",
         textAlign: "center",
-        fontSize: 18, 
+        fontSize: 18,
     },
     modalText: {
-        marginBottom: 15,
-        textAlign: "center"
+        marginBottom:5,
+        textAlign: "center",
+        borderLeftWidth: 1,
+        borderRightWidth: 1,
+        borderBottomWidth: 1, 
+        borderTopWidth:1,
+        padding:5,
+        width:200
     },
     modalView: {
         margin: 20,
-        backgroundColor: "white",
+        backgroundColor: "#F8F8FF",
         borderRadius: 20,
-        padding: 35,
+        padding: 40,
         alignItems: "center",
         shadowColor: "#000",
         shadowOffset: {
@@ -115,6 +187,26 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 22
+        marginTop: 22,
     }
 })
+/* <TextInput style={styles.modalText} onChangeText={text => {
+                        setValue("first_name", text)
+                    }} />
+                    <TextInput ref={register} style={styles.modalText} onChangeText={text => {
+                        setValue("last_name", text)
+                    }} />
+
+                    <TextInput ref={register} style={styles.modalText} onChangeText={text => {
+                        setValue("age", text)
+                    }} />
+<TextInput ref={register} style={styles.modalText} onChangeText={text => {
+                        setValue("description", text)
+                    }} />
+                     <select name="location" ref={register}>
+                        <option value="Gløshaugen">Gløshaugen</option>
+                        <option value="Dragvoll">Dragvoll</option>
+                        <option value="Kalvskinnet">Kalvskinnet</option>
+                        <option value="Handelshøyskolen">Handelshøyskolen</option>
+                    </select>
+                    */
