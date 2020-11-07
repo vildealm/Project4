@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
-import { useMutation, useApolloClient, useLazyQuery } from 'react-apollo';
-import React, { useEffect, useState } from 'react';
+import { useMutation } from 'react-apollo';
+import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, Alert, Modal, View, TouchableHighlight } from 'react-native';
-import { Button,Divider } from 'react-native-elements';
+import RNPickerSelect from 'react-native-picker-select';
 import { useForm, Controller } from 'react-hook-form';
 
 const ADD_PERSON = gql`
@@ -24,23 +24,23 @@ interface IFormInputs {
 }
 
 export const AddPersonPopUp = (props: StateProps) => {
-    const onSubmit = ({first_name, last_name, age, location, description}:IFormInputs) => {
+    const onSubmit = ({ first_name, last_name, age, location, description }: IFormInputs) => {
         console.log(first_name, last_name, age, location, description);
         Alert.alert("Success!")
     };
     const [addPerson, { error, data }] = useMutation(ADD_PERSON,
         { variables: { first_name: "first_name", last_name: 'last_name', age: 'age', location: 'location', description: 'description' } });
 
-    const {handleSubmit, setValue, control } = useForm<IFormInputs>();
+    const { handleSubmit, setValue, control } = useForm<IFormInputs>();
 
     return (
-       
+
         <View style={styles.centeredView}>
-            
+
             <View style={styles.modalView}>
-                
+
                 <Text style={styles.modalText}>Add a person!</Text>
-                
+
                 <View>
                     <Text style={styles.modalText}>Firstname</Text>
                     <Controller
@@ -58,7 +58,7 @@ export const AddPersonPopUp = (props: StateProps) => {
                         rules={{ required: true }}
                         defaultValue=""
                     />
-                    
+
                     <Text style={styles.modalText}>Lastname</Text>
                     <Controller
                         control={control}
@@ -91,27 +91,12 @@ export const AddPersonPopUp = (props: StateProps) => {
                         rules={{ required: true }}
                         defaultValue=""
                     />
-                    <Text style={styles.modalText}>Location</Text>
-                    <Controller
-                        control={control}
-                        render={({ onChange, onBlur, value }) => (
-                            <TextInput
-                                placeholder="Location"
-                                style={styles.modalText}
-                                onBlur={onBlur}
-                                onChangeText={value => onChange(value)}
-                                value={value}
-                            />
-                        )}
-                        name="location"
-                        rules={{ required: true }}
-                        defaultValue=""
-                    />
                     <Text style={styles.modalText}>Description</Text>
                     <Controller
                         control={control}
                         render={({ onChange, onBlur, value }) => (
                             <TextInput
+                                placeholder="Description"
                                 style={styles.modalText}
                                 onBlur={onBlur}
                                 onChangeText={value => onChange(value)}
@@ -122,16 +107,34 @@ export const AddPersonPopUp = (props: StateProps) => {
                         rules={{ required: true }}
                         defaultValue=""
                     />
-               
-                <TouchableHighlight
-                    style={{ ...styles.openButton, backgroundColor: "#a6dcef" }}
-                    onPress={() => {
-                        handleSubmit(onSubmit);
-                        props.setModalVisible(false);
-                    }}
-                >
-                    <Text style={styles.textStyle}>Submit</Text>
-                </TouchableHighlight>
+                    <Text style={styles.modalText}>Location</Text>
+                    <Controller
+                        control={control}
+                        render={({ onChange, onBlur, value }) => (
+                            <RNPickerSelect
+                                onValueChange={(value) => console.log(value)}
+                                items={[
+                                    { label: 'Gløshaugen', value: 'gløshaugen' },
+                                    { label: 'Dragvoll', value: 'dragvoll' },
+                                    { label: 'Kalvskinnet', value: 'kavlskinnet' },
+                                    {label: 'Handelshøyskolen', value:'handelshøyskolen'}
+                                ]}
+                            />
+                        )}
+                        name="location"
+                        rules={{ required: true }}
+                        defaultValue=""
+                    />
+
+                    <TouchableHighlight
+                        style={{ ...styles.openButton, backgroundColor: "#a6dcef" }}
+                        onPress={() => {
+                            handleSubmit(onSubmit);
+                            props.setModalVisible(false);
+                        }}
+                    >
+                        <Text style={styles.textStyle}>Submit</Text>
+                    </TouchableHighlight>
                 </View>
             </View>
         </View>
@@ -159,14 +162,16 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     modalText: {
-        marginBottom:5,
+        marginBottom: 5,
         textAlign: "center",
         borderLeftWidth: 1,
         borderRightWidth: 1,
-        borderBottomWidth: 1, 
-        borderTopWidth:1,
-        padding:5,
-        width:200
+        borderBottomWidth: 1,
+        borderTopWidth: 1,
+        padding: 5,
+        width: 200, 
+        fontSize: 16,
+        borderRadius:20
     },
     modalView: {
         margin: 20,
@@ -188,6 +193,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         marginTop: 22,
+        borderRadius: 30
     }
 })
 /* <TextInput style={styles.modalText} onChangeText={text => {
