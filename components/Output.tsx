@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TextInput, View, Picker } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { GET_ALL, GET_PERSON } from '../resolvers';
 import gql from 'graphql-tag';
@@ -97,6 +97,8 @@ export default function Output() {
         { variables: { orderBy: orderBy, pageNumber: pageNumber} }
     );
 
+    const [location, setLocation] = useState("");
+
     const [searchName, nameResults] = useLazyQuery(
         GET_PERSON,
         { variables: { name: name, orderBy: orderBy, pageNumber: pageNumber }});
@@ -105,6 +107,7 @@ export default function Output() {
         persons();
     }, []);
 
+   
 
     return (
         <View style={styles.container}>
@@ -120,6 +123,18 @@ export default function Output() {
              </View>
                 <View style={{ margin: 'auto', alignItems: 'center'}}>
                     {setPerson(checkStatus(activeFilter))}
+                </View>
+                <View >
+                    <Text>Location: </Text>
+                <Picker onValueChange={(value) => setLocation(value) }>
+                    <Picker.Item label="Any" value="Any" />
+                    <Picker.Item label="Gløshaugen" value="Gløshaugen" />
+                    <Picker.Item label="Kalvskinnet" value="Kalvskinnet" />
+                    <Picker.Item label="Handelshøyskolen" value="Handelshøyskolen" />
+                    <Picker.Item label="Dragvoll" value="Dragvoll" />
+                </Picker>
+                
+                <Text>The chosen location is {location}</Text>
                 </View>
         </View>
     )
