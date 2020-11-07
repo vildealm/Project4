@@ -75,6 +75,8 @@ export default function Output() {
     const [activeFilter, setActiveFilter] = useState('getAll');
     const [name, setName] = useState('');
     const [pageNumber, setPageNumber] = useState(0);
+    const [location, setLocation] = useState("");
+
 
     const checkStatus = (filter: string) => {
         if (filter === "getAll") {
@@ -97,7 +99,6 @@ export default function Output() {
         { variables: { orderBy: orderBy, pageNumber: pageNumber} }
     );
 
-    const [location, setLocation] = useState("");
 
     const [searchName, nameResults] = useLazyQuery(
         GET_PERSON,
@@ -107,7 +108,6 @@ export default function Output() {
         persons();
     }, []);
 
-   
 
     return (
         <View style={styles.container}>
@@ -120,13 +120,13 @@ export default function Output() {
                     value={name}
                     containerStyle={{width: 300, backgroundColor:'#d9ecf2' }}
                 />
-             </View>
-                <View style={{ margin: 'auto', alignItems: 'center'}}>
-                    {setPerson(checkStatus(activeFilter))}
+            </View>
+            <View style={{ margin: 'auto', alignItems: 'center'}}>
+                {setPerson(checkStatus(activeFilter))}
                 </View>
                 <View >
                     <Text>Location: </Text>
-                <Picker onValueChange={(value) => setLocation(value) }>
+                <Picker selectedValue = {location} onValueChange={(value) => setLocation(value)}>
                     <Picker.Item label="Any" value="Any" />
                     <Picker.Item label="Gløshaugen" value="Gløshaugen" />
                     <Picker.Item label="Kalvskinnet" value="Kalvskinnet" />
