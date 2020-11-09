@@ -99,6 +99,8 @@ export const AddPersonPopUp = (props: StateProps) => {
 
                     <Text style={styles.modalText}>Location</Text>
                     <RNPickerSelect
+                        
+                        value={location}
                         onValueChange={(e) => setLoc(e)}
                         items={[
                             { label: 'Gløshaugen', value: 'gløshaugen' },
