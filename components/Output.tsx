@@ -156,6 +156,7 @@ export default function Output() {
                     keyboardType={'numeric'} 
                     style={{ margin: 5, alignItems: 'center', borderWidth: 1, fontSize:17, height: 30}}
                     onChangeText={(value) =>handleAgeChange(value)}
+                    returnKeyType={ 'done' }
                     />
                     <Text>The chosen location is {location}, and the chosen age is {age}</Text>
                 </View>
