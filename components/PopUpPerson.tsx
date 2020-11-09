@@ -20,20 +20,31 @@ export const PopUpPerson = (props: any, prop:StateProps) => {
     person.description = props.description;
 
     return(
+       
+
         <View style={styles.centeredView}>
+            <Image style={{width: 80, height: 80}} source={require("../icon/personIcon.png")}/> 
             <View style={styles.modalView}>
-            <TouchableOpacity  style={styles.closeBtn} onPress={() => {props.setModalVisible(false); }}>
+            <TouchableOpacity onPress={() => {props.setModalVisible(false); }}>
                 <Image style={styles.imgBtn} source={require("../icon/close.png")}/>
             </TouchableOpacity>
-            <Text>{person.first_name} {person.last_name}</Text>
-            <Text>Age: {person.age}</Text>
-            <Text>From: {person.location}</Text>
-            <Text> {person.description}</Text>
+            <Text style={styles.modalText}> {person.first_name} {person.last_name}</Text>
+            <Text style={styles.modalText}>Age: {person.age}</Text>
+            <Text style={styles.modalText}>From: {person.location}</Text>
+            <Text style={{fontStyle: "italic"}}>{person.description}</Text>
             </View>
         </View>
     )
 }
 const styles = StyleSheet.create({
+    modalText: {
+        marginBottom: 5,
+        textAlign: "center",
+        padding: 5,
+        width: 200,
+        fontSize: 16,
+        borderRadius: 20
+    },
     imgBtn:{
         width: 30,
         height: 30,
@@ -60,6 +71,7 @@ const styles = StyleSheet.create({
         elevation: 5
     },
     centeredView: {
+        flexDirection: "row", 
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
