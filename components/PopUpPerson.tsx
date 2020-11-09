@@ -22,17 +22,21 @@ export const PopUpPerson = (props: any, prop:StateProps) => {
     return(
        
 
-        <View style={styles.centeredView}>
+        <View style={styles.modalView}>
+            <View> 
             <Image style={{width: 80, height: 80}} source={require("../icon/personIcon.png")}/> 
-            <View style={styles.modalView}>
-            <TouchableOpacity onPress={() => {props.setModalVisible(false); }}>
-                <Image style={styles.imgBtn} source={require("../icon/close.png")}/>
-            </TouchableOpacity>
+            </View>
+            
+            <View style={styles.modelView}> 
             <Text style={styles.modalText}> {person.first_name} {person.last_name}</Text>
             <Text style={styles.modalText}>Age: {person.age}</Text>
             <Text style={styles.modalText}>From: {person.location}</Text>
-            <Text style={{fontStyle: "italic"}}>{person.description}</Text>
+            <Text style={{fontStyle: "italic"}}>{person.description}</Text> 
             </View>
+            <TouchableOpacity onPress={() => {props.setModalVisible(false); }}>
+                <Image style={styles.imgBtn} source={require("../icon/close.png")}/>
+            </TouchableOpacity>
+           
         </View>
     )
 }
@@ -48,6 +52,7 @@ const styles = StyleSheet.create({
     imgBtn:{
         width: 30,
         height: 30,
+        marginBottom: 100,
     },
     textStyle: {
         color: "white",
@@ -56,7 +61,8 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     modalView: {
-        margin: 20,
+        flexDirection: "row", 
+        marginTop: 300,
         backgroundColor: "#F8F8FF",
         borderRadius: 20,
         padding: 40,
@@ -69,14 +75,6 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5
-    },
-    centeredView: {
-        flexDirection: "row", 
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        marginTop: 22,
-        borderRadius: 30
     }
 });
 // <img src={imageText} className='closeBtn' height="50" width="50" alt="closeButton"/>

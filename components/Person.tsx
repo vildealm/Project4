@@ -21,6 +21,7 @@ const Person = (props: any) => {
                 transparent={true}
                 visible={modalVisible}
             >
+                
                 <PopUpPerson
                     first_name={props.first_name}
                     last_name={props.last_name}
@@ -29,6 +30,7 @@ const Person = (props: any) => {
                     description={props.description}
                     setModalVisible={setModalVisible}
                 />
+            
             </Modal>
             <TouchableOpacity onPress={() => {setModalVisible(true);}}>
                 <Text style={{ fontWeight: "bold", fontFamily: 'Copperplate' }}> {props.first_name} {props.last_name} </Text>

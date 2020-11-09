@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { ScrollView, StyleSheet, Text,View } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { GET_ALL, GET_PERSON } from '../resolvers';
-import gql from 'graphql-tag';
 import { QueryResult, useLazyQuery, useQuery } from 'react-apollo';
 import Person from './Person';
 import AddPerson from './AddPerson';
 
 function setPerson(queryResult: QueryResult) {
-
     let people: any = [];
     let ids: any = [];
     let person = {
@@ -100,11 +98,9 @@ export default function Output() {
     const [searchName, nameResults] = useLazyQuery(
         GET_PERSON,
         { variables: { name: name, orderBy: orderBy, pageNumber: pageNumber }});
-
     useEffect(() => {
         persons();
     }, []);
-
 
     return (
         <View style={styles.container}>
