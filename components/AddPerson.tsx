@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, TextInput, Dimensions, Modal, View, TouchableHighlight } from 'react-native';
-import { Button } from 'react-native-elements';
+import React, {  useState } from 'react';
+import { StyleSheet, Text,  Dimensions, Modal, View, TouchableHighlight } from 'react-native';
 import {useForm} from 'react-hook-form'; 
 import {AddPersonPopUp} from './AddPersonPopUp'; 
 const {height, width} = Dimensions.get('window');

@@ -1,9 +1,9 @@
 import gql from 'graphql-tag';
 import { useMutation } from 'react-apollo';
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, Alert, Modal, View, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, TextInput, View, TouchableHighlight } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm} from 'react-hook-form';
 
 const ADD_PERSON = gql`
   mutation register($last_name: String!, $first_name: String!, $age: Int!, $location: String!, $description: String!) {
@@ -52,54 +52,37 @@ export const AddPersonPopUp = (props: StateProps) => {
     }
 
     return (
-
         <View style={styles.centeredView}>
-
             <View style={styles.modalView}>
-
                 <Text style={{ fontSize: 24 }}>Add a person!</Text>
-
                 <View>
                     <Text style={styles.modalText}>Firstname</Text>
-
                     <TextInput
                         style={styles.modalText}
                         placeholder="Firstname"
                         onChangeText={(e) => setFirstName(e)}
-
                     />
-
                     <Text style={styles.modalText}>Lastname</Text>
-
                     <TextInput
                         style={styles.modalText}
                         placeholder="Lastname"
                         onChangeText={(e) => setLastName(e)}
-
                     />
-
                     <Text style={styles.modalText}>Age</Text>
-
                     <TextInput
                         placeholder="Age"
                         style={styles.modalText}
                         keyboardType='numeric'
                         onChangeText={(e) => setAge(+e)}
                     />
-
                     <Text style={styles.modalText}>Description</Text>
-
                     <TextInput
                         placeholder="Description"
                         style={styles.modalText}
-
                         onChangeText={(e) => setDesc(e)}
-
                     />
-
                     <Text style={styles.modalText}>Location</Text>
-                    <RNPickerSelect
-                        
+                    <RNPickerSelect 
                         value={location}
                         onValueChange={(e) => setLoc(e)}
                         items={[
@@ -109,12 +92,10 @@ export const AddPersonPopUp = (props: StateProps) => {
                             { label: 'Handelshøyskolen', value: 'handelshøyskolen' }
                         ]}
                     />
-
-
                     <TouchableHighlight
                         style={{ ...styles.openButton, backgroundColor: "#a6dcef" }}
                         onPress={() => {
-                            if (checkText(first_name || last_name || description) && age !== null) {
+                            if (checkText(first_name || last_name || description) && age>0 && age <101) {
                                 first_name &&
                                 last_name &&
                                 age &&
@@ -124,7 +105,6 @@ export const AddPersonPopUp = (props: StateProps) => {
                                 handleSubmit(onSubmit);
                                 props.setModalVisible(false);
                             }
-
                         }}
                     >
                         <Text style={styles.textStyle}>Add</Text>
