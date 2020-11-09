@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet, Text, TextInput, View, Picker } from 'react-native';
+import { ScrollView, StyleSheet, Text, TextInput, View, Picker, Button } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { GET_ALL, GET_PERSON } from '../resolvers';
 import gql from 'graphql-tag';
@@ -70,13 +70,22 @@ function setPerson(queryResult: QueryResult) {
     }
 }
 
+
+
+
 export default function Output() {
     const [orderBy, setOrderBy] = useState('first_name');
     const [activeFilter, setActiveFilter] = useState('getAll');
     const [name, setName] = useState('');
     const [pageNumber, setPageNumber] = useState(0);
     const [location, setLocation] = useState("");
+    const [locationOutput, setLocationOutput] = useState('Location');
+    const [age, setAge] = useState(null);
 
+
+   function handleAgeChange(value: any){
+        setAge(value)
+   }
 
     const checkStatus = (filter: string) => {
         if (filter === "getAll") {
@@ -108,7 +117,6 @@ export default function Output() {
         persons();
     }, []);
 
-
     return (
         <View style={styles.container}>
             <View style={styles.searchWrapper}>
@@ -126,7 +134,15 @@ export default function Output() {
                 </View>
                 <View >
                     <Text>Location: </Text>
-                <Picker selectedValue = {location} onValueChange={(value) => setLocation(value)}>
+                <Picker selectedValue = {location} 
+                    onValueChange={
+                        (value) => {setLocation(value)
+                        setLocationOutput(value)
+                        setPageNumber(0);
+                        setActiveFilter('filters');
+                    } 
+                     }
+                                         >
                     <Picker.Item label="Any" value="Any" />
                     <Picker.Item label="Gløshaugen" value="Gløshaugen" />
                     <Picker.Item label="Kalvskinnet" value="Kalvskinnet" />
@@ -134,7 +150,14 @@ export default function Output() {
                     <Picker.Item label="Dragvoll" value="Dragvoll" />
                 </Picker>
                 
-                <Text>The chosen location is {location}</Text>
+                <TextInput   
+                    placeholder="Age"  
+                    underlineColorAndroid='transparent'  
+                    keyboardType={'numeric'} 
+                    style={{ margin: 5, alignItems: 'center', borderWidth: 1, fontSize:17, height: 30}}
+                    onChangeText={(value) =>handleAgeChange(value)}
+                    />
+                    <Text>The chosen location is {location}, and the chosen age is {age}</Text>
                 </View>
         </View>
     )

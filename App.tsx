@@ -8,7 +8,7 @@ import AddPerson from './components/AddPerson';
 
 export default function App() {
   const client = new ApolloClient({
-    uri: 'http://10.22.7.35:4000',    
+    uri: 'http://10.38.59.157:4000',    
     cache: new InMemoryCache()
   });
 
