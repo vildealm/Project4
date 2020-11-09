@@ -29,15 +29,27 @@ export const AddPersonPopUp = (props: StateProps) => {
     const [age, setAge] = useState(0);
     const [location, setLoc] = useState('Gløshaugen');
     const [description, setDesc] = useState('');
-    
+    const [txtField, setTextField] = useState(false);
+
+    const [addPerson, { error, data }] = useMutation(ADD_PERSON,
+        { variables: { first_name: first_name, last_name: last_name, age: age, location: location, description: description } });
+
     const onSubmit = ({ first_name, last_name, age, location, description }: IFormInputs) => {
         console.log(first_name, last_name, age, location, description);
-        Alert.alert("Success!")
+        alert({ first_name, last_name, age, location, description })
     };
-    const [addPerson, { error, data }] = useMutation(ADD_PERSON,
-        { variables: { first_name: "first_name", last_name: 'last_name', age: 'age', location: 'location', description: 'description' } });
 
-    const { handleSubmit, setValue, control } = useForm<IFormInputs>();
+    const { handleSubmit } = useForm<IFormInputs>();
+    function checkText(input: string) {
+        if (!input.trim()) {
+            alert('Please Fill in the Blank');
+            setTextField(false)
+            return false;
+        } else {
+            setTextField(true)
+            return true;
+        }
+    }
 
     return (
 
@@ -45,73 +57,72 @@ export const AddPersonPopUp = (props: StateProps) => {
 
             <View style={styles.modalView}>
 
-                <Text style={{fontSize: 24}}>Add a person!</Text>
+                <Text style={{ fontSize: 24 }}>Add a person!</Text>
 
                 <View>
                     <Text style={styles.modalText}>Firstname</Text>
-              
-                            <TextInput
-                                style={styles.modalText}
-                        
-                                placeholder="Firstname"
-                                onChangeText={(e) => setFirstName(e)}
-                                value={first_name}
-                            />
-                      
-                     
+
+                    <TextInput
+                        style={styles.modalText}
+                        placeholder="Firstname"
+                        onChangeText={(e) => setFirstName(e)}
+
+                    />
 
                     <Text style={styles.modalText}>Lastname</Text>
-                    
-                            <TextInput
-                                style={styles.modalText}
-                                placeholder="Lastname"
-                                
-                                onChangeText={(e) => setLastName(e)}
-                                value={last_name}
-                            />
-                    
+
+                    <TextInput
+                        style={styles.modalText}
+                        placeholder="Lastname"
+                        onChangeText={(e) => setLastName(e)}
+
+                    />
+
                     <Text style={styles.modalText}>Age</Text>
-                    
-                            <TextInput
-                                placeholder="Age"
-                                style={styles.modalText}
-                                keyboardType='numeric'
-                                onChangeText={(e) => setAge(+e)}
-                            />
-                      
+
+                    <TextInput
+                        placeholder="Age"
+                        style={styles.modalText}
+                        keyboardType='numeric'
+                        onChangeText={(e) => setAge(+e)}
+                    />
+
                     <Text style={styles.modalText}>Description</Text>
-                    
-                            <TextInput
-                                placeholder="Description"
-                                style={styles.modalText}
-                                
-                                onChangeText={(e) => setDesc(e)}
-                                value={description}
-                            />
-                       
+
+                    <TextInput
+                        placeholder="Description"
+                        style={styles.modalText}
+
+                        onChangeText={(e) => setDesc(e)}
+
+                    />
+
                     <Text style={styles.modalText}>Location</Text>
-                            <RNPickerSelect
-                                onValueChange={(e) => setLoc(e)}
-                                items={[
-                                    { label: 'Gløshaugen', value: 'gløshaugen' },
-                                    { label: 'Dragvoll', value: 'dragvoll' },
-                                    { label: 'Kalvskinnet', value: 'kavlskinnet' },
-                                    {label: 'Handelshøyskolen', value:'handelshøyskolen'}
-                                ]}
-                            />
-                       
+                    <RNPickerSelect
+                        onValueChange={(e) => setLoc(e)}
+                        items={[
+                            { label: 'Gløshaugen', value: 'gløshaugen' },
+                            { label: 'Dragvoll', value: 'dragvoll' },
+                            { label: 'Kalvskinnet', value: 'kavlskinnet' },
+                            { label: 'Handelshøyskolen', value: 'handelshøyskolen' }
+                        ]}
+                    />
+
 
                     <TouchableHighlight
                         style={{ ...styles.openButton, backgroundColor: "#a6dcef" }}
                         onPress={() => {
-                            handleSubmit(onSubmit);
-                            props.setModalVisible(false);
-                            first_name &&
-                            last_name &&
-                            age &&
-                            location &&
-                            description &&
-                            addPerson() 
+                            if (checkText(first_name || last_name || description) && age !== null) {
+                                first_name &&
+                                last_name &&
+                                age &&
+                                location &&
+                                description &&
+                                addPerson()
+                                handleSubmit(onSubmit);
+                                props.setModalVisible(false);
+                            }
+
                         }}
                     >
                         <Text style={styles.textStyle}>Add</Text>
@@ -150,9 +161,9 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderTopWidth: 1,
         padding: 5,
-        width: 200, 
+        width: 200,
         fontSize: 16,
-        borderRadius:20
+        borderRadius: 20
     },
     modalView: {
         margin: 20,
@@ -177,6 +188,12 @@ const styles = StyleSheet.create({
         borderRadius: 30
     }
 })
+/* first_name &&
+                            last_name &&
+                            age &&
+                            location &&
+                            description &&
+                            addPerson() */
 /* <TextInput style={styles.modalText} onChangeText={text => {
                         setValue("first_name", text)
                     }} />
