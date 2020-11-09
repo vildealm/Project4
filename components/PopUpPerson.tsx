@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
     modalText: {
         marginBottom: 5,
         textAlign: "center",
-        padding: 5,
-        width: 200,
+        margin: 15,
+       width: 210,
         fontSize: 16,
         borderRadius: 20
     },
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         marginTop: 300,
         backgroundColor: "#F8F8FF",
         borderRadius: 20,
-        padding: 40,
+        padding: 50,
         alignItems: "center",
         shadowColor: "#000",
         shadowOffset: {
