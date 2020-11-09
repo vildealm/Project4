@@ -24,6 +24,12 @@ interface IFormInputs {
 }
 
 export const AddPersonPopUp = (props: StateProps) => {
+    const [first_name, setFirstName] = useState('');
+    const [last_name, setLastName] = useState('');
+    const [age, setAge] = useState(0);
+    const [location, setLoc] = useState('Gløshaugen');
+    const [description, setDesc] = useState('');
+    
     const onSubmit = ({ first_name, last_name, age, location, description }: IFormInputs) => {
         console.log(first_name, last_name, age, location, description);
         Alert.alert("Success!")
@@ -39,80 +45,53 @@ export const AddPersonPopUp = (props: StateProps) => {
 
             <View style={styles.modalView}>
 
-                <Text style={styles.modalText}>Add a person!</Text>
+                <Text style={{fontSize: 24}}>Add a person!</Text>
 
                 <View>
                     <Text style={styles.modalText}>Firstname</Text>
-                    <Controller
-                        control={control}
-                        render={({ onChange, onBlur, value }) => (
+              
                             <TextInput
                                 style={styles.modalText}
-                                onBlur={onBlur}
+                        
                                 placeholder="Firstname"
-                                onChangeText={value => onChange(value)}
-                                value={value}
+                                onChangeText={(e) => setFirstName(e)}
+                                value={first_name}
                             />
-                        )}
-                        name="first_name"
-                        rules={{ required: true }}
-                        defaultValue=""
-                    />
+                      
+                     
 
                     <Text style={styles.modalText}>Lastname</Text>
-                    <Controller
-                        control={control}
-                        render={({ onChange, onBlur, value }) => (
+                    
                             <TextInput
                                 style={styles.modalText}
                                 placeholder="Lastname"
-                                onBlur={onBlur}
-                                onChangeText={value => onChange(value)}
-                                value={value}
+                                
+                                onChangeText={(e) => setLastName(e)}
+                                value={last_name}
                             />
-                        )}
-                        name="last_name"
-                        rules={{ required: true }}
-                        defaultValue=""
-                    />
+                    
                     <Text style={styles.modalText}>Age</Text>
-                    <Controller
-                        control={control}
-                        render={({ onChange, onBlur, value }) => (
+                    
                             <TextInput
                                 placeholder="Age"
                                 style={styles.modalText}
-                                onBlur={onBlur}
-                                onChangeText={value => onChange(value)}
-                                value={value}
+                                keyboardType='numeric'
+                                onChangeText={(e) => setAge(+e)}
                             />
-                        )}
-                        name="age"
-                        rules={{ required: true }}
-                        defaultValue=""
-                    />
+                      
                     <Text style={styles.modalText}>Description</Text>
-                    <Controller
-                        control={control}
-                        render={({ onChange, onBlur, value }) => (
+                    
                             <TextInput
                                 placeholder="Description"
                                 style={styles.modalText}
-                                onBlur={onBlur}
-                                onChangeText={value => onChange(value)}
-                                value={value}
+                                
+                                onChangeText={(e) => setDesc(e)}
+                                value={description}
                             />
-                        )}
-                        name="description"
-                        rules={{ required: true }}
-                        defaultValue=""
-                    />
+                       
                     <Text style={styles.modalText}>Location</Text>
-                    <Controller
-                        control={control}
-                        render={({ onChange, onBlur, value }) => (
                             <RNPickerSelect
-                                onValueChange={(value) => console.log(value)}
+                                onValueChange={(e) => setLoc(e)}
                                 items={[
                                     { label: 'Gløshaugen', value: 'gløshaugen' },
                                     { label: 'Dragvoll', value: 'dragvoll' },
@@ -120,20 +99,22 @@ export const AddPersonPopUp = (props: StateProps) => {
                                     {label: 'Handelshøyskolen', value:'handelshøyskolen'}
                                 ]}
                             />
-                        )}
-                        name="location"
-                        rules={{ required: true }}
-                        defaultValue=""
-                    />
+                       
 
                     <TouchableHighlight
                         style={{ ...styles.openButton, backgroundColor: "#a6dcef" }}
                         onPress={() => {
                             handleSubmit(onSubmit);
                             props.setModalVisible(false);
+                            first_name &&
+                            last_name &&
+                            age &&
+                            location &&
+                            description &&
+                            addPerson() 
                         }}
                     >
-                        <Text style={styles.textStyle}>Submit</Text>
+                        <Text style={styles.textStyle}>Add</Text>
                     </TouchableHighlight>
                 </View>
             </View>

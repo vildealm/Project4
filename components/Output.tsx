@@ -21,7 +21,7 @@ function setPerson(queryResult: QueryResult) {
     }
 
     if (queryResult.error) {
-        return <p>{queryResult.error}</p>;
+        return <Text> {queryResult.error}</Text>
     }
     if (queryResult.data !== undefined) {
         if (queryResult.data.persons !== undefined) {
