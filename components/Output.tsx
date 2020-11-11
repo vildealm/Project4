@@ -8,7 +8,6 @@ import Person from './Person';
 import AddPerson from './AddPerson';
 
 function setPerson(queryResult: QueryResult) {
-
     let people: any = [];
     let ids: any = [];
     let person = {
@@ -117,8 +116,6 @@ export default function Output() {
     const [searchName, nameResults] = useLazyQuery(
         GET_PERSON,
         { variables: { name: name, orderBy: orderBy, pageNumber: pageNumber }});
-
-
     useEffect(() => {
         persons();
     }, []);

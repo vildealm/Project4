@@ -11,7 +11,8 @@ export default function App() {
     uri: 'http://192.168.0.101:4000',    
     cache: new InMemoryCache()
   });
-
+//192.168.1.93
+//10.22.7.35
   return (
     <ApolloProvider client = {client}>
       <View style={styles.container}>
