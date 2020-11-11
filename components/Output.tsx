@@ -2,14 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, TextInput, View, Picker } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { GET_ALL, GET_PERSON , FILTER_SEARCH} from '../resolvers';
-import { useLazyQuery } from 'react-apollo';
+import { useLazyQuery, QueryResult } from 'react-apollo';
 import Person from './Person';
 import AddPerson from './AddPerson';
 import RNPickerSelect from 'react-native-picker-select';
 
 
-
-/*
 function setPerson(queryResult: QueryResult) {
     let people: any = [];
     let map = new Map();
@@ -76,7 +74,7 @@ function setPerson(queryResult: QueryResult) {
     }
     console.log(map);
     return map;
-}*/
+}
 
 //This is used to keep track of previously loaded data while scroll loading
 let prevData: any = [];

@@ -1,15 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 
 interface StateProps {
     setModalVisible(val: boolean): void;
 }
 //Functionality for the "Add-person popup"
-export const PopUpPerson = (props: any, prop:StateProps) => {
+export const PopUpPerson = (props: any, prop: StateProps) => {
     let person = {
         first_name: String,
         last_name: String,
-        age: Number, 
+        age: Number,
         location: String,
         description: String
     }
@@ -18,41 +18,38 @@ export const PopUpPerson = (props: any, prop:StateProps) => {
     person.age = props.age;
     person.location = props.location;
     person.description = props.description;
+    
 
-    return(
-       
-
+    return (
         <View style={styles.modalView}>
-            <View> 
-            <Image style={{width: 80, height: 80}} source={require("../icon/personIcon.png")}/> 
+            <View >
+                <Image style={{ width: 80, height: 80 }} source={require("../icon/personIcon.png")}/>
             </View>
-            
-            <View style={styles.modelView}> 
-            <Text style={styles.modalText}> {person.first_name} {person.last_name}</Text>
-            <Text style={styles.modalText}>Age: {person.age}</Text>
-            <Text style={styles.modalText}>From: {person.location}</Text>
-            <Text style={{fontStyle: "italic"}}>{person.description}</Text> 
+            <View>
+                <Text style={{width: 210, fontWeight: "bold", textAlign: "center", fontSize: 24}}> {person.first_name} {person.last_name}</Text>
+                <Text style={styles.modalText}>Age: &nbsp;{person.age}</Text>
+                <Text style={styles.modalText}>From: &nbsp; {person.location}</Text>
+                <Text style={{width: 210, fontStyle: "italic", textAlign: "center", fontSize: 18, marginTop: 20}}>&nbsp; &nbsp;"{person.description}"</Text>
             </View>
             <TouchableOpacity onPress={() => {props.setModalVisible(false); }}>
-                <Image style={styles.imgBtn} source={require("../icon/close.png")}/>
+                <Image style={styles.imgBtn} source={require("../icon/close.png")} />
             </TouchableOpacity>
-           
         </View>
     )
 }
 const styles = StyleSheet.create({
     modalText: {
-        marginBottom: 5,
+       marginBottom: 0,
         textAlign: "center",
+        justifyContent: "space-between",
         margin: 15,
-       width: 210,
-        fontSize: 16,
-        borderRadius: 20
+        width: 200,
+        fontSize: 18,
     },
-    imgBtn:{
-        width: 30,
-        height: 30,
-        marginBottom: 100,
+    imgBtn: {
+        width: 25,
+        height: 25,
+        marginBottom: 105,
     },
     textStyle: {
         color: "white",
@@ -61,20 +58,20 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     modalView: {
-        flexDirection: "row", 
-        marginTop: 300,
-        backgroundColor: "#F8F8FF",
-        borderRadius: 20,
+        flexDirection: "row",
+        marginTop: 330,
+        backgroundColor: "#F8F8F8",
+        borderRadius: 40,
         padding: 50,
         alignItems: "center",
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
-            height: 2
+            height: 11,
         },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5
+        shadowOpacity: 0.57,
+        shadowRadius: 15.19,
+
+        elevation: 23,
     }
 });
-// <img src={imageText} className='closeBtn' height="50" width="50" alt="closeButton"/>

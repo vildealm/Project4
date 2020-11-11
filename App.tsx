@@ -29,12 +29,13 @@ export default function App() {
     </ApolloProvider>
   );
 }
+//#d9ecf2
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: '#d9ecf2',
+    backgroundColor: "#d9ecf2", 
     alignItems: 'center',
     justifyContent: 'center',
     width: Dimensions.get('screen').width, 
