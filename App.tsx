@@ -8,24 +8,22 @@ import AddPerson from './components/AddPerson';
 
 export default function App() {
   const client = new ApolloClient({
-    uri: 'http://10.22.7.35:4000',    
+    uri: 'http://10.22.5.184:4000',    
     cache: new InMemoryCache()
   });
 
   return (
     <ApolloProvider client = {client}>
       <View style={styles.container}>
-        <ScrollView style={{marginHorizontal: 0}}> 
         <Text style={styles.header}>Findr</Text>
         <Text style={{textAlign: 'center', fontFamily: 'Copperplate'}}>Are we gonna fight or are we gonna make out?</Text>
           <View style={{flexDirection: 'row'}}> 
             <Output/>
             <StatusBar style='auto'/>
-          <View style={{justifyContent: 'flex-end', marginRight: 20}}> 
+            <View style={{justifyContent: 'flex-end', marginRight: 20}}> 
               <AddPerson/> 
+            </View>
           </View>
-          </View>
-          </ScrollView>
       </View>
     </ApolloProvider>
   );
