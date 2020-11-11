@@ -5,7 +5,7 @@ import { StyleSheet, Modal, Text, View, TouchableOpacity } from 'react-native';
 
 
 const Person = (props: any) => {
-    let examplePerson = ["Ola, Normann", 100, "Norge", "tullat"];
+    const examplePerson = ["Ola, Normann", 100, "Norge", "tullat"];
     const [modalVisible, setModalVisible] = useState(false);
     let [person, setPerson] = useState(examplePerson);
 
