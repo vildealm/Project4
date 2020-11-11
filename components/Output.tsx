@@ -82,7 +82,7 @@ export default function Output() {
    function handleAgeChange(value: any){
         setAge(value)
         setActiveFilter('filter')
-        filterSearch;
+        filterSearch();
    }
 
 
@@ -165,7 +165,7 @@ export default function Output() {
                     placeholder="Age"  
                     underlineColorAndroid='transparent'  
                     keyboardType={'numeric'} 
-                    onChangeText={ (value) =>handleAgeChange(value) }
+                    onChangeText={ (value) =>handleAgeChange(parseInt(value)) }
                     returnKeyType={ 'done' }
                     style = {styles.filterAge}
                     />
