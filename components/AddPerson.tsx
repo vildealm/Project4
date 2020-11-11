@@ -19,7 +19,7 @@ export default function AddPerson() {
                     setModalVisible(true);
                 }}
             >
-                <Text style={styles.textStyle}>+</Text>
+                <Text style={styles.textStyle}>+  </Text>
             </TouchableHighlight>
         </View>
     );
