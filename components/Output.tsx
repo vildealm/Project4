@@ -5,6 +5,8 @@ import { GET_ALL, GET_PERSON , FILTER_SEARCH} from '../resolvers';
 import { useLazyQuery } from 'react-apollo';
 import Person from './Person';
 import AddPerson from './AddPerson';
+import RNPickerSelect from 'react-native-picker-select';
+
 
 
 /*
@@ -224,23 +226,21 @@ export default function Output() {
                                 containerStyle={{width: 300, backgroundColor:'#d9ecf2' }}
                             />
                         </View>
-                        <View>
-                            <Text>Location: </Text>
-                            <Picker selectedValue = {location} 
-                                onValueChange={ (value) => 
-                                    handleLocationChange(value)
-                                } 
-                                style={{width: 200, height: 44}} itemStyle={{height: 44}}
-                                >   
-                                <Picker.Item label="Any" value="any" />
-                                <Picker.Item label="Gløshaugen" value="Gløshaugen" />
-                                <Picker.Item label="Kalvskinnet" value="Kalvskinnet" />
-                                <Picker.Item label="Handelshøyskolen" value="Handelshøyskolen" />
-                                <Picker.Item label="Dragvoll" value="Dragvoll" />
-                            </Picker>
-                            
+                        
+                       
+                        <RNPickerSelect
+                        value={location}
+                        onValueChange={(value: any) => handleLocationChange(value)}
+                        items={[
+                            { label: 'Any', value: 'any' },
+                            { label: 'Gløshaugen', value: 'gløshaugen' },
+                            { label: 'Dragvoll', value: 'dragvoll' },
+                            { label: 'Kalvskinnet', value: 'kavlskinnet' },
+                            { label: 'Handelshøyskolen', value: 'handelshøyskolen' }
+                        ]}
+                         />
                             <TextInput   
-                                placeholder="Age"  
+                                placeholder="Age" 
                                 underlineColorAndroid='transparent'  
                                 keyboardType={'numeric'} 
                                 onChangeText={ (value) =>handleAgeChange(parseInt(value)) }
@@ -248,18 +248,17 @@ export default function Output() {
                                 style = {styles.filterAge}
                             />
                         </View>
-                    </View>     
-                }
-                data={checkStatus(activeFilter)}
-                renderItem={({ item }) => (
-                    <Person first_name={item.first_name} last_name={item.last_name} location={item.location} age={item.age} description={item.description} />
-                )}
-                keyExtractor={(item) => item.id}
-                onEndReached={() => handleLoadMore()}
-                onEndReachedThreshold={4}
-                ListFooterComponent={
-                    <Text>Made with love by Group 4</Text>
-                }
+                    }
+                    data={checkStatus(activeFilter)}
+                    renderItem={({ item }) => (
+                        <Person first_name={item.first_name} last_name={item.last_name} location={item.location} age={item.age} description={item.description} />
+                    )}
+                    keyExtractor={(item) => item.id}
+                    onEndReached={() => handleLoadMore()}
+                    onEndReachedThreshold={4}
+                    ListFooterComponent={
+                        <Text>Made with love by Group 4</Text>
+                    }
             />
     </View>
     );
@@ -268,6 +267,7 @@ export default function Output() {
 
 const styles = StyleSheet.create({
     container: {
+        paddingTop: 25,
         alignItems: 'center',
         height: 400
     },
@@ -280,17 +280,24 @@ const styles = StyleSheet.create({
         marginLeft: 50,
         marginTop: 30
     }, 
+    filter : {
+        display: 'flex',
+        flexDirection: 'row'
+    },
+    filterLocation: {
+        marginRight: 0
+    },
     filterAge: {
-        width: 60,
-        color: '#555555',
+        marginTop: 3,
+        width: 45,
         paddingRight: 8,
         paddingLeft: 8,
-        height: 50, 
-        borderColor: '#6E5BAA',
-        borderWidth: 1,
-        borderRadius: 2,
-        alignSelf: 'center',
-        backgroundColor: '#ffffff'
-    }
+        height: 35, 
+        borderBottomColor: '#232B2B',
+        borderBottomWidth: 2,        
+    },
+   
+
 });
+
 
