@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, ScrollView, StyleSheet, Text, TextInput, View, Picker } from 'react-native';
+import { FlatList, StyleSheet, Text, TextInput, View, Picker } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { GET_ALL, GET_PERSON , FILTER_SEARCH} from '../resolvers';
-import gql from 'graphql-tag';
-import { QueryResult, useLazyQuery, useQuery } from 'react-apollo';
+import { useLazyQuery } from 'react-apollo';
 import Person from './Person';
 import AddPerson from './AddPerson';
 
@@ -77,6 +76,7 @@ function setPerson(queryResult: QueryResult) {
     return map;
 }*/
 
+//This is used to keep track of previously loaded data while scroll loading
 let prevData: any = [];
 let keys: any = [];
 
@@ -86,16 +86,8 @@ export default function Output() {
     const [activeFilter, setActiveFilter] = useState('getAll');
     const [name, setName] = useState('');
     const [pageNumber, setPageNumber] = useState(0);
-    const [location, setLocation] = useState("");
-    const [age, setAge] = useState(null);
-
-
-   function handleAgeChange(value: any){
-        setAge(value)
-        setActiveFilter('filter')
-        filterSearch();
-   }
-
+    const [location, setLocation] = useState('any');
+    const [age, setAge] = useState(0);
 
     const checkStatus = (filter: string) => {
         if (filter === "getAll") {
@@ -122,7 +114,26 @@ export default function Output() {
                 }
             }
         }
-      
+        else if(filter === "filterSearch"){
+            if(filterResults.data !== undefined){
+                if(pageNumber > 0){
+                    for(let i = 0; i<filterResults.data.filterSearch.length; i++){
+                        if (!keys.includes(filterResults.data.filterSearch[i].id)) {
+                            prevData = prevData.concat(filterResults.data.filterSearch[i]);
+                            keys= keys.concat(filterResults.data.filterSearch[i].id);
+                        }
+                    }
+                    return prevData;
+                }
+                for(let i = 0; i<filterResults.data.filterSearch.length; i++){
+                    if (!keys.includes(filterResults.data.filterSearch[i].id)) {
+                        prevData = prevData.concat(filterResults.data.filterSearch[i]);
+                        keys= keys.concat(filterResults.data.filterSearch[i].id);
+                    }
+                }
+                return filterResults.data.filterSearch;
+            }
+        }
         else {
             if(nameResults.data !== undefined){
                 if(pageNumber > 0){
@@ -143,7 +154,6 @@ export default function Output() {
                 return nameResults.data.nameSearch;
             }
         }
-        
     }
     
     function getSearchVal(input: string) {
@@ -156,27 +166,41 @@ export default function Output() {
         keys = [];
     }
 
+    function handleAgeChange(value: any){
+        if(isNaN(value)){
+            setAge(0);
+        }
+        else{
+            setAge(value);
+        }
+        filterSearch();
+        setPageNumber(0);
+        setActiveFilter('filterSearch');
+        prevData = [];
+        keys = [];
+   }
 
     function handleLocationChange(value: string){
         setLocation(value)
         filterSearch();
-        setActiveFilter('filters');
-
+        setPageNumber(0);
+        setActiveFilter('filterSearch');
+        prevData = [];
+        keys = [];
     }
-    const [persons, allResults] = useLazyQuery(
+
+    const [persons, allResults] = useLazyQuery (
         GET_ALL,
-        { variables: { orderBy: orderBy, pageNumber: pageNumber} }
-        
-    );
+        { variables: { orderBy: orderBy, pageNumber: pageNumber} });
+    
     const [filterSearch, filterResults] = useLazyQuery (
         FILTER_SEARCH, 
-        { variables : { age: age, location: location, orderBy: orderBy, pageNumber: pageNumber }}
-    );
-    
-   
-    const [searchName, nameResults] = useLazyQuery(
+        { variables : { age: age, location: location, orderBy: orderBy, pageNumber: pageNumber }});
+
+    const [searchName, nameResults] = useLazyQuery (
         GET_PERSON,
         { variables: { name: name, orderBy: orderBy, pageNumber: pageNumber }});
+    
     useEffect(() => {
         persons();
     }, []);
@@ -188,48 +212,44 @@ export default function Output() {
     return (
     <View style={styles.container}>
             <FlatList
-            
                 ListHeaderComponent={
                     <View>
-                    <View style={styles.searchWrapper}>
-                        <SearchBar
-                            round
-                            style={styles.searchField}
-                            placeholder="Search..."
-                            onChangeText={(input) => getSearchVal(input)}
-                            value={name}
-                            containerStyle={{width: 300, backgroundColor:'#d9ecf2' }}
-                        />
-                    </View>
-                    <View>
+                        <View style={styles.searchWrapper}>
+                            <SearchBar
+                                round
+                                style={styles.searchField}
+                                placeholder="Search..."
+                                onChangeText={(input) => getSearchVal(input)}
+                                value={name}
+                                containerStyle={{width: 300, backgroundColor:'#d9ecf2' }}
+                            />
+                        </View>
+                        <View>
                             <Text>Location: </Text>
                             <Picker selectedValue = {location} 
-                        onValueChange={ (value) => 
-                            handleLocationChange(value)
-                            } 
-                            style={{width: 200, height: 44}} itemStyle={{height: 44}}
-                            >   
-                            <Picker.Item label="Any" value="any" />
-                            <Picker.Item label="Gløshaugen" value="Gløshaugen" />
-                            <Picker.Item label="Kalvskinnet" value="Kalvskinnet" />
-                            <Picker.Item label="Handelshøyskolen" value="Handelshøyskolen" />
-                            <Picker.Item label="Dragvoll" value="Dragvoll" />
-                        </Picker>
-                        
-                        <TextInput   
-                            placeholder="Age"  
-                            underlineColorAndroid='transparent'  
-                            keyboardType={'numeric'} 
-                            onChangeText={ (value) =>handleAgeChange(parseInt(value)) }
-                            returnKeyType={ 'done' }
-                            style = {styles.filterAge}
-                />
-                    </View>
-            </View>
-                        
+                                onValueChange={ (value) => 
+                                    handleLocationChange(value)
+                                } 
+                                style={{width: 200, height: 44}} itemStyle={{height: 44}}
+                                >   
+                                <Picker.Item label="Any" value="any" />
+                                <Picker.Item label="Gløshaugen" value="Gløshaugen" />
+                                <Picker.Item label="Kalvskinnet" value="Kalvskinnet" />
+                                <Picker.Item label="Handelshøyskolen" value="Handelshøyskolen" />
+                                <Picker.Item label="Dragvoll" value="Dragvoll" />
+                            </Picker>
+                            
+                            <TextInput   
+                                placeholder="Age"  
+                                underlineColorAndroid='transparent'  
+                                keyboardType={'numeric'} 
+                                onChangeText={ (value) =>handleAgeChange(parseInt(value)) }
+                                returnKeyType={ 'done' }
+                                style = {styles.filterAge}
+                            />
+                        </View>
+                    </View>     
                 }
-
-    
                 data={checkStatus(activeFilter)}
                 renderItem={({ item }) => (
                     <Person first_name={item.first_name} last_name={item.last_name} location={item.location} age={item.age} description={item.description} />
@@ -243,12 +263,13 @@ export default function Output() {
             />
     </View>
     );
-    }
+}
        
 
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
+        height: 400
     },
     searchField: {
         padding: 10,
