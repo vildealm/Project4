@@ -154,7 +154,7 @@ export default function Output() {
                     } 
                      style={{width: 200, height: 44}} itemStyle={{height: 44}}
                     >   
-                    <Picker.Item label="Any" value="Any" />
+                    <Picker.Item label="Any" value="any" />
                     <Picker.Item label="Gløshaugen" value="Gløshaugen" />
                     <Picker.Item label="Kalvskinnet" value="Kalvskinnet" />
                     <Picker.Item label="Handelshøyskolen" value="Handelshøyskolen" />
@@ -169,7 +169,6 @@ export default function Output() {
                     returnKeyType={ 'done' }
                     style = {styles.filterAge}
                     />
-                <Text>The chosen location is {location}, and the chosen age is {age}</Text>
             </View>
             <View style={{ margin: 'auto', alignItems: 'center'}}>
                 {setPerson(checkStatus(activeFilter))}
@@ -193,11 +192,16 @@ const styles = StyleSheet.create({
         marginTop: 30
     }, 
     filterAge: {
-        padding: 5, 
-        borderWidth: 2,
-        width: 200,
-        margin: 2
+        width: 60,
+        color: '#555555',
+        paddingRight: 8,
+        paddingLeft: 8,
+        height: 50, 
+        borderColor: '#6E5BAA',
+        borderWidth: 1,
+        borderRadius: 2,
+        alignSelf: 'center',
+        backgroundColor: '#ffffff'
     }
-
 });
 
