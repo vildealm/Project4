@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SearchBar } from 'react-native-elements';
-import { GET_ALL, GET_PERSON } from '../resolvers';
+import { GET_ALL, GET_PERSON , FILTER_SEARCH} from '../resolvers';
 import gql from 'graphql-tag';
 import { QueryResult, useLazyQuery, useQuery } from 'react-apollo';
 import Person from './Person';
@@ -70,7 +70,8 @@ function setPerson(queryResult: QueryResult) {
                     keys.push(person.key);
                 }
             });
-        }
+        }    
+        return people;
     }
     console.log(map);
     return map;
@@ -85,9 +86,19 @@ export default function Output() {
     const [activeFilter, setActiveFilter] = useState('getAll');
     const [name, setName] = useState('');
     const [pageNumber, setPageNumber] = useState(0);
-    
-    
-    
+    const [location, setLocation] = useState("");
+    const [age, setAge] = useState(null);
+
+
+   function handleAgeChange(value: any){
+        setAge(value)
+        setActiveFilter('filter')
+        filterSearch();
+   }
+
+
+
+
     const checkStatus = (filter: string) => {
         if (filter === "getAll") {
             if(allResults.data !== undefined){
@@ -133,6 +144,9 @@ export default function Output() {
                 return nameResults.data.nameSearch;
             }
         }
+        else{
+            return filterResults;
+        }
     }
     
     function getSearchVal(input: string) {
@@ -145,14 +159,27 @@ export default function Output() {
         keys = [];
     }
 
+
+    function handleLocationChange(value: string){
+        setLocation(value)
+        filterSearch();
+        setActiveFilter('filters');
+
+    }
     const [persons, allResults] = useLazyQuery(
         GET_ALL,
         { variables: { orderBy: orderBy, pageNumber: pageNumber} }
+        
     );
+    const [filterSearch, filterResults] = useLazyQuery (
+        FILTER_SEARCH, 
+        { variables : { age: age, location: location, orderBy: orderBy, pageNumber: pageNumber }}
+    );
+    
+   
     const [searchName, nameResults] = useLazyQuery(
         GET_PERSON,
         { variables: { name: name, orderBy: orderBy, pageNumber: pageNumber }});
-
     useEffect(() => {
         persons();
     }, []);
@@ -202,6 +229,13 @@ const styles = StyleSheet.create({
     searchWrapper: {
         marginLeft: 50,
         marginTop: 30
+    }, 
+    filterAge: {
+        padding: 5, 
+        borderWidth: 2,
+        width: 200,
+        margin: 2
     }
+
 });
 
