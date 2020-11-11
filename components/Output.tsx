@@ -223,7 +223,15 @@ export default function Output() {
                             />
                         </View>
                         
-                       
+                       <View style={styles.filters}>
+                       <TextInput   
+                                placeholder="Age" 
+                                underlineColorAndroid='transparent'  
+                                keyboardType={'numeric'} 
+                                onChangeText={ (value) =>handleAgeChange(parseInt(value)) }
+                                returnKeyType={ 'done' }
+                                style = {styles.filterAge}
+                            />
                         <RNPickerSelect
                         value={location}
                         onValueChange={(value: any) => handleLocationChange(value)}
@@ -235,14 +243,8 @@ export default function Output() {
                             { label: 'Handelshøyskolen', value: 'handelshøyskolen' }
                         ]}
                          />
-                            <TextInput   
-                                placeholder="Age" 
-                                underlineColorAndroid='transparent'  
-                                keyboardType={'numeric'} 
-                                onChangeText={ (value) =>handleAgeChange(parseInt(value)) }
-                                returnKeyType={ 'done' }
-                                style = {styles.filterAge}
-                            />
+                            
+                        </View>
                         </View>
             <FlatList
                 
@@ -266,7 +268,6 @@ const styles = StyleSheet.create({
     container: {
         paddingTop: 25,
         alignItems: 'center',
-    
     },
     searchField: {
         padding: 10,
@@ -277,16 +278,12 @@ const styles = StyleSheet.create({
         marginLeft: 50,
         marginTop: 30
     }, 
-    filter : {
-        display: 'flex',
-        flexDirection: 'row'
-    },
+   
     filterLocation: {
-        marginRight: 0
+
     },
     filterAge: {
-        
-        marginTop: 3,
+        marginLeft: 20,
         width: 45,
         paddingRight: 8,
         paddingLeft: 8,
@@ -294,6 +291,14 @@ const styles = StyleSheet.create({
         borderBottomColor: '#232B2B',
         borderBottomWidth: 2,        
     },
+    filters:{
+
+        display: 'flex',
+        flexDirection: 'row',
+        marginLeft: 60,
+        marginTop: 20,
+        marginBottom: 20
+    }
    
 
 });
