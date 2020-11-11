@@ -8,7 +8,7 @@ import AddPerson from './components/AddPerson';
 
 export default function App() {
   const client = new ApolloClient({
-    uri: 'http://192.168.1.93:4000',    
+    uri: 'http://192.168.0.101:4000',    
     cache: new InMemoryCache()
   });
 //192.168.1.93
@@ -22,9 +22,9 @@ export default function App() {
           <View style={{flexDirection: 'row'}}> 
             <Output/>
             <StatusBar style='auto'/>
-          <View style={{justifyContent: 'flex-end', marginRight: 20}}> 
+            <View style={{justifyContent: 'flex-end', marginRight: 20}}> 
               <AddPerson/> 
-          </View>
+            </View>
           </View>
           </ScrollView>
       </View>

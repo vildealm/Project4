@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet, Text,View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TextInput, View, Picker, Button } from 'react-native';
 import { SearchBar } from 'react-native-elements';
-import { GET_ALL, GET_PERSON } from '../resolvers';
+import { GET_ALL, GET_PERSON , FILTER_SEARCH} from '../resolvers';
+import gql from 'graphql-tag';
 import { QueryResult, useLazyQuery, useQuery } from 'react-apollo';
 import Person from './Person';
 import AddPerson from './AddPerson';
@@ -19,7 +20,8 @@ function setPerson(queryResult: QueryResult) {
     }
 
     if (queryResult.error) {
-        return <Text> {queryResult.error}</Text>
+        console.log(queryResult.error);
+        return <Text>Error</Text>
     }
     if (queryResult.data !== undefined) {
         if (queryResult.data.persons !== undefined) {
@@ -63,7 +65,7 @@ function setPerson(queryResult: QueryResult) {
                     ids.push(person.id);
                 }
             });
-        }
+        }    
         return people;
     }
 }
@@ -73,13 +75,23 @@ export default function Output() {
     const [activeFilter, setActiveFilter] = useState('getAll');
     const [name, setName] = useState('');
     const [pageNumber, setPageNumber] = useState(0);
+    const [location, setLocation] = useState("");
+    const [age, setAge] = useState(null);
+
+
+   function handleAgeChange(value: any){
+        setAge(value)
+   }
 
     const checkStatus = (filter: string) => {
         if (filter === "getAll") {
             return allResults;
         }
-        else {
+        else if(filter === "nameSearch"){
             return nameResults;
+        }
+        else{
+            return filterResults;
         }
     }
 
@@ -93,8 +105,14 @@ export default function Output() {
     const [persons, allResults] = useLazyQuery(
         GET_ALL,
         { variables: { orderBy: orderBy, pageNumber: pageNumber} }
+        
     );
-
+    const [filterSearch, filterResults] = useLazyQuery (
+        FILTER_SEARCH, 
+        { variables : { age: age, location: location, orderBy: orderBy, pageNumber: pageNumber }}
+    );
+    
+   
     const [searchName, nameResults] = useLazyQuery(
         GET_PERSON,
         { variables: { name: name, orderBy: orderBy, pageNumber: pageNumber }});
@@ -111,12 +129,45 @@ export default function Output() {
                     placeholder="Search..."
                     onChangeText={(input) => getSearchVal(input)}
                     value={name}
+                    
                     containerStyle={{width: 300, backgroundColor:'#d9ecf2' }}
                 />
-             </View>
-                <View style={{ margin: 'auto', alignItems: 'center'}}>
-                    {setPerson(checkStatus(activeFilter))}
-                </View>
+            </View>
+
+            <View>
+                    <Text>Location: </Text>
+                <Picker selectedValue = {location} 
+                    onValueChange={
+                        (value) => {setLocation(value)
+                        setLocation(value)
+                        setPageNumber(0);
+                        setActiveFilter('filters');
+                        {filterSearch}
+                    } 
+                     }
+                     style={{width: 200, height: 44}} itemStyle={{height: 44}}
+                    >   
+                    <Picker.Item label="Any" value="Any" />
+                    <Picker.Item label="Gløshaugen" value="Gløshaugen" />
+                    <Picker.Item label="Kalvskinnet" value="Kalvskinnet" />
+                    <Picker.Item label="Handelshøyskolen" value="Handelshøyskolen" />
+                    <Picker.Item label="Dragvoll" value="Dragvoll" />
+                </Picker>
+                
+                <TextInput   
+                    placeholder="Age"  
+                    underlineColorAndroid='transparent'  
+                    keyboardType={'numeric'} 
+                    onChangeText={ (value) =>handleAgeChange(value)  }
+                    returnKeyType={ 'done' }
+                    style = {styles.filterAge}
+                    />
+                <Text>The chosen location is {location}, and the chosen age is {age}</Text>
+            </View>
+            <View style={{ margin: 'auto', alignItems: 'center'}}>
+                {setPerson(checkStatus(activeFilter))}
+                
+            </View>
         </View>
     )
 }
@@ -133,6 +184,13 @@ const styles = StyleSheet.create({
     searchWrapper: {
         marginLeft: 50,
         marginTop: 30
+    }, 
+    filterAge: {
+        padding: 5, 
+        borderWidth: 2,
+        width: 200,
+        margin: 2
     }
+
 });
 
