@@ -7,7 +7,7 @@ import Person from './Person';
 import AddPerson from './AddPerson';
 
 
-/*
+
 function setPerson(queryResult: QueryResult) {
     let people: any = [];
     let map = new Map();
@@ -74,7 +74,7 @@ function setPerson(queryResult: QueryResult) {
     }
     console.log(map);
     return map;
-}*/
+}
 
 //This is used to keep track of previously loaded data while scroll loading
 let prevData: any = [];

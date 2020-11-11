@@ -8,7 +8,7 @@ import AddPerson from './components/AddPerson';
 
 export default function App() {
   const client = new ApolloClient({
-    uri: 'http://10.22.5.184:4000',    
+    uri: 'http://192.168.1.96:4000',    
     cache: new InMemoryCache()
   });
 //192.168.1.93
@@ -29,12 +29,13 @@ export default function App() {
     </ApolloProvider>
   );
 }
+//#d9ecf2
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: '#d9ecf2',
+    backgroundColor: "#d9ecf2", 
     alignItems: 'center',
     justifyContent: 'center',
     width: Dimensions.get('screen').width, 

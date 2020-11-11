@@ -35,21 +35,36 @@ export const AddPersonPopUp = (props: StateProps) => {
         { variables: { first_name: first_name, last_name: last_name, age: age, location: location, description: description } });
 
     const onSubmit = ({ first_name, last_name, age, location, description }: IFormInputs) => {
+        alert('You successfully added a person!');
         console.log(first_name, last_name, age, location, description);
-        alert({ first_name, last_name, age, location, description })
+        
     };
 
     const { handleSubmit } = useForm<IFormInputs>();
-    function checkText(input: string) {
+    function checkTextField(input: string) {
         if (!input.trim()) {
-            alert('Please Fill in the Blank');
+            alert('Fill in the empty fields');
             setTextField(false)
             return false;
-        } else {
-            setTextField(true)
-            return true;
+        } if (!checkValidChar(input)){
+            alert('Invalid input');
+            setTextField(false)
+            return false;
         }
+        setTextField(true)
+        return true;
     }
+    function checkNum(input:number){
+        if(input < 0  || input > 101){
+            alert('Invalid age')
+            return false;
+        }
+        return true;
+    }
+   function checkValidChar(input:string){
+        if(input.match('(?=.*[a-zA-ZÆØÅ] )'))
+        return true; 
+   }
 
     return (
         <View style={styles.centeredView}>
@@ -95,7 +110,7 @@ export const AddPersonPopUp = (props: StateProps) => {
                     <TouchableHighlight
                         style={{ ...styles.openButton, backgroundColor: "#a6dcef" }}
                         onPress={() => {
-                            if (checkText(first_name || last_name || description) && age>0 && age <101) {
+                            if (checkTextField(first_name || last_name || description) && checkNum(age)) {
                                 first_name &&
                                 last_name &&
                                 age &&
