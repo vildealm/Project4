@@ -9,7 +9,7 @@ export const resolvers: ResolverMap = {
           return Person.find(
             {
               skip: pageNumber, 
-              take: 10, 
+              take: 20, 
               order:{ first_name: 'ASC'}
             }
           )
@@ -18,7 +18,7 @@ export const resolvers: ResolverMap = {
           return Person.find(
             {
               skip: pageNumber, 
-              take: 10, 
+              take: 20, 
               order:{ age: 'ASC'}
             }
           )
@@ -31,35 +31,35 @@ export const resolvers: ResolverMap = {
         //Sorter alfabetisk på navn
         if(orderBy === 'first_name'){
           if(filter?.age && filter?.location && filter?.age !== 0 && filter?.location !== "any"){
-            persons = (Person.find({where:{ age, location }, skip: pageNumber, take: 10, order:{first_name: 'ASC'} }) );
+            persons = (Person.find({where:{ age, location }, skip: pageNumber, take: 20, order:{first_name: 'ASC'} }) );
           }
           else if((!filter?.location || filter?.location === "any") && filter?.age !== 0 ){
-            persons = (Person.find({where:{ age }, skip: pageNumber, take: 10, order:{first_name: 'ASC'} }) );
+            persons = (Person.find({where:{ age }, skip: pageNumber, take: 20, order:{first_name: 'ASC'} }) );
           }
           else if(filter?.location !== "any" && (!filter?.age || filter?.age === 0)){
-            persons = (Person.find({where:{ location }, skip: pageNumber, take: 10, order:{first_name: 'ASC'} }) );
+            persons = (Person.find({where:{ location }, skip: pageNumber, take: 20, order:{first_name: 'ASC'} }) );
           }
           else{
             persons = (Person.find({
-              skip: pageNumber, take: 10, order:{first_name: 'ASC'}
+              skip: pageNumber, take: 20, order:{first_name: 'ASC'}
             }));
           }
         }
         //sorter på alder
         else{
           if(filter?.age && filter?.location && filter?.age !== 0 && filter?.location !== "any"){
-            persons = (Person.find({where:{ age, location }, skip: pageNumber, take: 10, order:{ age: 'ASC'} }) );
+            persons = (Person.find({where:{ age, location }, skip: pageNumber, take: 20, order:{ age: 'ASC'} }) );
           }
           else if((!filter?.location || filter?.location === "any") && filter?.age !== 0 ){
-            persons = (Person.find({where:{ age }, skip: pageNumber, take: 10, order:{ age: 'ASC'} }) );
+            persons = (Person.find({where:{ age }, skip: pageNumber, take: 20, order:{ age: 'ASC'} }) );
           }
           else if(filter?.location !== "any" && (!filter?.age || filter?.age === 0)){
-            persons = (Person.find({where:{ location }, skip: pageNumber, take: 10, order:{ age: 'ASC'} }) );
+            persons = (Person.find({where:{ location }, skip: pageNumber, take: 20, order:{ age: 'ASC'} }) );
           }
           else{
             persons = (Person.find({
               skip: pageNumber,
-              take: 10, 
+              take: 20, 
               order:{ age: 'ASC'}
             }));
           }
@@ -75,7 +75,7 @@ export const resolvers: ResolverMap = {
               { last_name: Like(`%${names[names.length-1]}%`) } //antar at det andre ordet er et etternavn, tar ikke høyde for mer enn to ord i søket
            ],
            skip: pageNumber,
-           take: 10, 
+           take: 20, 
            order:{first_name: 'ASC'}});
             return foundNames;
           }
@@ -85,7 +85,7 @@ export const resolvers: ResolverMap = {
               { last_name: Like(`%${name}%`) }
             ],
             skip: pageNumber,
-            take: 10, 
+            take: 20, 
             order:{first_name: 'ASC'}});
             return persons //returner alle resultater hvor søket er enten i fornavn eller etternavn
           }
@@ -98,7 +98,7 @@ export const resolvers: ResolverMap = {
               { last_name: Like(`%${names[names.length-1]}%`) } //antar at det andre ordet er et etternavn, tar ikke høyde for mer enn to ord i søket
             ],
             skip: pageNumber,
-            take: 10,  order:{ age: 'ASC'}});
+            take: 20,  order:{ age: 'ASC'}});
             return foundNames;
           }
           else{ //søk med et ord
@@ -107,7 +107,7 @@ export const resolvers: ResolverMap = {
               { last_name: Like(`%${name}%`) }
             ], 
             skip: pageNumber,
-            take: 10, 
+            take: 20, 
             order:{ age: 'ASC'}});
             return persons //returner alle resultater hvor søket er enten i fornavn eller etternavn
           }

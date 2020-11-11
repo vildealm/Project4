@@ -16,7 +16,6 @@ export default function App() {
   return (
     <ApolloProvider client = {client}>
       <View style={styles.container}>
-        <ScrollView style={{marginHorizontal: 0}}> 
         <Text style={styles.header}>Findr</Text>
         <Text style={{textAlign: 'center', fontFamily: 'Copperplate'}}>Are we gonna fight or are we gonna make out?</Text>
           <View style={{flexDirection: 'row'}}> 
@@ -26,7 +25,6 @@ export default function App() {
               <AddPerson/> 
             </View>
           </View>
-          </ScrollView>
       </View>
     </ApolloProvider>
   );
