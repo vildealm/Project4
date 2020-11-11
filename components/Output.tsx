@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, Text, TextInput, View, Picker } from 'react-native';
+import { FlatList, StyleSheet, Text, TextInput, View, Picker, Dimensions } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { GET_ALL, GET_PERSON , FILTER_SEARCH} from '../resolvers';
 import { useLazyQuery, QueryResult } from 'react-apollo';
@@ -210,10 +210,8 @@ export default function Output() {
     }
 
     return (
-    <View style={styles.container}>
-            <FlatList
-                ListHeaderComponent={
-                    <View>
+        <View style={styles.container}>
+            <View>
                         <View style={styles.searchWrapper}>
                             <SearchBar
                                 round
@@ -246,7 +244,8 @@ export default function Output() {
                                 style = {styles.filterAge}
                             />
                         </View>
-                    }
+            <FlatList
+                
                     data={checkStatus(activeFilter)}
                     renderItem={({ item }) => (
                         <Person first_name={item.first_name} last_name={item.last_name} location={item.location} age={item.age} description={item.description} />
@@ -267,7 +266,7 @@ const styles = StyleSheet.create({
     container: {
         paddingTop: 25,
         alignItems: 'center',
-        height: 400
+    
     },
     searchField: {
         padding: 10,
@@ -286,6 +285,7 @@ const styles = StyleSheet.create({
         marginRight: 0
     },
     filterAge: {
+        
         marginTop: 3,
         width: 45,
         paddingRight: 8,
