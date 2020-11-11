@@ -81,7 +81,12 @@ export default function Output() {
 
    function handleAgeChange(value: any){
         setAge(value)
+        setActiveFilter('filter')
+        filterSearch;
    }
+
+
+
 
     const checkStatus = (filter: string) => {
         if (filter === "getAll") {
@@ -102,6 +107,13 @@ export default function Output() {
         setActiveFilter('nameSearch');
     }
 
+
+    function handleLocationChange(value: string){
+        setLocation(value)
+        filterSearch();
+        setActiveFilter('filters');
+
+    }
     const [persons, allResults] = useLazyQuery(
         GET_ALL,
         { variables: { orderBy: orderBy, pageNumber: pageNumber} }
@@ -137,14 +149,9 @@ export default function Output() {
             <View>
                     <Text>Location: </Text>
                 <Picker selectedValue = {location} 
-                    onValueChange={
-                        (value) => {setLocation(value)
-                        setLocation(value)
-                        setPageNumber(0);
-                        setActiveFilter('filters');
-                        {filterSearch}
+                    onValueChange={ (value) => 
+                        handleLocationChange(value)
                     } 
-                     }
                      style={{width: 200, height: 44}} itemStyle={{height: 44}}
                     >   
                     <Picker.Item label="Any" value="Any" />
@@ -158,7 +165,7 @@ export default function Output() {
                     placeholder="Age"  
                     underlineColorAndroid='transparent'  
                     keyboardType={'numeric'} 
-                    onChangeText={ (value) =>handleAgeChange(value)  }
+                    onChangeText={ (value) =>handleAgeChange(value) }
                     returnKeyType={ 'done' }
                     style = {styles.filterAge}
                     />
