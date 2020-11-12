@@ -23,5 +23,10 @@ Vi valgte oppgave 1. Vi har basert vår app på backend og frontend fra Prosjekt
 personer. Funksjonaliteten er veldig lik som i prosjekt 3, hvor det for brukeren sin del er hovedsaklig stylingen som er den største forskjellen. 
 ## Teknologi
 #### React Native
+Vi brukte React Native som programmeringsspråk for prosjektet. React Native hadde den samme logikken som React men det var komponentene og HTML elementene som 
+var annderledes. 
 #### Expo 
 #### Testing
+Vi gjorde manuell ende til ende testing ved å teste på flere brukere som hadde Android og Iphone. Vi prøvde også å teste på ulike versjoner av Android og Iphoen
+slik at vi fikk testet hvor responsiv appen var på de ulike skjermstørrelsene. I tillegg var det mange React Native elementer som ble støttet av Iphoen men ikke Android. 
+Hva dette var fikk vi observert på ende til ende testing. 
