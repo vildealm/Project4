@@ -88,6 +88,7 @@ export default function Output() {
     const [pageNumber, setPageNumber] = useState(0);
     const [location, setLocation] = useState('any');
     const [age, setAge] = useState(0);
+    const [orderOutput, setOrderOutput] = useState('Alphabetical');
 
     const checkStatus = (filter: string) => {
         if (filter === "getAll") {
@@ -189,6 +190,18 @@ export default function Output() {
         keys = [];
     }
 
+    function handleOrderChange(value: string){
+        if(value==='Alphabetical'){
+            setOrderBy('first_name')
+            setOrderOutput(value);
+        }
+        else {
+            setOrderBy('age')
+            setOrderOutput(value)
+        }
+        
+    }
+
     const [persons, allResults] = useLazyQuery (
         GET_ALL,
         { variables: { orderBy: orderBy, pageNumber: pageNumber} });
@@ -225,7 +238,7 @@ export default function Output() {
                         
                        <View style={styles.filters}>
                        <TextInput   
-                                placeholder="Age" 
+                                placeholder="Age " 
                                 underlineColorAndroid='transparent'  
                                 keyboardType={'numeric'} 
                                 onChangeText={ (value) =>handleAgeChange(parseInt(value)) }
@@ -243,9 +256,18 @@ export default function Output() {
                             { label: 'Handelshøyskolen', value: 'handelshøyskolen' }
                         ]}
                          />
-                            
+                        <RNPickerSelect
+                        value = {orderOutput}
+                        onValueChange={(value: any) => handleOrderChange(value)}
+                        items={[
+                            { label: 'Age', value: 'Age' },
+                            { label: 'Alphabetical', value: 'Alphabetical' },
+                        ]}
+                        />
                         </View>
+                       
                         </View>
+                        
             <FlatList
                 
                     data={checkStatus(activeFilter)}
