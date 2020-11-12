@@ -45,7 +45,13 @@ export const AddPersonPopUp = (props: StateProps) => {
             alert('Fill in the empty fields');
             setTextField(false)
             return false;
-        } if (!checkValidChar(input)){
+        } 
+        if (input.length === 30) {
+            alert('Too long name');
+            setTextField(false)
+            return false;
+        }
+        if (!checkValidChar(input)){
             alert('Invalid char');
             setTextField(false)
             return false;
@@ -80,6 +86,7 @@ export const AddPersonPopUp = (props: StateProps) => {
                         placeholder="Firstname"
                         onChangeText={(e) => setFirstName(e)}
                         returnKeyType={ 'done' }
+                        underlineColorAndroid = "transparent"
                     />
                     <Text style={styles.modalText}>Lastname</Text>
                     <TextInput
@@ -87,6 +94,7 @@ export const AddPersonPopUp = (props: StateProps) => {
                         placeholder="Lastname"
                         onChangeText={(e) => setLastName(e)}
                         returnKeyType={ 'done' }
+                        underlineColorAndroid = "transparent"
                     />
                     <Text style={styles.modalText}>Age</Text>
                     <TextInput
@@ -95,6 +103,7 @@ export const AddPersonPopUp = (props: StateProps) => {
                         keyboardType='numeric'
                         onChangeText={(e) => setAge(+e)}
                         returnKeyType={ 'done' }
+                        underlineColorAndroid = "transparent"
                     />
                     <Text style={styles.modalText}>Description</Text>
                     <TextInput
@@ -102,6 +111,7 @@ export const AddPersonPopUp = (props: StateProps) => {
                         style={styles.modalText}
                         onChangeText={(e) => setDesc(e)}
                         returnKeyType={ 'done' }
+                        underlineColorAndroid = "transparent"
                     />
                     <Text style={styles.modalText}>Location</Text>
                     <RNPickerSelect 
@@ -137,6 +147,38 @@ export const AddPersonPopUp = (props: StateProps) => {
     )
 }
 const styles = StyleSheet.create({
+    modalView: {
+        width: windowWidth-80,
+        height: windowHeight-350,
+        margin: 20,
+        backgroundColor: "#F8F8FF",
+        borderRadius: 20,
+        padding: 40,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5
+    },
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22,
+        borderRadius: 30,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 11,
+        },
+        shadowOpacity: 0.47,
+        shadowRadius: 15.19,
+        elevation: 23,
+    },
     openButton: {
         backgroundColor: "#ff414d",
         borderRadius: 30,
@@ -168,38 +210,6 @@ const styles = StyleSheet.create({
         width: 200,
         fontSize: 16,
         borderRadius: 20
-    },
-    modalView: {
-        width: windowWidth/1.2,
-        height: windowHeight/1.6,
-        margin: 20,
-        backgroundColor: "#F8F8FF",
-        borderRadius: 20,
-        padding: 40,
-        alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5
-    },
-    centeredView: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        marginTop: 22,
-        borderRadius: 30,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 11,
-        },
-        shadowOpacity: 0.47,
-        shadowRadius: 15.19,
-        elevation: 23,
     },
     imgBtn: {
         width: 25,

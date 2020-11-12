@@ -9,6 +9,7 @@ import RNPickerSelect from 'react-native-picker-select';
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
+/*
 function setPerson(queryResult: QueryResult) {
     let people: any = [];
     let map = new Map();
@@ -75,7 +76,7 @@ function setPerson(queryResult: QueryResult) {
     }
     console.log(map);
     return map;
-}
+}*/
 
 //This is used to keep track of previously loaded data while scroll loading
 let prevData: any = [];
@@ -218,9 +219,10 @@ export default function Output() {
     
     useEffect(() => {
         persons();
+        setPageNumber(0);
+        prevData = [];
+        keys = [];
     }, []);
-
-    
 
     function handleLoadMore(){
         setPageNumber(pageNumber + 20);
@@ -236,7 +238,8 @@ export default function Output() {
                                 placeholder="Search..."
                                 onChangeText={(input) => getSearchVal(input)}
                                 value={name}
-                                containerStyle={{width: 300, backgroundColor:'#d9ecf2' }}
+                                underlineColorAndroid="transparent"
+                                containerStyle={{width: 300 }}
                             />
                         </View>
                        <View style={styles.filters}>
@@ -302,8 +305,6 @@ const styles = StyleSheet.create({
     searchField: {
         padding: 10,
         backgroundColor: '#d9ecf2',
-        fontFamily: 'Copperplate',
-        
     },
     searchWrapper: {
         marginLeft: 60,
@@ -330,8 +331,6 @@ const styles = StyleSheet.create({
         marginTop: 25,
         marginBottom: 30,
         marginLeft: '24%',
-        
-
     }
    
 
@@ -340,13 +339,13 @@ const styles = StyleSheet.create({
 const pickerSelectStyles = StyleSheet.create({
     inputAndrid: {
         marginLeft: 15,
-        height: 35, 
+        height: 15, 
         borderBottomColor: '#232B2B',
         borderBottomWidth: 2, 
     },
     inputIOS: {
         marginLeft: 15,
-        height: 65, 
+        height: 35, 
         borderBottomColor: '#232B2B',
         borderBottomWidth: 2,    
     },

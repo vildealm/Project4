@@ -3,7 +3,6 @@ import React from 'react';
 import { PopUpPerson } from './PopUpPerson';
 import { Platform, StyleSheet, Modal, Text, View, TouchableOpacity } from 'react-native';
 
-
 const Person = (props: any) => {
     const examplePerson = ["Ola, Normann", 100, "Norge", "tullat"];
     const [modalVisible, setModalVisible] = useState(false);
@@ -15,11 +14,12 @@ const Person = (props: any) => {
 
     return (
         <View style={styles.personBox}>
-            {Platform.OS === 'ios' &&
+            {Platform.OS === 'ios'||'android' &&
             <Modal
                 animationType="slide"
                 transparent={true}
                 visible={modalVisible}
+                style={{flex:1}}
             >
                 <PopUpPerson
                     first_name={props.first_name}
@@ -31,8 +31,8 @@ const Person = (props: any) => {
                 />
             </Modal>}
             <TouchableOpacity onPress={() => {setModalVisible(true);}}>
-                <Text style={{ fontWeight: "bold", fontFamily: 'Copperplate' }}> {props.first_name} {props.last_name} </Text>
-                <Text style={{ fontFamily: 'Copperplate' }}> Age: {props.age}</Text>
+                <Text style={{ fontWeight: "bold", marginTop:5}}> {props.first_name} {props.last_name} </Text>
+                <Text style={{margin:2}}> Age: {props.age}</Text>
             </TouchableOpacity>
         </View>
     )
@@ -44,11 +44,11 @@ const styles = StyleSheet.create({
         marginLeft: 55,
         marginTop: 15,
         marginRight: 8, 
-        padding: 10,
+        padding: 5,
         color: 'black',
         backgroundColor: 'white',
         width: 200,
-        height: 50,
+        height: 60,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
