@@ -1,10 +1,6 @@
 import React, {  useState } from 'react';
 import { StyleSheet, Text,  Dimensions, Modal, View, TouchableHighlight } from 'react-native';
-import {useForm} from 'react-hook-form'; 
 import {AddPersonPopUp} from './AddPersonPopUp'; 
-const {height, width} = Dimensions.get('window');
-
-
 
 export default function AddPerson() {
     const [modalVisible, setModalVisible] = useState(false);
@@ -56,28 +52,3 @@ const styles = StyleSheet.create({
         marginTop: 22
     }
 });
-
-
-/* <Button title="+"
-                buttonStyle={{
-                    backgroundColor: '#c2575e',
-                    padding: 15, right: 0
-                }}
-                titleStyle={{ fontFamily: 'Georgia' }}
-                style={styles.addPerson}>
-            </Button>
-
-            addPerson: {
-        margin: 5,
-        fontSize: 20,
-        padding: 5,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 4,
-        },
-        elevation: 5,
-        shadowOpacity: 0.33,
-        shadowRadius: 5,
-    },
-            */

@@ -5,7 +5,7 @@ import { StyleSheet, Modal, Text, View, TouchableOpacity } from 'react-native';
 
 
 const Person = (props: any) => {
-    let examplePerson = ["Ola, Normann", 100, "Norge", "tullat"];
+    const examplePerson = ["Ola, Normann", 100, "Norge", "tullat"];
     const [modalVisible, setModalVisible] = useState(false);
     let [person, setPerson] = useState(examplePerson);
 
@@ -42,8 +42,9 @@ export default Person;
 
 const styles = StyleSheet.create({
     personBox: {
-        marginLeft: 60,
+        marginLeft: 30,
         marginTop: 15,
+        marginRight: 20, 
         padding: 10,
         color: 'black',
         backgroundColor: 'white',

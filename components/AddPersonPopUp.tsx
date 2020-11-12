@@ -36,9 +36,7 @@ export const AddPersonPopUp = (props: StateProps) => {
 
     const onSubmit = ({ first_name, last_name, age, location, description }: IFormInputs) => {
         alert('You successfully added a person!');
-        console.log(first_name, last_name, age, location, description);
-        
-    };
+        console.log(first_name, last_name, age, location, description); };
 
     const { handleSubmit } = useForm<IFormInputs>();
     function checkTextField(input: string) {
@@ -62,8 +60,7 @@ export const AddPersonPopUp = (props: StateProps) => {
         return true;
     }
    function checkValidChar(input:string){
-        if(input.match('(?=.*[a-zA-ZÆØÅ] )'))
-        return true; 
+        if(input.match('(?=.*[a-zA-ZÆØÅ] )')){return true;} 
    }
 
     return (

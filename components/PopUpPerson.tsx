@@ -26,7 +26,7 @@ export const PopUpPerson = (props: any, prop: StateProps) => {
                 <Image style={{ width: 80, height: 80 }} source={require("../icon/personIcon.png")}/>
             </View>
             <View>
-                <Text style={{width: 210, fontWeight: "bold", textAlign: "center", fontSize: 24}}> {person.first_name} {person.last_name}</Text>
+                <Text style={styles.modalNameText}> {person.first_name} {person.last_name}</Text>
                 <Text style={styles.modalText}>Age: &nbsp;{person.age}</Text>
                 <Text style={styles.modalText}>From: &nbsp; {person.location}</Text>
                 <Text style={{width: 210, fontStyle: "italic", textAlign: "center", fontSize: 18, marginTop: 20}}>&nbsp; &nbsp;"{person.description}"</Text>
@@ -41,21 +41,17 @@ const styles = StyleSheet.create({
     modalText: {
        marginBottom: 0,
         textAlign: "center",
-        justifyContent: "space-between",
         margin: 15,
         width: 200,
         fontSize: 18,
     },
+    modalNameText: {
+        width: 210, fontWeight: "bold", textAlign: "center", fontSize: 24
+    }, 
     imgBtn: {
         width: 25,
         height: 25,
         marginBottom: 105,
-    },
-    textStyle: {
-        color: "white",
-        fontWeight: "bold",
-        textAlign: "center",
-        fontSize: 18,
     },
     modalView: {
         flexDirection: "row",
@@ -71,7 +67,6 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.57,
         shadowRadius: 15.19,
-
         elevation: 23,
     }
 });
