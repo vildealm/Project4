@@ -7,6 +7,7 @@ import Person from './Person';
 import RNPickerSelect from 'react-native-picker-select';
 
 const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get('window').width;
 
 function setPerson(queryResult: QueryResult) {
     let people: any = [];
@@ -278,6 +279,8 @@ export default function Output() {
                     keyExtractor={(item) => item.id.toString()}
                     onEndReached={() => handleLoadMore()}
                     onEndReachedThreshold={4}
+                    showsVerticalScrollIndicator ={false}
+                    showsHorizontalScrollIndicator={false}
             />
     </View>
     );
@@ -288,6 +291,8 @@ const styles = StyleSheet.create({
     container: {
         paddingTop: 25,
         alignItems: 'center',
+        height: windowHeight/1.2,
+        width: windowWidth/1.2, 
     },
     searchField: {
         padding: 10,
@@ -298,7 +303,6 @@ const styles = StyleSheet.create({
         marginLeft: 50,
         marginTop: 30
     }, 
-   
     filterLocation: {
 
     },
