@@ -297,12 +297,13 @@ const styles = StyleSheet.create({
         paddingTop: 25,
         alignItems: 'center',
         height: windowHeight/1.2,
-        width: windowWidth/1.2, 
+        width: windowWidth/1.3, 
     },
     searchField: {
         padding: 10,
         backgroundColor: '#d9ecf2',
         fontFamily: 'Copperplate',
+        
     },
     searchWrapper: {
         marginLeft: 50,
@@ -324,9 +325,11 @@ const styles = StyleSheet.create({
     filters:{
         display: 'flex',
         flexDirection: 'row',
-        marginLeft: 50,
-        marginTop: 20,
-        marginBottom: 20
+        width: 170,
+        marginTop: 25,
+        marginBottom: 30,
+        marginLeft: '24%',
+
     }
    
 
