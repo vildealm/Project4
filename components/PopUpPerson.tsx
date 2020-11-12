@@ -1,9 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, Dimensions } from 'react-native';
 
 interface StateProps {
     setModalVisible(val: boolean): void;
 }
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 //Functionality for the "Add-person popup"
 export const PopUpPerson = (props: any, prop: StateProps) => {
     let person = {
@@ -18,7 +20,6 @@ export const PopUpPerson = (props: any, prop: StateProps) => {
     person.age = props.age;
     person.location = props.location;
     person.description = props.description;
-    
 
     return (
         <View style={styles.modalView}>
@@ -38,22 +39,9 @@ export const PopUpPerson = (props: any, prop: StateProps) => {
     )
 }
 const styles = StyleSheet.create({
-    modalText: {
-       marginBottom: 0,
-        textAlign: "center",
-        margin: 15,
-        width: 200,
-        fontSize: 18,
-    },
-    modalNameText: {
-        width: 210, fontWeight: "bold", textAlign: "center", fontSize: 24
-    }, 
-    imgBtn: {
-        width: 25,
-        height: 25,
-        marginBottom: 105,
-    },
     modalView: {
+        width: windowWidth,
+        height: windowHeight/4, 
         flexDirection: "row",
         marginTop: 330,
         backgroundColor: "#F8F8F8",
@@ -68,5 +56,20 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.57,
         shadowRadius: 15.19,
         elevation: 23,
+    },
+    modalText: {
+       marginBottom: 0,
+        textAlign: "center",
+        margin: 15,
+        width: 200,
+        fontSize: 18,
+    },
+    modalNameText: {
+        width: 210, fontWeight: "bold", textAlign: "center", fontSize: 24
+    }, 
+    imgBtn: {
+        width: 25,
+        height: 25,
+        marginBottom: 105,
     }
 });

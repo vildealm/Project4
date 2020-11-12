@@ -22,7 +22,7 @@ export default function App() {
           <View style={{flexDirection: 'row'}}> 
             <Output/>
             <StatusBar style='auto'/>
-            <View style={{justifyContent: 'flex-end', marginRight: 20,}}> 
+            <View style={{justifyContent: 'flex-end', marginRight: 20}}> 
               <AddPerson/> 
             </View>
           </View>

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, Text, TextInput, View, Picker, Dimensions } from 'react-native';
+import { FlatList, StyleSheet, Text, TextInput, View, Dimensions } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { GET_ALL, GET_PERSON , FILTER_SEARCH} from '../resolvers';
 import { useLazyQuery, QueryResult } from 'react-apollo';
 import Person from './Person';
-import AddPerson from './AddPerson';
 import RNPickerSelect from 'react-native-picker-select';
 
+const windowHeight = Dimensions.get('window').height;
 
 function setPerson(queryResult: QueryResult) {
     let people: any = [];
@@ -271,7 +271,6 @@ export default function Output() {
                         </View>
                         
             <FlatList
-                
                     data={checkStatus(activeFilter)}
                     renderItem={({ item }) => (
                         <Person first_name={item.first_name} last_name={item.last_name} location={item.location} age={item.age} description={item.description} />
@@ -279,9 +278,6 @@ export default function Output() {
                     keyExtractor={(item) => item.id.toString()}
                     onEndReached={() => handleLoadMore()}
                     onEndReachedThreshold={4}
-                    ListFooterComponent={
-                        <Text>Made with love by Group 4</Text>
-                    }
             />
     </View>
     );
@@ -316,7 +312,6 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,        
     },
     filters:{
-
         display: 'flex',
         flexDirection: 'row',
         marginLeft: 60,
