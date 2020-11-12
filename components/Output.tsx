@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, Text, TextInput, View, Dimensions } from 'react-native';
+import { Platform, FlatList, StyleSheet, Text, TextInput, View, Dimensions } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { GET_ALL, GET_PERSON , FILTER_SEARCH} from '../resolvers';
 import { useLazyQuery, QueryResult } from 'react-apollo';
@@ -239,7 +239,6 @@ export default function Output() {
                                 containerStyle={{width: 300, backgroundColor:'#d9ecf2' }}
                             />
                         </View>
-                        
                        <View style={styles.filters}>
                        <TextInput   
                                 placeholder="Age " 
@@ -295,6 +294,7 @@ export default function Output() {
 const styles = StyleSheet.create({
     container: {
         paddingTop: 25,
+        
         alignItems: 'center',
         height: windowHeight/1.2,
         width: windowWidth/1.3, 
@@ -306,7 +306,7 @@ const styles = StyleSheet.create({
         
     },
     searchWrapper: {
-        marginLeft: 50,
+        marginLeft: 60,
         marginTop: 30
     }, 
     filterLocation: {
@@ -320,7 +320,8 @@ const styles = StyleSheet.create({
         paddingBottom: 14,
         height: 35, 
         borderBottomColor: '#232B2B',
-        borderBottomWidth: 2,        
+        borderBottomWidth: 2,  
+            
     },
     filters:{
         display: 'flex',
@@ -329,6 +330,7 @@ const styles = StyleSheet.create({
         marginTop: 25,
         marginBottom: 30,
         marginLeft: '24%',
+        
 
     }
    
@@ -336,11 +338,18 @@ const styles = StyleSheet.create({
 });
 
 const pickerSelectStyles = StyleSheet.create({
-    inputIOS: {
+    inputAndrid: {
         marginLeft: 15,
         height: 35, 
         borderBottomColor: '#232B2B',
+        borderBottomWidth: 2, 
+    },
+    inputIOS: {
+        marginLeft: 15,
+        height: 65, 
+        borderBottomColor: '#232B2B',
         borderBottomWidth: 2,    
     },
+   
 });
 

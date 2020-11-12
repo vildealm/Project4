@@ -5,6 +5,11 @@ import ApolloClient, { InMemoryCache } from 'apollo-boost';
 import {ApolloProvider} from 'react-apollo'; 
 import Output from './components/Output';
 import AddPerson from './components/AddPerson';
+import Constants from 'expo-constants';
+const { manifest } = Constants
+const ipv4Adress = manifest.debuggerHost?.split(':')[0];
+
+
 
 export default function App() {
   const client = new ApolloClient({
