@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 import { useMutation } from 'react-apollo';
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, View, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, Dimensions,Image,TextInput, View, TouchableHighlight } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import { useForm} from 'react-hook-form';
 
@@ -22,7 +22,8 @@ interface IFormInputs {
     location: string;
     description: string;
 }
-
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 export const AddPersonPopUp = (props: StateProps) => {
     const [first_name, setFirstName] = useState('');
     const [last_name, setLastName] = useState('');
@@ -66,7 +67,12 @@ export const AddPersonPopUp = (props: StateProps) => {
     return (
         <View style={styles.centeredView}>
             <View style={styles.modalView}>
-                <Text style={{ fontSize: 24 }}>Add a person!</Text>
+                <View>
+                    <TouchableOpacity onPress={() => {props.setModalVisible(false);}}>
+                        <Image style={styles.imgBtn} source={require("../icon/close.png")} />
+                    </TouchableOpacity>
+                    <Text style={{ fontSize: 24, textAlign: "center", fontWeight:"bold", margin: 5 }}>Add a person!</Text>
+                </View>
                 <View>
                     <Text style={styles.modalText}>Firstname</Text>
                     <TextInput
@@ -139,7 +145,7 @@ const styles = StyleSheet.create({
         elevation: 5,
         shadowOpacity: 0.33,
         shadowRadius: 5,
-        margin: 15
+        marginTop: 25,
     },
     textStyle: {
         color: "white",
@@ -160,6 +166,8 @@ const styles = StyleSheet.create({
         borderRadius: 20
     },
     modalView: {
+        width: windowWidth/1.2,
+        height: windowHeight/1.6,
         margin: 20,
         backgroundColor: "#F8F8FF",
         borderRadius: 20,
@@ -179,7 +187,20 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         marginTop: 22,
-        borderRadius: 30
+        borderRadius: 30,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 11,
+        },
+        shadowOpacity: 0.47,
+        shadowRadius: 15.19,
+        elevation: 23,
+    },
+    imgBtn: {
+        width: 25,
+        height: 25,
+        marginLeft: 200,
     }
 })
 /* first_name &&

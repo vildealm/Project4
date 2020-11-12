@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, Text, TextInput, View, Picker, Dimensions } from 'react-native';
+import { FlatList, StyleSheet, Text, TextInput, View, Dimensions } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { GET_ALL, GET_PERSON , FILTER_SEARCH} from '../resolvers';
 import { useLazyQuery, QueryResult } from 'react-apollo';
 import Person from './Person';
 import RNPickerSelect from 'react-native-picker-select';
 
+const windowHeight = Dimensions.get('window').height;
 
 function setPerson(queryResult: QueryResult) {
     let people: any = [];
@@ -211,41 +212,39 @@ export default function Output() {
     return (
         <View style={styles.container}>
             <View>
-                        <View style={styles.searchWrapper}>
-                            <SearchBar
-                                round
-                                style={styles.searchField}
-                                placeholder="Search..."
-                                onChangeText={(input) => getSearchVal(input)}
-                                value={name}
-                                containerStyle={{width: 300, backgroundColor:'#d9ecf2' }}
-                            />
-                        </View>
-                        
-                       <View style={styles.filters}>
-                       <TextInput   
-                                placeholder="Age" 
-                                underlineColorAndroid='transparent'  
-                                keyboardType={'numeric'} 
-                                onChangeText={ (value) =>handleAgeChange(parseInt(value)) }
-                                returnKeyType={ 'done' }
-                                style = {styles.filterAge}
-                            />
-                        <RNPickerSelect
-                        value={location}
-                        onValueChange={(value: any) => handleLocationChange(value)}
-                        items={[
-                            { label: 'Any', value: 'any' },
-                            { label: 'Gløshaugen', value: 'Gløshaugen' },
-                            { label: 'Dragvoll', value: 'Dragvoll' },
-                            { label: 'Kalvskinnet', value: 'Kalvskinnet' },
-                            { label: 'Handelshøyskolen', value: 'Handelshøyskolen' }
-                        ]}
-                         />  
-                        </View>
-                        </View>
+                <View style={styles.searchWrapper}>
+                    <SearchBar
+                        round
+                        style={styles.searchField}
+                        placeholder="Search..."
+                        onChangeText={(input) => getSearchVal(input)}
+                        value={name}
+                        containerStyle={{width: 300, backgroundColor:'#d9ecf2' }}
+                    />
+                </View>
+                <View style={styles.filters}>
+                <TextInput   
+                        placeholder="Age" 
+                        underlineColorAndroid='transparent'  
+                        keyboardType={'numeric'} 
+                        onChangeText={ (value) =>handleAgeChange(parseInt(value)) }
+                        returnKeyType={ 'done' }
+                        style = {styles.filterAge}
+                    />
+                <RNPickerSelect
+                value={location}
+                onValueChange={(value: any) => handleLocationChange(value)}
+                items={[
+                    { label: 'Any', value: 'any' },
+                    { label: 'Gløshaugen', value: 'Gløshaugen' },
+                    { label: 'Dragvoll', value: 'Dragvoll' },
+                    { label: 'Kalvskinnet', value: 'Kalvskinnet' },
+                    { label: 'Handelshøyskolen', value: 'Handelshøyskolen' }
+                ]}
+                    />  
+                </View>
+            </View>
             <FlatList
-                
                     data={checkStatus(activeFilter)}
                     renderItem={({ item }) => (
                         <Person first_name={item.first_name} last_name={item.last_name} location={item.location} age={item.age} description={item.description} />
@@ -253,9 +252,6 @@ export default function Output() {
                     keyExtractor={(item) => item.id.toString()}
                     onEndReached={() => handleLoadMore()}
                     onEndReachedThreshold={4}
-                    ListFooterComponent={
-                        <Text>Made with love by Group 4</Text>
-                    }
             />
     </View>
     );
@@ -290,7 +286,6 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,        
     },
     filters:{
-
         display: 'flex',
         flexDirection: 'row',
         marginLeft: 60,

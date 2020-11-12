@@ -9,19 +9,17 @@ const Person = (props: any) => {
     const [modalVisible, setModalVisible] = useState(false);
     let [person, setPerson] = useState(examplePerson);
 
-
     useEffect(() => {
         setPerson([props.first_name, props.last_name, props.age, props.location, props.description]);
     }, [setPerson, props]);
-    return (
 
+    return (
         <View style={styles.personBox}>
             {Platform.OS === 'ios' &&
             <Modal
                 animationType="slide"
                 transparent={true}
                 visible={modalVisible}
-            
             >
                 <PopUpPerson
                     first_name={props.first_name}
