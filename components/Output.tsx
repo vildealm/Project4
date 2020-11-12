@@ -237,10 +237,10 @@ export default function Output() {
                         onValueChange={(value: any) => handleLocationChange(value)}
                         items={[
                             { label: 'Any', value: 'any' },
-                            { label: 'Gløshaugen', value: 'gløshaugen' },
-                            { label: 'Dragvoll', value: 'dragvoll' },
-                            { label: 'Kalvskinnet', value: 'kavlskinnet' },
-                            { label: 'Handelshøyskolen', value: 'handelshøyskolen' }
+                            { label: 'Gløshaugen', value: 'Gløshaugen' },
+                            { label: 'Dragvoll', value: 'Dragvoll' },
+                            { label: 'Kalvskinnet', value: 'Kalvskinnet' },
+                            { label: 'Handelshøyskolen', value: 'Handelshøyskolen' }
                         ]}
                          />
                             
@@ -252,7 +252,7 @@ export default function Output() {
                     renderItem={({ item }) => (
                         <Person first_name={item.first_name} last_name={item.last_name} location={item.location} age={item.age} description={item.description} />
                     )}
-                    keyExtractor={(item) => item.id}
+                    keyExtractor={(item) => item.id.toString()}
                     onEndReached={() => handleLoadMore()}
                     onEndReachedThreshold={4}
                     ListFooterComponent={
