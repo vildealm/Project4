@@ -35,6 +35,7 @@ Dette gjelder for Filtrering og sortering,da React Native opererer anderledes. [
 Vi brukte React Native som programmeringsspråk for prosjektet. React Native hadde den samme logikken som React men det var komponentene og HTML elementene som 
 var annderledes. 
 #### Expo 
+I applikasjons utviklingen har vi brukt expo-cli for å initiere prosjektet gjennom expo init og for å gjennomføre manuell ende til ende testing på iOS og Android.
 #### Testing
 Vi gjorde manuell ende til ende testing ved å teste på flere brukere som hadde Android og Iphone. Vi prøvde også å teste på ulike versjoner av Android og Iphoen
 slik at vi fikk testet hvor responsiv appen var på de ulike skjermstørrelsene. I tillegg var det mange React Native elementer som ble støttet av Iphoen men ikke Android. 
