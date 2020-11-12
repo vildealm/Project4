@@ -19,9 +19,18 @@ Start Expo-serveren:
 
 Deretter scanner du QR-koden som dukker opp i nettleseren din med mobilen din.
 ## Funksjonalitet
+Applikasjonen skal ha søkegrensesnitt som gir et resultatsett
+Resultatsettet skal lastes dynamisk (blaing, lasting ved scrolling)
+Skal være mulig å få en detaljert visning av hvert objekt i resultatsettet
+Skal være støtte for å å interaktivt raffinere søkeresultatet med filterering og sortering
+
 Vi valgte oppgave 1. Vi har basert vår app på backend og frontend fra Prosjekt 3, hvor vi laget en søkemotor for 
-personer. Funksjonaliteten er veldig lik som i prosjekt 3, hvor det for brukeren sin del er hovedsaklig stylingen som er den største forskjellen. 
+personer. Resultatene av søkemotoren blir lastet ved "endless scrolling" av personer. Appen gir også muligheten til en detaljert beskrivelse av personene ved å trykke på hver 
+person boks. Det finnes drop-down meny for filtrering og sortering. Funksjonaliteten er veldig lik som i prosjekt 3, hvor det for brukeren sin del er hovedsaklig stylingen som er den største forskjellen. 
 ## Teknologi
+Som tidligere nevnt baserer appen seg på Prosjekt 3 og der brukte vi hovedsakelig State Hooks for komponentene. Dette gjorde at vi ikke trengte å endre så mye på
+logikken da komponentstrukturen var gjenkjennelig og lik som i React. Likevel måtte vi justere på logikken underveis da vi oppdaget at den ikke fungerte slik den var ment. 
+Dette gjelder for Filtrering og sortering,da React Native opererer anderledes. [BIRGITTE ???]
 #### React Native
 Vi brukte React Native som programmeringsspråk for prosjektet. React Native hadde den samme logikken som React men det var komponentene og HTML elementene som 
 var annderledes. 
