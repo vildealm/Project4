@@ -4,7 +4,6 @@ import { SearchBar } from 'react-native-elements';
 import { GET_ALL, GET_PERSON , FILTER_SEARCH} from '../resolvers';
 import { useLazyQuery, QueryResult } from 'react-apollo';
 import Person from './Person';
-import AddPerson from './AddPerson';
 import RNPickerSelect from 'react-native-picker-select';
 
 

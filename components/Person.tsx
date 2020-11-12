@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import React from 'react';
 import { PopUpPerson } from './PopUpPerson';
-import { StyleSheet, Modal, Text, View, TouchableOpacity } from 'react-native';
+import { Platform, StyleSheet, Modal, Text, View, TouchableOpacity } from 'react-native';
 
 
 const Person = (props: any) => {
@@ -16,6 +16,7 @@ const Person = (props: any) => {
     return (
 
         <View style={styles.personBox}>
+            {Platform.OS === 'ios' &&
             <Modal
                 animationType="slide"
                 transparent={true}
@@ -30,7 +31,7 @@ const Person = (props: any) => {
                     description={props.description}
                     setModalVisible={setModalVisible}
                 />
-            </Modal>
+            </Modal>}
             <TouchableOpacity onPress={() => {setModalVisible(true);}}>
                 <Text style={{ fontWeight: "bold", fontFamily: 'Copperplate' }}> {props.first_name} {props.last_name} </Text>
                 <Text style={{ fontFamily: 'Copperplate' }}> Age: {props.age}</Text>
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
     personBox: {
         marginLeft: 30,
         marginTop: 15,
-        marginRight: 20, 
+        marginRight: 8, 
         padding: 10,
         color: 'black',
         backgroundColor: 'white',

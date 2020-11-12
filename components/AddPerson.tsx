@@ -27,8 +27,10 @@ export default function AddPerson() {
 
 const styles = StyleSheet.create({
     openButton: {
+        marginRight: 20,
+        marginBottom: 60,
         backgroundColor: "#ff414d",
-        borderRadius: 30,
+        borderRadius: 18,
         padding: 10,
         shadowColor: "#000",
         shadowOffset: {
@@ -43,7 +45,7 @@ const styles = StyleSheet.create({
         color: "white",
         fontWeight: "bold",
         textAlign: "center",
-        fontSize: 18, 
+        fontSize: 24, 
     },
     centeredView: {
         flex: 1,
