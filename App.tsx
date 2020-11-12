@@ -10,7 +10,6 @@ const { manifest } = Constants
 const ipv4Adress = manifest.debuggerHost?.split(':')[0];
 
 
-
 export default function App() {
   const client = new ApolloClient({
     uri: `http://${ipv4Adress}:4000`,    
