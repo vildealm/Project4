@@ -20,7 +20,6 @@ export default function App() {
     <ApolloProvider client = {client}>
       <View style={styles.container}>
         <Text style={styles.header}>Findr</Text>
-        <Text style={{textAlign: 'center'}}>Are we gonna fight or are we gonna make out?</Text>
           <View style={{flexDirection: 'row'}}> 
             <Output/>
             <StatusBar style='auto'/>

@@ -330,7 +330,7 @@ const styles = StyleSheet.create({
         width: 170,
         marginTop: 25,
         marginBottom: 30,
-        marginLeft: '24%',
+        marginLeft: 80,
     }
    
 
@@ -339,7 +339,7 @@ const styles = StyleSheet.create({
 const pickerSelectStyles = StyleSheet.create({
     inputAndrid: {
         marginLeft: 15,
-        height: 15, 
+        height: 35, 
         borderBottomColor: '#232B2B',
         borderBottomWidth: 2, 
     },
