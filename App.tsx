@@ -5,10 +5,15 @@ import ApolloClient, { InMemoryCache } from 'apollo-boost';
 import {ApolloProvider} from 'react-apollo'; 
 import Output from './components/Output';
 import AddPerson from './components/AddPerson';
+import Constants from 'expo-constants';
+const { manifest } = Constants
+const ipv4Adress = manifest.debuggerHost?.split(':')[0];
+
+
 
 export default function App() {
   const client = new ApolloClient({
-    uri: 'http://192.168.1.96:4000',    
+    uri: `http://${ipv4Adress}:4000`,    
     cache: new InMemoryCache()
   });
 //10.22.7.35
