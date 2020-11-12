@@ -199,7 +199,9 @@ export default function Output() {
             setOrderBy('age')
             setOrderOutput(value)
         }
-        
+        setPageNumber(0);
+        prevData = [];
+        keys = [];
     }
 
     const [persons, allResults] = useLazyQuery (
