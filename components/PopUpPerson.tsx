@@ -8,6 +8,7 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 //Functionality for the "Add-person popup"
 export const PopUpPerson = (props: any, prop: StateProps) => {
+
     let person = {
         first_name: String,
         last_name: String,
@@ -35,13 +36,15 @@ export const PopUpPerson = (props: any, prop: StateProps) => {
             <TouchableOpacity onPress={() => {props.setModalVisible(false); }}>
                 <Image style={styles.imgBtn} source={require("../icon/close.png")} />
             </TouchableOpacity>
+                
         </View>
+                
     )
 }
 const styles = StyleSheet.create({
     modalView: {
-        width: windowWidth,
-        height: windowHeight/4, 
+        width: 400,
+        height: 210, 
         flexDirection: "row",
         marginTop: 330,
         backgroundColor: "#F8F8F8",
@@ -71,5 +74,6 @@ const styles = StyleSheet.create({
         width: 25,
         height: 25,
         marginBottom: 105,
+       
     }
 });
