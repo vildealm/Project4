@@ -8,11 +8,12 @@ import AddPerson from './components/AddPerson';
 
 export default function App() {
   const client = new ApolloClient({
-    uri: 'http://192.168.1.96:4000',    
+    uri: 'http://10.22.5.184:4000',    
     cache: new InMemoryCache()
   });
 //192.168.1.93
 //10.22.7.35
+//192.168.0.101
   return (
     <ApolloProvider client = {client}>
       <View style={styles.container}>
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: Dimensions.get('screen').width, 
     height: Dimensions.get('screen').height
-    
+
   },
   header: {
     color: 'black',

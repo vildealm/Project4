@@ -88,6 +88,7 @@ export default function Output() {
     const [pageNumber, setPageNumber] = useState(0);
     const [location, setLocation] = useState('any');
     const [age, setAge] = useState(0);
+    const [orderOutput, setOrderOutput] = useState('Alphabetical');
 
     const checkStatus = (filter: string) => {
         if (filter === "getAll") {
@@ -189,6 +190,20 @@ export default function Output() {
         keys = [];
     }
 
+    function handleOrderChange(value: string){
+        if(value==='Alphabetical'){
+            setOrderBy('first_name')
+            setOrderOutput(value);
+        }
+        else {
+            setOrderBy('age')
+            setOrderOutput(value)
+        }
+        setPageNumber(0);
+        prevData = [];
+        keys = [];
+    }
+
     const [persons, allResults] = useLazyQuery (
         GET_ALL,
         { variables: { orderBy: orderBy, pageNumber: pageNumber} });
@@ -212,38 +227,49 @@ export default function Output() {
     return (
         <View style={styles.container}>
             <View>
-                <View style={styles.searchWrapper}>
-                    <SearchBar
-                        round
-                        style={styles.searchField}
-                        placeholder="Search..."
-                        onChangeText={(input) => getSearchVal(input)}
-                        value={name}
-                        containerStyle={{width: 300, backgroundColor:'#d9ecf2' }}
-                    />
-                </View>
-                <View style={styles.filters}>
-                <TextInput   
-                        placeholder="Age" 
-                        underlineColorAndroid='transparent'  
-                        keyboardType={'numeric'} 
-                        onChangeText={ (value) =>handleAgeChange(parseInt(value)) }
-                        returnKeyType={ 'done' }
-                        style = {styles.filterAge}
-                    />
-                <RNPickerSelect
-                value={location}
-                onValueChange={(value: any) => handleLocationChange(value)}
-                items={[
-                    { label: 'Any', value: 'any' },
-                    { label: 'Gløshaugen', value: 'Gløshaugen' },
-                    { label: 'Dragvoll', value: 'Dragvoll' },
-                    { label: 'Kalvskinnet', value: 'Kalvskinnet' },
-                    { label: 'Handelshøyskolen', value: 'Handelshøyskolen' }
-                ]}
-                    />  
-                </View>
-            </View>
+                        <View style={styles.searchWrapper}>
+                            <SearchBar
+                                round
+                                style={styles.searchField}
+                                placeholder="Search..."
+                                onChangeText={(input) => getSearchVal(input)}
+                                value={name}
+                                containerStyle={{width: 300, backgroundColor:'#d9ecf2' }}
+                            />
+                        </View>
+                        
+                       <View style={styles.filters}>
+                       <TextInput   
+                                placeholder="Age " 
+                                underlineColorAndroid='transparent'  
+                                keyboardType={'numeric'} 
+                                onChangeText={ (value) =>handleAgeChange(parseInt(value)) }
+                                returnKeyType={ 'done' }
+                                style = {styles.filterAge}
+                            />
+                        <RNPickerSelect
+                        value={location}
+                        onValueChange={(value: any) => handleLocationChange(value)}
+                        items={[
+                            { label: 'Any', value: 'any' },
+                            { label: 'Gløshaugen', value: 'Gløshaugen' },
+                            { label: 'Dragvoll', value: 'Dragvoll' },
+                            { label: 'Kalvskinnet', value: 'Kalvskinnet' },
+                            { label: 'Handelshøyskolen', value: 'Handelshøyskolen' }
+                        ]}
+                         />
+                        <RNPickerSelect
+                        value = {orderOutput}
+                        onValueChange={(value: any) => handleOrderChange(value)}
+                        items={[
+                            { label: 'Age', value: 'Age' },
+                            { label: 'Alphabetical', value: 'Alphabetical' }
+                            ]}
+                        />
+                        </View>
+                       
+                        </View>
+                        
             <FlatList
                     data={checkStatus(activeFilter)}
                     renderItem={({ item }) => (
