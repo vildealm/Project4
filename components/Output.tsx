@@ -9,6 +9,7 @@ import RNPickerSelect from 'react-native-picker-select';
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
+/*
 function setPerson(queryResult: QueryResult) {
     let people: any = [];
     let map = new Map();
@@ -75,7 +76,7 @@ function setPerson(queryResult: QueryResult) {
     }
     console.log(map);
     return map;
-}
+}*/
 
 //This is used to keep track of previously loaded data while scroll loading
 let prevData: any = [];
@@ -218,9 +219,10 @@ export default function Output() {
     
     useEffect(() => {
         persons();
+        setPageNumber(0);
+        prevData = [];
+        keys = [];
     }, []);
-
-    
 
     function handleLoadMore(){
         setPageNumber(pageNumber + 20);
