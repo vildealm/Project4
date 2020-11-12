@@ -304,7 +304,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Copperplate',
     },
     searchWrapper: {
-        marginLeft: 90,
+        marginLeft: 60,
         marginTop: 30
     }, 
     filterLocation: {
