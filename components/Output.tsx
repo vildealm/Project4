@@ -110,7 +110,6 @@ export default function Output() {
                             prevData = prevData.concat(allResults.data.persons[i]);
                             keys= keys.concat(allResults.data.persons[i].id);
                         }
-                        
                     }
                     return allResults.data.persons;
                 }
@@ -221,6 +220,8 @@ export default function Output() {
         persons();
     }, []);
 
+    
+
     function handleLoadMore(){
         setPageNumber(pageNumber + 20);
     }
@@ -248,27 +249,31 @@ export default function Output() {
                                 returnKeyType={ 'done' }
                                 style = {styles.filterAge}
                             />
+                            <View style={pickerSelectStyles.inputIOS}
+>
                         <RNPickerSelect
-                        value={location}
+                        value={location}  
                         onValueChange={(value: any) => handleLocationChange(value)}
                         items={[
-                            { label: 'Any', value: 'any' },
-                            { label: 'Gløshaugen', value: 'Gløshaugen' },
-                            { label: 'Dragvoll', value: 'Dragvoll' },
-                            { label: 'Kalvskinnet', value: 'Kalvskinnet' },
-                            { label: 'Handelshøyskolen', value: 'Handelshøyskolen' }
+                            { label: 'Location ▼', value: 'any' },
+                            { label: 'Gløshaugen ▼', value: 'Gløshaugen' },
+                            { label: 'Dragvoll ▼', value: 'Dragvoll' },
+                            { label: 'Kalvskinnet ▼', value: 'Kalvskinnet' },
+                            { label: 'Handelshøyskolen ▼', value: 'Handelshøyskolen' }
                         ]}
                          />
+                         </View>
+                         <View style={pickerSelectStyles.inputIOS}>
                         <RNPickerSelect
                         value = {orderOutput}
                         onValueChange={(value: any) => handleOrderChange(value)}
                         items={[
-                            { label: 'Age', value: 'Age' },
-                            { label: 'Alphabetical', value: 'Alphabetical' }
+                            { label: 'Alphabetical ▼', value: 'Alphabetical' },
+                            { label: 'Age ▼', value: 'Age' }
                             ]}
                         />
                         </View>
-                       
+                        </View>
                         </View>
                         
             <FlatList
@@ -311,6 +316,7 @@ const styles = StyleSheet.create({
         width: 45,
         paddingRight: 8,
         paddingLeft: 8,
+        paddingBottom: 14,
         height: 35, 
         borderBottomColor: '#232B2B',
         borderBottomWidth: 2,        
@@ -318,7 +324,7 @@ const styles = StyleSheet.create({
     filters:{
         display: 'flex',
         flexDirection: 'row',
-        marginLeft: 60,
+        marginLeft: 50,
         marginTop: 20,
         marginBottom: 20
     }
@@ -326,4 +332,12 @@ const styles = StyleSheet.create({
 
 });
 
+const pickerSelectStyles = StyleSheet.create({
+    inputIOS: {
+        marginLeft: 15,
+        height: 35, 
+        borderBottomColor: '#232B2B',
+        borderBottomWidth: 2,    
+    },
+});
 
