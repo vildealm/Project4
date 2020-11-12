@@ -46,7 +46,7 @@ export const AddPersonPopUp = (props: StateProps) => {
             setTextField(false)
             return false;
         } if (!checkValidChar(input)){
-            alert('Invalid input');
+            alert('Invalid char');
             setTextField(false)
             return false;
         }
@@ -61,7 +61,7 @@ export const AddPersonPopUp = (props: StateProps) => {
         return true;
     }
    function checkValidChar(input:string){
-        if(input.match('(?=.*[a-zA-ZÆØÅ] )')){return true;} 
+        if(input.match('(?:[a-zæøåA-ZÆØÅ])')){return true;} 
    }
 
     return (
@@ -79,12 +79,14 @@ export const AddPersonPopUp = (props: StateProps) => {
                         style={styles.modalText}
                         placeholder="Firstname"
                         onChangeText={(e) => setFirstName(e)}
+                        returnKeyType={ 'done' }
                     />
                     <Text style={styles.modalText}>Lastname</Text>
                     <TextInput
                         style={styles.modalText}
                         placeholder="Lastname"
                         onChangeText={(e) => setLastName(e)}
+                        returnKeyType={ 'done' }
                     />
                     <Text style={styles.modalText}>Age</Text>
                     <TextInput
@@ -92,12 +94,14 @@ export const AddPersonPopUp = (props: StateProps) => {
                         style={styles.modalText}
                         keyboardType='numeric'
                         onChangeText={(e) => setAge(+e)}
+                        returnKeyType={ 'done' }
                     />
                     <Text style={styles.modalText}>Description</Text>
                     <TextInput
                         placeholder="Description"
                         style={styles.modalText}
                         onChangeText={(e) => setDesc(e)}
+                        returnKeyType={ 'done' }
                     />
                     <Text style={styles.modalText}>Location</Text>
                     <RNPickerSelect 
