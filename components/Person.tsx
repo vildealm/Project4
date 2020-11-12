@@ -42,8 +42,9 @@ export default Person;
 
 const styles = StyleSheet.create({
     personBox: {
-        marginLeft: 60,
+        marginLeft: 30,
         marginTop: 15,
+        marginRight: 20, 
         padding: 10,
         color: 'black',
         backgroundColor: 'white',

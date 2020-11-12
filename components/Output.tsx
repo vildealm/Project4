@@ -242,8 +242,7 @@ export default function Output() {
                             { label: 'Kalvskinnet', value: 'kavlskinnet' },
                             { label: 'Handelshøyskolen', value: 'handelshøyskolen' }
                         ]}
-                         />
-                            
+                         />  
                         </View>
                         </View>
             <FlatList
