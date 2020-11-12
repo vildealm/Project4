@@ -21,7 +21,7 @@ export default function App() {
     <ApolloProvider client = {client}>
       <View style={styles.container}>
         <Text style={styles.header}>Findr</Text>
-        <Text style={{textAlign: 'center', fontFamily: 'Copperplate'}}>Are we gonna fight or are we gonna make out?</Text>
+        <Text style={{textAlign: 'center'}}>Are we gonna fight or are we gonna make out?</Text>
           <View style={{flexDirection: 'row'}}> 
             <Output/>
             <StatusBar style='auto'/>
@@ -50,7 +50,6 @@ const styles = StyleSheet.create({
     color: 'black',
     letterSpacing: 1,
     fontSize: 36,
-    fontFamily: 'Copperplate', 
     marginTop: 70,
     textAlign: 'center',
     textShadowColor: 'rgba(0, 0, 0, 0.75)',

@@ -11,6 +11,7 @@ export default function AddPerson() {
                 animationType="slide"
                 transparent={true}
                 visible={modalVisible}
+                style={{flex:1}}
             >
               <AddPersonPopUp setModalVisible={setModalVisible}/> 
             </Modal>

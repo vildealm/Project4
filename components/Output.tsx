@@ -236,7 +236,8 @@ export default function Output() {
                                 placeholder="Search..."
                                 onChangeText={(input) => getSearchVal(input)}
                                 value={name}
-                                containerStyle={{width: 300, backgroundColor:'#d9ecf2' }}
+                                underlineColorAndroid="transparent"
+                                containerStyle={{width: 300 }}
                             />
                         </View>
                        <View style={styles.filters}>
@@ -301,7 +302,6 @@ const styles = StyleSheet.create({
     searchField: {
         padding: 10,
         backgroundColor: '#d9ecf2',
-        fontFamily: 'Copperplate',
     },
     searchWrapper: {
         marginLeft: 60,
@@ -323,7 +323,7 @@ const styles = StyleSheet.create({
     filters:{
         display: 'flex',
         flexDirection: 'row',
-        marginLeft: 50,
+        marginLeft: 70,
         marginTop: 20,
         marginBottom: 20
     }
