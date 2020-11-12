@@ -239,7 +239,6 @@ export default function Output() {
                                 containerStyle={{width: 300, backgroundColor:'#d9ecf2' }}
                             />
                         </View>
-                        
                        <View style={styles.filters}>
                        <TextInput   
                                 placeholder="Age " 
@@ -305,7 +304,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Copperplate',
     },
     searchWrapper: {
-        marginLeft: 50,
+        marginLeft: 90,
         marginTop: 30
     }, 
     filterLocation: {
