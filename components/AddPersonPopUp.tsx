@@ -80,6 +80,7 @@ export const AddPersonPopUp = (props: StateProps) => {
                         placeholder="Firstname"
                         onChangeText={(e) => setFirstName(e)}
                         returnKeyType={ 'done' }
+                        underlineColorAndroid = "transparent"
                     />
                     <Text style={styles.modalText}>Lastname</Text>
                     <TextInput
@@ -87,6 +88,7 @@ export const AddPersonPopUp = (props: StateProps) => {
                         placeholder="Lastname"
                         onChangeText={(e) => setLastName(e)}
                         returnKeyType={ 'done' }
+                        underlineColorAndroid = "transparent"
                     />
                     <Text style={styles.modalText}>Age</Text>
                     <TextInput
@@ -95,6 +97,7 @@ export const AddPersonPopUp = (props: StateProps) => {
                         keyboardType='numeric'
                         onChangeText={(e) => setAge(+e)}
                         returnKeyType={ 'done' }
+                        underlineColorAndroid = "transparent"
                     />
                     <Text style={styles.modalText}>Description</Text>
                     <TextInput
@@ -102,6 +105,7 @@ export const AddPersonPopUp = (props: StateProps) => {
                         style={styles.modalText}
                         onChangeText={(e) => setDesc(e)}
                         returnKeyType={ 'done' }
+                        underlineColorAndroid = "transparent"
                     />
                     <Text style={styles.modalText}>Location</Text>
                     <RNPickerSelect 
