@@ -38,5 +38,8 @@ var annderledes.
 I applikasjons utviklingen har vi brukt expo-cli for å initiere prosjektet gjennom expo init og for å gjennomføre manuell ende til ende testing på iOS og Android.
 #### Testing
 Vi gjorde manuell ende til ende testing ved å teste på flere brukere som hadde Android og Iphone. Vi prøvde også å teste på ulike versjoner av Android og Iphoen
-slik at vi fikk testet hvor responsiv appen var på de ulike skjermstørrelsene. I tillegg var det mange React Native elementer som ble støttet av Iphoen men ikke Android. 
+slik at vi fikk testet hvor responsiv appen var på de ulike skjermstørrelsene. Da oppdaget vi t det var det mange React Native elementer som ble støttet av Iphoen men ikke Android. Dette gjaldt
+for fontFamily, hvor det var fonter som ikke ble støttet hos Android. I tillegg var også TextInput anderledes på Android enn for Iphone. Dermed måtte vi finne
+løsninger som egnet seg for begge mobiler. På grunn av dette blir designløsningene annderledes. Dette ser vi blant annet i Pop-up'ene hvor vi har valgt i Android at 
+det skal dukke opp i bunnen av skjermen, og hos Iphone dukker pop-up'en midt i skjermen. 
 Hva dette var fikk vi observert på ende til ende testing. 
