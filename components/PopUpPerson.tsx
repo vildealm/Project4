@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
                 marginTop: 330,
                 backgroundColor: "#F8F8F8",
                 borderRadius: 40,
-                padding: 50,
+                padding: 20,
                 alignItems: "center",
                 shadowColor: "#000",
                 shadowOffset: {
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     modalNameText: {
-        width: 210, 
+        width: 180, 
         fontWeight: "bold", 
         textAlign: "center", 
         fontSize: 24,
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
                 width: windowWidth*0.07,
                 height: windowHeight*0.03,
                 marginBottom: 135,
-                marginLeft: 3, 
+                marginLeft: -15, 
             },
             android:{
                 width: windowWidth*0.09,

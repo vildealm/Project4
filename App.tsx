@@ -12,7 +12,7 @@ const ipv4Adress = manifest.debuggerHost?.split(':')[0];
 
 export default function App() {
   const client = new ApolloClient({
-    uri: 'http://192.168.0.101:4000',    
+    uri: `http://${ipv4Adress}:4000`,    
     cache: new InMemoryCache()
   });
 //10.22.7.35
