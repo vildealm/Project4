@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, Dimensions , Platform} from 'react-native';
 
 interface StateProps {
     setModalVisible(val: boolean): void;
@@ -45,22 +45,37 @@ const styles = StyleSheet.create({
         height: windowHeight*0.1,
     },
     modalView: {
-        width: windowWidth-10,
-        height: windowHeight-470, 
-        flexDirection: "row",
-        marginTop: 330,
-        backgroundColor: "#F8F8F8",
-        borderRadius: 40,
-        padding: 50,
-        alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 11,
-        },
-        shadowOpacity: 0.57,
-        shadowRadius: 15.19,
-        elevation: 23,
+        ...Platform.select({ 
+            ios:{
+                width: windowWidth-10,
+                height: windowHeight-4500, 
+                flexDirection: "row",
+                marginTop: 330,
+                backgroundColor: "#F8F8F8",
+                borderRadius: 40,
+                padding: 50,
+                alignItems: "center",
+                shadowColor: "#000",
+                shadowOffset: {
+                    width: 0,
+                    height: 11,
+                },
+                shadowOpacity: 0.57,
+                shadowRadius: 15.19,
+                elevation: 23,
+                },
+            android:{
+                width: windowWidth-5,
+                height: windowHeight-380, 
+                flexDirection: "row",
+                marginTop: 300,
+                backgroundColor: "#F8F8F8",
+                borderRadius: 40,
+                padding: 50,
+                alignItems: "center",
+
+            },
+        }),
     },
     modalText: {
        marginBottom: 0,
@@ -78,10 +93,21 @@ const styles = StyleSheet.create({
         marginLeft: 30, 
     }, 
     imgBtn: {
-        width: windowWidth*0.07,
-        height: windowHeight*0.03,
-        marginBottom: 160,
-        marginLeft: 10, 
+        ...Platform.select({
+            ios:{
+                width: windowWidth*0.07,
+                height: windowHeight*0.03,
+                marginBottom: 135,
+                marginLeft: 3, 
+            },
+            android:{
+                width: windowWidth*0.09,
+                height: windowHeight*0.04,
+                marginBottom: 150,
+                marginLeft: -10, 
+            },
+        }),
+       
        
     }
 });

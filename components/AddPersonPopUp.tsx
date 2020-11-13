@@ -120,7 +120,7 @@ export const AddPersonPopUp = (props: StateProps) => {
                         ]}
                     />
                     <TouchableHighlight
-                        style={{ ...styles.openButton, backgroundColor: "#a6dcef" }}
+                        style={{ ...styles.openButton, backgroundColor: "#c2f0fc" }}
                         onPress={() => {
                             if (checkTextField(first_name || last_name || description) && checkNum(age)) {
                                 first_name &&
@@ -143,7 +143,6 @@ export const AddPersonPopUp = (props: StateProps) => {
 }
 const styles = StyleSheet.create({
     modalView: {
-        
         ...Platform.select({
             ios: {
                 width: windowWidth-80,
@@ -169,11 +168,7 @@ const styles = StyleSheet.create({
                     backgroundColor: "#F8F8FF",
                     borderRadius: 20,
                     padding: 40,
-                    alignItems: "center",
-                   
-                    
-                    
-       
+                    alignItems: "center",    
             },
           }),
 
@@ -195,8 +190,6 @@ const styles = StyleSheet.create({
                 
             },
         }),
-        
-        
        
     },
     openButton: {

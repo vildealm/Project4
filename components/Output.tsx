@@ -240,7 +240,7 @@ export default function Output() {
                                 onChangeText={(input) => getSearchVal(input)}
                                 value={name}
                                 underlineColorAndroid="transparent"
-                                containerStyle={{width: 300, backgroundColor: '#d9ecf2', marginLeft: 20, }}
+                                containerStyle={{width: 300, backgroundColor: '#d9ecf2',}}
                             />
                         </View>
                        <View style={styles.filters}>
@@ -302,19 +302,23 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: windowHeight/1.2,
         width: windowWidth/1.3, 
-        
-       
     },
     searchField: {
         padding: 10,
         backgroundColor: '#d9ecf2',
-        
     },
     searchWrapper: {
-        marginLeft: 60,
-        marginTop: 30,
-        
-
+        ...Platform.select({
+            ios:{
+                marginLeft: 60,
+                marginTop: 30,
+            },
+            android:{
+                marginLeft: 90,
+                marginTop: 20,
+            }
+        }),
+       
     }, 
     filterLocation: {
       
