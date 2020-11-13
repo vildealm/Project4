@@ -234,12 +234,13 @@ export default function Output() {
                         <View style={styles.searchWrapper}>
                             <SearchBar
                                 round
+                                
                                 style={styles.searchField}
                                 placeholder="Search..."
                                 onChangeText={(input) => getSearchVal(input)}
                                 value={name}
                                 underlineColorAndroid="transparent"
-                                containerStyle={{width: 300 }}
+                                containerStyle={{width: 300, backgroundColor: '#d9ecf2', marginLeft: 20, }}
                             />
                         </View>
                        <View style={styles.filters}>
