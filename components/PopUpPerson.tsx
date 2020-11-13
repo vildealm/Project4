@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         ...Platform.select({ 
             ios:{
                 width: windowWidth-10,
-                height: windowHeight-4500, 
+                height: windowHeight-400, 
                 flexDirection: "row",
                 marginTop: 330,
                 backgroundColor: "#F8F8F8",
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
                 },
             android:{
                 width: windowWidth-5,
-                height: windowHeight-380, 
+                height: windowHeight-400, 
                 flexDirection: "row",
                 marginTop: 300,
                 backgroundColor: "#F8F8F8",

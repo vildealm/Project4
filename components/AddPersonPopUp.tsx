@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
         ...Platform.select({
             ios: {
                 width: windowWidth-80,
-                height: windowHeight-200,
+                height: windowHeight-190,
                 margin: 20,
                 backgroundColor: "#F8F8FF",
                 borderRadius: 20,
