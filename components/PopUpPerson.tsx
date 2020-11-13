@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         ...Platform.select({ 
             ios:{
                 width: windowWidth-10,
-                height: windowHeight-500, 
+                height: windowHeight-400, 
                 flexDirection: "row",
                 marginTop: 330,
                 backgroundColor: "#F8F8F8",
