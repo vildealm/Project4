@@ -255,13 +255,14 @@ export default function Output() {
 >
                         <RNPickerSelect
                         value={location}  
+
                         onValueChange={(value: any) => handleLocationChange(value)}
                         items={[
-                            { label: 'Location ▼', value: 'any' },
-                            { label: 'Gløshaugen ▼', value: 'Gløshaugen' },
-                            { label: 'Dragvoll ▼', value: 'Dragvoll' },
-                            { label: 'Kalvskinnet ▼', value: 'Kalvskinnet' },
-                            { label: 'Handelshøyskolen ▼', value: 'Handelshøyskolen' }
+                            { label: 'Location ', value: 'any' },
+                            { label: 'Gløshaugen', value: 'Gløshaugen' },
+                            { label: 'Dragvoll', value: 'Dragvoll' },
+                            { label: 'Kalvskinnet', value: 'Kalvskinnet' },
+                            { label: 'Handelshøyskolen', value: 'Handelshøyskolen' }
                         ]}
                          />
                          </View>
@@ -270,8 +271,8 @@ export default function Output() {
                         value = {orderOutput}
                         onValueChange={(value: any) => handleOrderChange(value)}
                         items={[
-                            { label: 'Alphabetical ▼', value: 'Alphabetical' },
-                            { label: 'Age ▼', value: 'Age' }
+                            { label: 'Alphabetical ', value: 'Alphabetical' },
+                            { label: 'Age', value: 'Age' }
                             ]}
                         />
                         </View>
@@ -297,22 +298,27 @@ export default function Output() {
 const styles = StyleSheet.create({
     container: {
         paddingTop: 25,
-        
         alignItems: 'center',
         height: windowHeight/1.2,
         width: windowWidth/1.3, 
+        
+       
     },
     searchField: {
         padding: 10,
         backgroundColor: '#d9ecf2',
+        
     },
     searchWrapper: {
         marginLeft: 60,
-        marginTop: 30
+        marginTop: 30,
+        
+
     }, 
     filterLocation: {
-
+      
     },
+   
     filterAge: {
         marginLeft: 20,
         width: 45,
@@ -322,33 +328,58 @@ const styles = StyleSheet.create({
         height: 35, 
         borderBottomColor: '#232B2B',
         borderBottomWidth: 2,  
+
+        ...Platform.select({
+            ios: {
+                paddingBottom: 14,
+
+            },
+            android: {
+                paddingBottom: 0,
+                
+
+            },
+          }),
+       
             
     },
     filters:{
-        display: 'flex',
-        flexDirection: 'row',
-        width: 170,
-        marginTop: 25,
-        marginBottom: 30,
-        marginLeft: 80,
+        ...Platform.select({
+            ios: {
+                display: 'flex',
+                flexDirection: 'row',
+                width: 170,
+                marginTop: 25,
+                marginBottom: 30,
+                marginLeft: 80,
+            },
+            android: {
+                display: 'flex',
+                flexDirection: 'column',
+                width: 180,
+                fontSize: 2,
+                marginTop: 25,
+                marginBottom: 30,
+                marginLeft: 90,
+            },
+          }),
+       
     }
    
 
 });
 
 const pickerSelectStyles = StyleSheet.create({
-    inputAndrid: {
-        marginLeft: 15,
-        height: 35, 
-        borderBottomColor: '#232B2B',
-        borderBottomWidth: 2, 
-    },
-    inputIOS: {
+    
+ 
+      inputIOS: {
         marginLeft: 15,
         height: 35, 
         borderBottomColor: '#232B2B',
         borderBottomWidth: 2,    
     },
-   
+  
+    
+    
 });
 

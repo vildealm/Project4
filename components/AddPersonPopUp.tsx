@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 import { useMutation } from 'react-apollo';
 import React, { useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, Dimensions,Image,TextInput, View, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, Dimensions,Image,TextInput, View, TouchableHighlight, Platform } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import { useForm} from 'react-hook-form';
 
@@ -80,7 +80,6 @@ export const AddPersonPopUp = (props: StateProps) => {
                     <Text style={{ fontSize: 24, textAlign: "center", fontWeight:"bold", margin: 5 }}>Add a person!</Text>
                 </View>
                 <View>
-                    <Text style={styles.modalText}>Firstname</Text>
                     <TextInput
                         style={styles.modalText}
                         placeholder="Firstname"
@@ -88,7 +87,6 @@ export const AddPersonPopUp = (props: StateProps) => {
                         returnKeyType={ 'done' }
                         underlineColorAndroid = "transparent"
                     />
-                    <Text style={styles.modalText}>Lastname</Text>
                     <TextInput
                         style={styles.modalText}
                         placeholder="Lastname"
@@ -96,7 +94,6 @@ export const AddPersonPopUp = (props: StateProps) => {
                         returnKeyType={ 'done' }
                         underlineColorAndroid = "transparent"
                     />
-                    <Text style={styles.modalText}>Age</Text>
                     <TextInput
                         placeholder="Age"
                         style={styles.modalText}
@@ -105,7 +102,6 @@ export const AddPersonPopUp = (props: StateProps) => {
                         returnKeyType={ 'done' }
                         underlineColorAndroid = "transparent"
                     />
-                    <Text style={styles.modalText}>Description</Text>
                     <TextInput
                         placeholder="Description"
                         style={styles.modalText}
@@ -113,7 +109,6 @@ export const AddPersonPopUp = (props: StateProps) => {
                         returnKeyType={ 'done' }
                         underlineColorAndroid = "transparent"
                     />
-                    <Text style={styles.modalText}>Location</Text>
                     <RNPickerSelect 
                         value={location}
                         onValueChange={(e) => setLoc(e)}
@@ -148,21 +143,38 @@ export const AddPersonPopUp = (props: StateProps) => {
 }
 const styles = StyleSheet.create({
     modalView: {
-        width: windowWidth-80,
-        height: windowHeight-350,
-        margin: 20,
-        backgroundColor: "#F8F8FF",
-        borderRadius: 20,
-        padding: 40,
-        alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5
+        
+        ...Platform.select({
+            ios: {
+                width: windowWidth-80,
+                height: windowHeight-200,
+                margin: 20,
+                backgroundColor: "#F8F8FF",
+                borderRadius: 20,
+                padding: 40,
+                alignItems: "center",
+                shadowColor: "#000",
+                shadowOffset: {
+                    width: 0,
+                    height: 2
+                },
+                shadowOpacity: 0.25,
+                shadowRadius: 3.84,
+                elevation: 5,
+                    },
+            android: {
+                    width: windowWidth-80,
+                    height: windowHeight-100,
+                    margin: 20,
+                    backgroundColor: "#F8F8FF",
+                    borderRadius: 20,
+                    padding: 40,
+                    alignItems: "center",
+                    
+       
+            },
+          }),
+
     },
     centeredView: {
         flex: 1,
@@ -200,13 +212,16 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     modalText: {
-        marginBottom: 5,
-        textAlign: "center",
+
         borderLeftWidth: 1,
         borderRightWidth: 1,
         borderBottomWidth: 1,
         borderTopWidth: 1,
-        padding: 5,
+        marginBottom: 10,
+        marginTop: 15,
+        textAlign: "center",
+        
+        padding: 8,
         width: 200,
         fontSize: 16,
         borderRadius: 20
