@@ -14,7 +14,7 @@ const Person = (props: any) => {
 
     return (
         <View style={styles.personBox}>
-            {Platform.OS === 'ios'||'android' &&
+            
             <Modal
                 animationType="slide"
                 transparent={true}
@@ -29,7 +29,7 @@ const Person = (props: any) => {
                     description={props.description}
                     setModalVisible={setModalVisible}
                 />
-            </Modal>}
+            </Modal>
             <TouchableOpacity onPress={() => {setModalVisible(true);}}>
                 <Text style={{ fontWeight: "bold", marginTop:5}}> {props.first_name} {props.last_name} </Text>
                 <Text style={{margin:2}}> Age: {props.age}</Text>
