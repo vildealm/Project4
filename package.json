@@ -24,6 +24,7 @@
     "react-native-element": "^1.2.1",
     "react-native-elements": "^3.0.0-alpha.1",
     "react-native-picker-select": "^8.0.2",
+    "react-native-shadow": "^1.2.2",
     "react-native-web": "~0.13.12",
     "react-responsive": "^8.1.1"
   },
