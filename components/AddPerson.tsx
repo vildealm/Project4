@@ -1,5 +1,5 @@
 import React, {  useState } from 'react';
-import { StyleSheet, Text,  Dimensions, Modal, View, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text,  Dimensions, Modal, View, TouchableHighlight, Platform } from 'react-native';
 import {AddPersonPopUp} from './AddPersonPopUp'; 
 
 export default function AddPerson() {
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     openButton: {
         marginRight: 20,
         marginBottom: 45,
-        backgroundColor: "#ff414d",
+        backgroundColor: 'cyan',
         borderRadius: 18,
         padding: 10,
         shadowColor: "#000",
@@ -41,6 +41,16 @@ const styles = StyleSheet.create({
         elevation: 5,
         shadowOpacity: 0.33,
         shadowRadius: 5,
+
+        ...Platform.select({
+            ios: {
+                paddingLeft:10
+            },
+            android: {
+                padding: 5,
+                paddingLeft: 15
+            },
+    })
     },
     textStyle: {
         color: "white",
