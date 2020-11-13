@@ -170,6 +170,8 @@ const styles = StyleSheet.create({
                     borderRadius: 20,
                     padding: 40,
                     alignItems: "center",
+                   
+                    
                     
        
             },
@@ -182,14 +184,20 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginTop: 22,
         borderRadius: 30,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 11,
-        },
-        shadowOpacity: 0.47,
-        shadowRadius: 15.19,
-        elevation: 23,
+
+        ...Platform.select({
+            ios: {
+                shadowOpacity: 0.7,
+                shadowRadius: 60.19,
+                elevation: 8,
+            },
+            android: {
+                
+            },
+        }),
+        
+        
+       
     },
     openButton: {
         backgroundColor: "#ff414d",
