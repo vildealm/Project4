@@ -12,7 +12,7 @@ const ipv4Adress = manifest.debuggerHost?.split(':')[0];
 
 export default function App() {
   const client = new ApolloClient({
-    uri: `http://${ipv4Adress}:4000`,    
+    uri: 'http://192.168.0.101:4000',    
     cache: new InMemoryCache()
   });
 //10.22.7.35
@@ -20,7 +20,6 @@ export default function App() {
     <ApolloProvider client = {client}>
       <View style={styles.container}>
         <Text style={styles.header}>Findr</Text>
-        <Text style={{textAlign: 'center'}}>Are we gonna fight or are we gonna make out?</Text>
           <View style={{flexDirection: 'row'}}> 
             <Output/>
             <StatusBar style='auto'/>
