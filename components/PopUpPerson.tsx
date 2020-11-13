@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
                 },
             android:{
                 width: windowWidth-5,
-                height: windowHeight-380, 
+                height: windowHeight-400, 
                 flexDirection: "row",
                 marginTop: 300,
                 backgroundColor: "#F8F8F8",
@@ -103,8 +103,7 @@ const styles = StyleSheet.create({
             android:{
                 width: windowWidth*0.09,
                 height: windowHeight*0.04,
-                marginBottom: 160,
-                marginLeft: 10, 
+                marginBottom: 160
             },
         }),
        
