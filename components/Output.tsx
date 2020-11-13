@@ -239,7 +239,7 @@ export default function Output() {
                                 onChangeText={(input) => getSearchVal(input)}
                                 value={name}
                                 underlineColorAndroid="transparent"
-                                containerStyle={{width: 300 }}
+                                containerStyle={{width: 300, backgroundColor:"#d9ecf2" }}
                             />
                         </View>
                        <View style={styles.filters}>

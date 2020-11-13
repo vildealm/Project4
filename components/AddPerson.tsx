@@ -28,9 +28,8 @@ export default function AddPerson() {
 
 const styles = StyleSheet.create({
     openButton: {
-        marginRight: 20,
-        marginBottom: 45,
-        backgroundColor: 'cyan',
+        marginTop: 100,
+        backgroundColor: '#ff4e20',
         borderRadius: 18,
         padding: 10,
         shadowColor: "#000",
