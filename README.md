@@ -47,6 +47,6 @@ for fontFamily, hvor det var fonter som ikke ble støttet hos Android. I tillegg
 løsninger som egnet seg for begge mobiler. På grunn av dette blir designløsningene annderledes. Dette ser vi blant annet i Pop-up'ene hvor vi har valgt i Android at 
 det skal dukke opp i bunnen av skjermen, og hos Iphone dukker pop-up'en midt i skjermen. Et annet element som hadde ulik utforming på android vs. IOS var de importede RNPickerSelect elementene. Her måtte 
 et par stylingendringer til, slik som å for eksempel endre flex-direction til column i stedenfor row, i tillegg til litt margin og padding endringer som var gjennomgårnde 
-i hele Android vs IOS prosessen. Ved siste iterasjon gjennomførte vi en test med iPhone4, som viste seg å være et viktig sted, da alt så bra ut fram til da, men 
-hvor vi avdekket en viktig paddingfeil. Dermed ble denne testingen et kritisk punkt i vår manuelle testingprosess. 
+i hele Android vs IOS prosessen. Ved siste iterasjon gjennomførte vi en test med iPhone4, som viste seg å være et viktig steg hvor vi avdekket en ganske vesentlig paddingfeil. 
+Dette er et eksempel på manuell brukertestingen som et kritisk punkt i utviklingen. 
 Hva dette var fikk vi observert på ende til ende testing. 
