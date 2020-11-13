@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     },
     modalView: {
         width: windowWidth-10,
-        height: windowHeight-650, 
+        height: windowHeight-500, 
         flexDirection: "row",
         marginTop: 330,
         backgroundColor: "#F8F8F8",

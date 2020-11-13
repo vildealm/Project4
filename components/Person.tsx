@@ -41,6 +41,7 @@ export default Person;
 
 const styles = StyleSheet.create({
     personBox: {
+        
         marginLeft: 55,
         marginTop: 15,
         marginRight: 8, 
