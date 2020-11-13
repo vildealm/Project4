@@ -6,6 +6,7 @@ interface StateProps {
 }
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
+
 //Functionality for the "Add-person popup"
 export const PopUpPerson = (props: any, prop: StateProps) => {
 
@@ -21,9 +22,9 @@ export const PopUpPerson = (props: any, prop: StateProps) => {
     person.age = props.age;
     person.location = props.location;
     person.description = props.description;
-//<Image style = {[styles.image,{overflow: 'visible'}]} source={require("../icon/personIcon.png")}/>
     return (
         <View style={styles.modalView}>
+            <Image style = {[styles.image,{overflow: 'visible'}]} source={require("../icon/personIcon.png")}/>
             <View>
                 <Text style={styles.modalNameText}> {person.first_name} {person.last_name}</Text>
                 <Text style={styles.modalText}>Age: &nbsp;{person.age}</Text>
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
     },
     modalView: {
         width: windowWidth-10,
-        height: windowHeight-500, 
+        height: windowHeight-470, 
         flexDirection: "row",
         marginTop: 330,
         backgroundColor: "#F8F8F8",
