@@ -34,7 +34,7 @@ Dette gjelder for Filtrering og sortering,da React Native opererer anderledes. M
 enheter. Eksempelvis ville ikke RNPickerSelect eller Modal fungere på nært like bra på Android som på IOS. Derfor valgte vi å importere Platform med Platform.select 
 slik at vi kunne skreddersy oppførsel (styling) for IOS og android helt uavhengig av hveranre. Et negtivt aspekt ved dette for oss, er at koden ser lengre ut, 
 og dermed mindre ryddig, men da dette er vår første erfaring med React Native innså vi at dette var en vanesak. 
-[BIRGITTE ???]
+
 #### React Native
 Vi brukte React Native som programmeringsspråk for prosjektet. React Native hadde den samme logikken som React men det var komponentene og HTML elementene som 
 var annderledes. 
