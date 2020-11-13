@@ -80,8 +80,8 @@ const styles = StyleSheet.create({
     imgBtn: {
         width: windowWidth*0.07,
         height: windowHeight*0.03,
-        marginBottom: 180,
-        marginLeft: 25, 
+        marginBottom: 160,
+        marginLeft: 10, 
        
     }
 });
