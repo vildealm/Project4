@@ -225,7 +225,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     modalText: {
-
         borderLeftWidth: 1,
         borderRightWidth: 1,
         borderBottomWidth: 1,
@@ -245,9 +244,10 @@ const styles = StyleSheet.create({
         marginLeft: 200,
     }, 
     location: {
-        marginTop: 5,
-        marginLeft: 20,
-        width: 150,
+        marginBottom: 10,
+        marginTop: 20,
+        marginLeft: 5, 
+        width: 200,
         paddingRight: 8,
         paddingBottom: 10,
         height: 35, 
