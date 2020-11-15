@@ -111,12 +111,19 @@ export const AddPersonPopUp = (props: StateProps) => {
                     />
                     <RNPickerSelect 
                         value={location}
-                        onValueChange={(e) => setLoc(e)}
+                        onValueChange={(e) => {
+                            if(e == null){
+                                setLoc('Gløshaugen')
+                            }
+                            else{
+                                setLoc(e);
+                            }
+                    }}
                         items={[
-                            { label: 'Gløshaugen', value: 'gløshaugen' },
-                            { label: 'Dragvoll', value: 'dragvoll' },
-                            { label: 'Kalvskinnet', value: 'kavlskinnet' },
-                            { label: 'Handelshøyskolen', value: 'handelshøyskolen' }
+                            { label: 'Gløshaugen', value: 'Gløshaugen' },
+                            { label: 'Dragvoll', value: 'Dragvoll' },
+                            { label: 'Kalvskinnet', value: 'Kalvskinnet' },
+                            { label: 'Handelshøyskolen', value: 'Handelshøyskolen' }
                         ]}
                     />
                     <TouchableHighlight
