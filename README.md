@@ -26,7 +26,8 @@ Skal være støtte for å å interaktivt raffinere søkeresultatet med filtereri
 
 Vi valgte oppgave 1. Vi har basert vår app på backend og frontend fra Prosjekt 3, hvor vi laget en søkemotor for 
 personer. Resultatene av søkemotoren blir lastet ved "endless scrolling" av personer. Appen gir også muligheten til en detaljert beskrivelse av personene ved å trykke på hver 
-person boks. Det finnes drop-down meny for filtrering og sortering. Funksjonaliteten er veldig lik som i prosjekt 3, hvor det for brukeren sin del er hovedsaklig stylingen som er den største forskjellen. 
+person boks. Det finnes drop-down meny for filtrering og sortering. Funksjonaliteten er veldig lik som i prosjekt 3, hvor det for brukeren sin del er hovedsaklig stylingen som er den største forskjellen.
+Vi vet at padding er stor i for de nyere Iphone men vi valgte heller å ha en slik løsning da det tilrettela at applikasjonen kunne brukes for gamle versjoner av Iphone og Android.
 ## Teknologi
 Som tidligere nevnt baserer appen seg på Prosjekt 3 og der brukte vi hovedsakelig State Hooks for komponentene. Dette gjorde at vi ikke trengte å endre så mye på
 logikken da komponentstrukturen var gjenkjennelig og lik som i React. Likevel måtte vi justere på logikken underveis da vi oppdaget at den ikke fungerte slik den var ment. 
