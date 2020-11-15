@@ -113,7 +113,9 @@ export const AddPersonPopUp = (props: StateProps) => {
                         returnKeyType={ 'done' }
                         underlineColorAndroid = "transparent"
                     />
+                    <View style={styles.location}>
                     <RNPickerSelect 
+                    
                         value={location}
                         onValueChange={(e) => {setLoc(e)}}
                         items={[
@@ -124,6 +126,7 @@ export const AddPersonPopUp = (props: StateProps) => {
                             { label: 'Handelshøyskolen', value: 'Handelshøyskolen' }
                         ]}
                     />
+                    </View>
                     <TouchableHighlight
                         style={{ ...styles.openButton, backgroundColor: "#c2f0fc" }}
                         onPress={() => {
@@ -236,5 +239,27 @@ const styles = StyleSheet.create({
         width: 25,
         height: 25,
         marginLeft: 200,
+    }, 
+    location: {
+        marginTop: 5,
+        marginLeft: 20,
+        width: 150,
+        paddingRight: 8,
+        paddingBottom: 10,
+        height: 35, 
+        borderBottomColor: '#232B2B',
+        borderBottomWidth: 2,  
+
+        ...Platform.select({
+            ios: {
+                paddingBottom: 14,
+
+            },
+            android: {
+                paddingBottom: 0,
+                
+
+            },
+          }),
     }
 })
