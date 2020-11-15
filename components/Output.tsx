@@ -262,7 +262,6 @@ export default function Output() {
 >
                         <RNPickerSelect
                         value={location}  
-
                         onValueChange={(value: any) => handleLocationChange(value)}
                         items={[
                             { label: 'Location ', value: 'any' },
@@ -326,10 +325,6 @@ const styles = StyleSheet.create({
         }),
        
     }, 
-    filterLocation: {
-      
-    },
-   
     filterAge: {
         marginLeft: 20,
         width: 45,
@@ -381,16 +376,11 @@ const styles = StyleSheet.create({
 });
 
 const pickerSelectStyles = StyleSheet.create({
-    
- 
       inputIOS: {
         marginLeft: 15,
         height: 35, 
         borderBottomColor: '#232B2B',
         borderBottomWidth: 2,    
-    },
-  
-    
-    
+    }, 
 });
 

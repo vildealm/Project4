@@ -111,6 +111,7 @@ export const AddPersonPopUp = (props: StateProps) => {
                     />
                     <RNPickerSelect 
                         value={location}
+                        
                         onValueChange={(e) => {
                             if(e == null){
                                 setLoc('Gløshaugen')
@@ -240,29 +241,3 @@ const styles = StyleSheet.create({
         marginLeft: 200,
     }
 })
-/* first_name &&
-                            last_name &&
-                            age &&
-                            location &&
-                            description &&
-                            addPerson() */
-/* <TextInput style={styles.modalText} onChangeText={text => {
-                        setValue("first_name", text)
-                    }} />
-                    <TextInput ref={register} style={styles.modalText} onChangeText={text => {
-                        setValue("last_name", text)
-                    }} />
-
-                    <TextInput ref={register} style={styles.modalText} onChangeText={text => {
-                        setValue("age", text)
-                    }} />
-<TextInput ref={register} style={styles.modalText} onChangeText={text => {
-                        setValue("description", text)
-                    }} />
-                     <select name="location" ref={register}>
-                        <option value="Gløshaugen">Gløshaugen</option>
-                        <option value="Dragvoll">Dragvoll</option>
-                        <option value="Kalvskinnet">Kalvskinnet</option>
-                        <option value="Handelshøyskolen">Handelshøyskolen</option>
-                    </select>
-                    */
