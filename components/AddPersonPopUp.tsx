@@ -70,6 +70,10 @@ export const AddPersonPopUp = (props: StateProps) => {
         if(input.match('(?:[a-zæøåA-ZÆØÅ])')){return true;} 
    }
 
+   function checkDropDown(input: string){
+       if(input.match('Gløshaugen' || 'Dragvoll' || 'Handelshøyskolen' || 'Kalvskinnet')){return true}
+   }
+
     return (
         <View style={styles.centeredView}>
             <View style={styles.modalView}>
@@ -111,16 +115,9 @@ export const AddPersonPopUp = (props: StateProps) => {
                     />
                     <RNPickerSelect 
                         value={location}
-                        
-                        onValueChange={(e) => {
-                            if(e == null){
-                                setLoc('Gløshaugen')
-                            }
-                            else{
-                                setLoc(e);
-                            }
-                    }}
+                        onValueChange={(e) => {setLoc(e)}}
                         items={[
+                            { label: 'Select a location', value: 'null' },
                             { label: 'Gløshaugen', value: 'Gløshaugen' },
                             { label: 'Dragvoll', value: 'Dragvoll' },
                             { label: 'Kalvskinnet', value: 'Kalvskinnet' },
@@ -130,7 +127,7 @@ export const AddPersonPopUp = (props: StateProps) => {
                     <TouchableHighlight
                         style={{ ...styles.openButton, backgroundColor: "#c2f0fc" }}
                         onPress={() => {
-                            if (checkTextField(first_name || last_name || description) && checkNum(age)) {
+                            if (checkTextField(first_name || last_name || description) && checkNum(age) && checkDropDown(location)) {
                                 first_name &&
                                 last_name &&
                                 age &&
