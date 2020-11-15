@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
                 width: windowWidth*0.07,
                 height: windowHeight*0.03,
                 marginBottom: 135,
-                marginLeft: -15, 
+                marginLeft: -10, 
             },
             android:{
                 width: windowWidth*0.09,

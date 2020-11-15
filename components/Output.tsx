@@ -183,6 +183,9 @@ export default function Output() {
    }
 
     function handleLocationChange(value: string){
+        if(value == null){
+            value = 'any';
+        }
         setLocation(value)
         filterSearch();
         setPageNumber(0);
@@ -192,6 +195,9 @@ export default function Output() {
     }
 
     function handleOrderChange(value: string){
+        if(value == null){
+            value = 'Alphabetical';
+        }
         if(value==='Alphabetical'){
             setOrderBy('first_name')
             setOrderOutput(value);
