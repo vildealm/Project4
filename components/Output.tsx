@@ -1,82 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Platform, FlatList, StyleSheet, Text, TextInput, View, Dimensions } from 'react-native';
+import { Platform, FlatList, StyleSheet, TextInput, View, Dimensions } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { GET_ALL, GET_PERSON , FILTER_SEARCH} from '../resolvers';
-import { useLazyQuery, QueryResult } from 'react-apollo';
+import { useLazyQuery } from 'react-apollo';
 import Person from './Person';
 import RNPickerSelect from 'react-native-picker-select';
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
-
-/*
-function setPerson(queryResult: QueryResult) {
-    let people: any = [];
-    let map = new Map();
-    let keys: any = [];
-    let person = {
-        key: Number,
-        first_name: String,
-        last_name: String,
-        age: Number,
-        location: String,
-        description: String
-    }
-
-    if (queryResult.error) {
-        console.log(queryResult.error);
-        return <Text>Error</Text>;
-    }
-    if (queryResult.data !== undefined) {
-        if (queryResult.data.persons !== undefined) {
-            queryResult.data.persons.map(({ id, first_name, last_name, age, location, description }: any) => {
-                let tempPeople: any = []; 
-                person.key = id;
-                person.first_name = first_name;
-                person.last_name = last_name;
-                person.age = age;
-                person.location = location;
-                person.description = description;
-                if (!map.has(person.key)) {
-                    map.set(person.key ,person);
-                }
-            });
-        }
-        else if (queryResult.data.filterSearch !== undefined) {
-            queryResult.data.filterSearch.map(({ id, first_name, last_name, age, location, description }: any) => {
-                let keys: any = [];
-                person.key = id;
-                person.first_name = first_name;
-                person.last_name = last_name;
-                person.age = age;
-                person.location = location;
-                person.description = description;
-                if (!keys.includes(person.key)) {
-                    people.push(person);
-                    keys.push(person.key);
-                }
-            });
-        }
-        else {
-            queryResult.data.nameSearch.map(({ id, first_name, last_name, age, location, description }: any) => {
-                let keys: any = [];
-                person.key = id;
-                person.first_name = first_name;
-                person.last_name = last_name;
-                person.age = age;
-                person.location = location;
-                person.description = description;
-                if (!keys.includes(person.key)) {
-                    people.push(person);
-                    keys.push(person.key);
-                }
-            });
-        }    
-        return people;
-    }
-    console.log(map);
-    return map;
-}*/
 
 //This is used to keep track of previously loaded data while scroll loading
 let prevData: any = [];
@@ -237,29 +168,28 @@ export default function Output() {
     return (
         <View style={styles.container}>
             <View>
-                        <View style={styles.searchWrapper}>
-                            <SearchBar
-                                round
-                                
-                                style={styles.searchField}
-                                placeholder="Search..."
-                                onChangeText={(input) => getSearchVal(input)}
-                                value={name}
-                                underlineColorAndroid="transparent"
-                                containerStyle={{width: 300, backgroundColor: '#d9ecf2',}}
-                            />
-                        </View>
-                       <View style={styles.filters}>
-                       <TextInput   
-                                placeholder="Age " 
-                                underlineColorAndroid='transparent'  
-                                keyboardType={'numeric'} 
-                                onChangeText={ (value) =>handleAgeChange(parseInt(value)) }
-                                returnKeyType={ 'done' }
-                                style = {styles.filterAge}
-                            />
-                            <View style={pickerSelectStyles.inputIOS}
->
+                    <View style={styles.searchWrapper}>
+                        <SearchBar
+                            round
+                            
+                            style={styles.searchField}
+                            placeholder="Search..."
+                            onChangeText={(input) => getSearchVal(input)}
+                            value={name}
+                            underlineColorAndroid="transparent"
+                            containerStyle={{width: 300, backgroundColor: '#d9ecf2',}}
+                        />
+                    </View>
+                    <View style={styles.filters}>
+                    <TextInput   
+                            placeholder="Age " 
+                            underlineColorAndroid='transparent'  
+                            keyboardType={'numeric'} 
+                            onChangeText={ (value) =>handleAgeChange(parseInt(value)) }
+                            returnKeyType={ 'done' }
+                            style = {styles.filterAge}
+                        />
+                    <View style={pickerSelectStyles.inputIOS}>
                         <RNPickerSelect
                         value={location}  
                         onValueChange={(value: any) => handleLocationChange(value)}
@@ -270,20 +200,20 @@ export default function Output() {
                             { label: 'Kalvskinnet', value: 'Kalvskinnet' },
                             { label: 'Handelshøyskolen', value: 'Handelshøyskolen' }
                         ]}
-                         />
-                         </View>
-                         <View style={pickerSelectStyles.inputIOS}>
+                        />
+                    </View>
+                    <View style={pickerSelectStyles.inputIOS}>
                         <RNPickerSelect
                         value = {orderOutput}
                         onValueChange={(value: any) => handleOrderChange(value)}
                         items={[
                             { label: 'Alphabetical ', value: 'Alphabetical' },
                             { label: 'Age', value: 'Age' }
-                            ]}
+                        ]}
                         />
-                        </View>
-                        </View>
-                        </View>
+                    </View>
+                </View>
+            </View>
                         
             <FlatList
                     data={checkStatus(activeFilter)}
@@ -296,7 +226,7 @@ export default function Output() {
                     showsVerticalScrollIndicator ={false}
                     showsHorizontalScrollIndicator={false}
             />
-    </View>
+        </View>
     );
 }
        
