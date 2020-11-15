@@ -8,18 +8,32 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@expo/match-media": "0.0.0-beta.2",
+    "@types/react-responsive": "^8.0.2",
+    "apollo-boost": "^0.4.9",
     "expo": "~39.0.2",
     "expo-status-bar": "~1.0.2",
+    "formik": "^2.2.1",
+    "graphql": "^15.4.0",
+    "native-forms": "^1.4.0",
     "react": "16.13.1",
+    "react-apollo": "^3.1.5",
     "react-dom": "16.13.1",
+    "react-hook-form": "^6.10.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
-    "react-native-web": "~0.13.12"
+    "react-native-element": "^1.2.1",
+    "react-native-elements": "^3.0.0-alpha.1",
+    "react-native-picker-select": "^8.0.2",
+    "react-native-shadow": "^1.2.2",
+    "react-native-web": "~0.13.12",
+    "react-responsive": "^8.1.1"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
     "@types/react": "~16.9.35",
     "@types/react-dom": "~16.9.8",
     "@types/react-native": "~0.63.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "typescript": "~3.9.5"
   },
   "private": true
