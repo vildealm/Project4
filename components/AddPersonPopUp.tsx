@@ -71,7 +71,7 @@ export const AddPersonPopUp = (props: StateProps) => {
    }
 
    function checkDropDown(input: string){
-       if(input === 'null'){
+       if(input === 'null' || input == null){
             alert('Invalid Location')
             setLoc('null')
             return false; 
