@@ -28,7 +28,7 @@ export const AddPersonPopUp = (props: StateProps) => {
     const [first_name, setFirstName] = useState('');
     const [last_name, setLastName] = useState('');
     const [age, setAge] = useState(0);
-    const [location, setLoc] = useState('Gløshaugen');
+    const [location, setLoc] = useState('null');
     const [description, setDesc] = useState('');
     const [txtField, setTextField] = useState(false);
 
@@ -71,7 +71,13 @@ export const AddPersonPopUp = (props: StateProps) => {
    }
 
    function checkDropDown(input: string){
-       if(input.match('Gløshaugen' || 'Dragvoll' || 'Handelshøyskolen' || 'Kalvskinnet')){return true}
+       if(input === 'null'){
+            alert('Invalid Location')
+            setLoc('null')
+            return false; 
+        }else {
+            return true;
+        }
    }
 
     return (
@@ -115,11 +121,9 @@ export const AddPersonPopUp = (props: StateProps) => {
                     />
                     <View style={styles.location}>
                     <RNPickerSelect 
-                    
                         value={location}
                         onValueChange={(e) => {setLoc(e)}}
                         items={[
-                            { label: 'Select a location', value: 'null' },
                             { label: 'Gløshaugen', value: 'Gløshaugen' },
                             { label: 'Dragvoll', value: 'Dragvoll' },
                             { label: 'Kalvskinnet', value: 'Kalvskinnet' },
