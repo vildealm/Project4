@@ -13,7 +13,19 @@ Installer dependencies:
 
 `npm install`
 
-Start Expo-serveren:
+Navigér inn i backendmappen:
+
+`cd backend`
+
+Installer dependencies:
+
+`npm install`
+
+Kjør backend:
+
+`npm start`
+
+Start Expo-serveren i prosjektmappen:
 
 `expo start`
 
@@ -21,7 +33,7 @@ Deretter scanner du QR-koden som dukker opp i nettleseren din med mobilen din.
 ## Funksjonalitet
 Vi valgte oppgave 1 i prosjekt 4. Vi har basert vår app på backend og frontend fra Prosjekt 3, hvor vi laget en søkemotor for 
 personer. 
-#### Filtrering, søk, sortering og paginering
+#### Filtrering, søk, sortering og scroll-load
 Brukeren kan søke blant personene i databasen ved å benytte søkefeltet på siden. Søkefeltet er dynamisk slik at det søker for hvert 
 tegn som endrer seg. Søkefeltet er case sensitivt, fordi vi ønsket at det skulle være mulig. Resultatene av søkemotoren blir lastet opp ved dynamisk pafinering, da dette er den vanligste løsningen for mobil. Dersom brukeren scroller til bunnen av søke resultatene vil applikasjonen 
 laste de 10 neste elementene inn. I tillegg kan brukeren legge til filtrering på søkeresultatene ved å trukke på drop-down meny under søkefeltet. Da kan brukeren filtrere på alder, lokasjon. I 
@@ -30,6 +42,9 @@ Funksjonaliteten er veldig lik som i prosjekt 3, hvor det for brukeren sin del e
 ulike for de forskjellige mobil enhetene og derfor valgte vi heller å ha en løsning hvor paddingen er litt stor for de nyere mobil enhetene, som Iphone X,
 og mindre padding for Android og eldre Iphone versjoner. Dette gjorde vi fordi vi ønsket at funksjonaliteten på applikasjonen skulle være mulig å bruke 
 på alle mobil enheter.
+
+Vi implementerte scroll loading i applikasjonen. Når brukeren går inn på applikasjonen vil de første 20 elementene lastes inn, og når brukeren scroller seg nedover og nærmer seg slutten (kommer til 4. siste element) vil de neste 20 lastes inn. Dette har vi implementert via en komponent som kalles FlatList. 
+Denne var enkel å ta i bruk, og lot oss mappe hver element til vår Person-komponent på en veldig grei måte. Det var også enkelt å definere hva som skulle skje når man nærmet seg slutten av listen, og hvor nærme bunnen man skulle være. Vi fant informasjone om FlatList på [her](https://reactnative.dev/docs/flatlist).
 #### Detaljert visning
 Appen gir også muligheten til en detaljert beskrivelse av personene ved at det kommer en pop-up hvis man trykker på hver 
 person.  
