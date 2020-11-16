@@ -20,15 +20,20 @@ Start Expo-serveren:
 Deretter scanner du QR-koden som dukker opp i nettleseren din med mobilen din.
 ## Funksjonalitet
 Vi valgte oppgave 1 i prosjekt 4. Vi har basert vår app på backend og frontend fra Prosjekt 3, hvor vi laget en søkemotor for 
-personer. Brukeren kan søke blant personene i databasen ved å benytte søkefeltet på siden. Søkefeltet er dynamisk slik at det søker for hvert 
+personer. 
+#### Filtrering, søk, sortering og paginering
+Brukeren kan søke blant personene i databasen ved å benytte søkefeltet på siden. Søkefeltet er dynamisk slik at det søker for hvert 
 tegn som endrer seg. Søkefeltet er case sensitivt, fordi vi ønsket at det skulle være mulig. Resultatene av søkemotoren blir lastet opp ved dynamisk pafinering, da dette er den vanligste løsningen for mobil. Dersom brukeren scroller til bunnen av søke resultatene vil applikasjonen 
-laste de 10 neste elementene inn. Appen gir også muligheten til en detaljert beskrivelse av personene ved at det kommer en pop-up hvis man trykker på hver 
-person. I tillegg kan brukeren legge til filtrering på søkeresultatene ved å trukke på drop-down meny under søkefeltet. Da kan brukeren filtrere på alder, lokasjon. I 
+laste de 10 neste elementene inn. I tillegg kan brukeren legge til filtrering på søkeresultatene ved å trukke på drop-down meny under søkefeltet. Da kan brukeren filtrere på alder, lokasjon. I 
 tillegg er det også mulig å sortere alfabetisk og etter alder. Dette er også i form av en drop-down meny under søkefeltet.Hvis brukeren endrer søkeord eller filtrering blir pagineringen nullstilt automatisk.
 Funksjonaliteten er veldig lik som i prosjekt 3, hvor det for brukeren sin del er hovedsaklig stylingen som er den største forskjellen. Paddingen er 
 ulike for de forskjellige mobil enhetene og derfor valgte vi heller å ha en løsning hvor paddingen er litt stor for de nyere mobil enhetene, som Iphone X,
 og mindre padding for Android og eldre Iphone versjoner. Dette gjorde vi fordi vi ønsket at funksjonaliteten på applikasjonen skulle være mulig å bruke 
-på alle mobil enheter. 
+på alle mobil enheter.
+#### Detaljert visning
+Appen gir også muligheten til en detaljert beskrivelse av personene ved at det kommer en pop-up hvis man trykker på hver 
+person.  
+#### Legg til en person
 Det er også mulig å legge til personer i databasen. Hvis brukeren trykker på "+" - knappen midt på siden så dukker det opp en pop-up. Da vil det komme en 
 form hvor brukeren kan fylle ut de nødvendige feltene. Vi har implementert nødvendige validering av feltene, slik at brukeren ikke skal kunne legge til
 ugyldig verdier for Age, First name, Last name, Location og Description. Dette var også viktig for oss da ugyldig verdier gjør at personen ikke blir lagt inn i databasen, og dermed ville vi informere brukeren om 
@@ -46,9 +51,15 @@ Dette gjaldt filtrering og sortering, da React Native opererer anderledes. Med R
 på ulike enheter. Eksempelvis ville ikke RNPickerSelect eller Modal fungere på nært like bra på Android som på IOS. Derfor valgte vi å importere 
 Platform med Platform.select slik at vi kunne skreddersy oppførsel (styling) for IOS og android helt uavhengig av hveranre. Et negtivt aspekt ved dette for oss, er at koden ser lengre ut, 
 og dermed mindre ryddig, men da dette er vår første erfaring med React Native innså vi at dette var en vanesak. 
+I tillegg brukte vi også Dimensions, slik at størrelsen på designelementene ble justert i forhold til skjermstørrelsen til den brukte mobil enheten. 
 
 #### Expo 
-I applikasjons utviklingen har vi brukt expo-cli for å initiere prosjektet gjennom expo init og for å gjennomføre manuell ende til ende testing på iOS og Android.
+I applikasjons utviklingen har vi brukt expo-cli for å initiere prosjektet gjennom expo init og muliggjør bl.a. for fortløpende dynamsik testing på iOS og Android.
+
+##### ApolloClient
+Vi brukte ApolloClient da dette var noe vi tok i bruk fra forrige prosjekt. ApolloClient tar imot GraphQL spørringene og sender de til serveren, og fetcher dataen i UIet.
+Her brukte vi Mutations, lazyQuery og useQuery. 
+
 #### Testing
 Kravet for testing av manuell ende til ende testing. Testing har fåregått på følgende enheter: 
 - Iphone XS,
