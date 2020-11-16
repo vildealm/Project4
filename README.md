@@ -51,7 +51,8 @@ Dette gjaldt filtrering og sortering, da React Native opererer anderledes. Med R
 på ulike enheter. Eksempelvis ville ikke RNPickerSelect eller Modal fungere på nært like bra på Android som på IOS. Derfor valgte vi å importere 
 Platform med Platform.select slik at vi kunne skreddersy oppførsel (styling) for IOS og android helt uavhengig av hveranre. Et negtivt aspekt ved dette for oss, er at koden ser lengre ut, 
 og dermed mindre ryddig, men da dette er vår første erfaring med React Native innså vi at dette var en vanesak. 
-I tillegg brukte vi også Dimensions, slik at størrelsen på designelementene ble justert i forhold til skjermstørrelsen til den brukte mobil enheten. 
+I tillegg brukte vi også Dimensions, slik at størrelsen på designelementene ble justert i forhold til skjermstørrelsen til den brukte mobil enheten. Dette ble brukt
+for alle pop-up's da Modal varierte på de ulike mobilenhetene.
 
 #### Expo 
 I applikasjons utviklingen har vi brukt expo-cli for å initiere prosjektet gjennom expo init og muliggjør bl.a. for fortløpende dynamsik testing på iOS og Android.
