@@ -35,16 +35,19 @@ Vi valgte oppgave 1 i prosjekt 4. Vi har basert vår app på backend og frontend
 personer. 
 #### Filtrering, søk, sortering og scroll-load
 Brukeren kan søke blant personene i databasen ved å benytte søkefeltet på siden. Søkefeltet er dynamisk slik at det søker for hvert 
-tegn som endrer seg. Søkefeltet er case sensitivt, fordi vi ønsket at det skulle være mulig. Resultatene av søkemotoren blir lastet opp ved dynamisk pafinering, da dette er den vanligste løsningen for mobil. Dersom brukeren scroller til bunnen av søke resultatene vil applikasjonen 
-laste de 10 neste elementene inn. I tillegg kan brukeren legge til filtrering på søkeresultatene ved å trukke på drop-down meny under søkefeltet. Da kan brukeren filtrere på alder, lokasjon. I 
+tegn som endrer seg. Søkefeltet er case sensitivt, fordi vi ønsket at det skulle være mulig. Resultatene av søkemotoren blir lastet opp ved dynamisk paginering, da dette er den vanligste løsningen for mobil. 
+Når brukeren går inn på applikasjonen vil de første 20 elementene lastes inn, og når brukeren scroller 
+seg nedover og nærmer seg slutten (kommer til 4. siste element) vil de neste 20 lastes inn. Dette har vi implementert via en komponent som kalles FlatList. 
+Denne var enkel å ta i bruk, og lot oss mappe hver element til vår Person-komponent på en veldig grei måte. Det var også enkelt å 
+definere hva som skulle skje når man nærmet seg slutten av listen, og hvor nærme bunnen man skulle være.
+Vi fant informasjone om FlatList på [her](https://reactnative.dev/docs/flatlist).I tillegg kan brukeren legge til filtrering på søkeresultatene ved å trukke på drop-down meny under søkefeltet. Da kan brukeren filtrere på alder, lokasjon. I 
 tillegg er det også mulig å sortere alfabetisk og etter alder. Dette er også i form av en drop-down meny under søkefeltet.Hvis brukeren endrer søkeord eller filtrering blir pagineringen nullstilt automatisk.
 Funksjonaliteten er veldig lik som i prosjekt 3, hvor det for brukeren sin del er hovedsaklig stylingen som er den største forskjellen. Paddingen er 
 ulike for de forskjellige mobil enhetene og derfor valgte vi heller å ha en løsning hvor paddingen er litt stor for de nyere mobil enhetene, som Iphone X,
 og mindre padding for Android og eldre Iphone versjoner. Dette gjorde vi fordi vi ønsket at funksjonaliteten på applikasjonen skulle være mulig å bruke 
 på alle mobil enheter.
 
-Vi implementerte scroll loading i applikasjonen. Når brukeren går inn på applikasjonen vil de første 20 elementene lastes inn, og når brukeren scroller seg nedover og nærmer seg slutten (kommer til 4. siste element) vil de neste 20 lastes inn. Dette har vi implementert via en komponent som kalles FlatList. 
-Denne var enkel å ta i bruk, og lot oss mappe hver element til vår Person-komponent på en veldig grei måte. Det var også enkelt å definere hva som skulle skje når man nærmet seg slutten av listen, og hvor nærme bunnen man skulle være. Vi fant informasjone om FlatList på [her](https://reactnative.dev/docs/flatlist).
+
 #### Detaljert visning
 Appen gir også muligheten til en detaljert beskrivelse av personene ved at det kommer en pop-up hvis man trykker på hver 
 person.  
