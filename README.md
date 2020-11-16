@@ -31,7 +31,7 @@ og mindre padding for Android og eldre Iphone versjoner. Dette gjorde vi fordi v
 på alle mobil enheter. 
 Det er også mulig å legge til personer i databasen. Hvis brukeren trykker på "+" - knappen midt på siden så dukker det opp en pop-up. Da vil det komme en 
 form hvor brukeren kan fylle ut de nødvendige feltene. Vi har implementert nødvendige validering av feltene, slik at brukeren ikke skal kunne legge til
-ugyldig verdier og informasjon. Dette var også viktig for oss da ugyldig verdier ikke blir lagt inn i databasen, og dermed ville vi informere brukeren om 
+ugyldig verdier for Age, First name, Last name, Location og Description. Dette var også viktig for oss da ugyldig verdier gjør at personen ikke blir lagt inn i databasen, og dermed ville vi informere brukeren om 
 hva som var gyldig. Dersom alle feltene er fylt inn riktig så vil formen være mulig å submitte og pop-up forsvinner. Det gis også muligheten til å krysse
 ut av pop-up'en dersom man ikke ønsker å legge til en person. Hvis formen er fylt ut men brukeren velger å krysse ut av pop-upen bli ikke denne informasjonen
 lagret. 
