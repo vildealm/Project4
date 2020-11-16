@@ -31,6 +31,8 @@ og mindre padding for Android og eldre Iphone versjoner. Dette gjorde vi fordi v
 på alle mobil enheter. 
 
 ## Teknologi
+
+#### React Native
 Prosjektet skal basere seg på React Native, noe som ligner veldig på React. Av den grunn gjennbrukte vi mye kode fra prosjekt 3. Mye av logikken der baserte seg
 på State Hooks for komponentene. Dette gjorde at vi ikke trengte å endre så mye på kode logikken da komponentstrukturen var gjenkjennelig og lik som i React. 
 Likevel måtte vi justere litt på logikken underveis da vi oppdaget at den ikke fungerte slik den var ment. 
@@ -39,9 +41,6 @@ på ulike enheter. Eksempelvis ville ikke RNPickerSelect eller Modal fungere på
 Platform med Platform.select slik at vi kunne skreddersy oppførsel (styling) for IOS og android helt uavhengig av hveranre. Et negtivt aspekt ved dette for oss, er at koden ser lengre ut, 
 og dermed mindre ryddig, men da dette er vår første erfaring med React Native innså vi at dette var en vanesak. 
 
-#### React Native
-Vi brukte React Native som programmeringsspråk for prosjektet. React Native hadde den samme logikken som React men det var komponentene og HTML elementene som 
-var annderledes. 
 #### Expo 
 I applikasjons utviklingen har vi brukt expo-cli for å initiere prosjektet gjennom expo init og for å gjennomføre manuell ende til ende testing på iOS og Android.
 #### Testing
