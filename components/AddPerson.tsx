@@ -1,5 +1,5 @@
 import React, {  useState } from 'react';
-import { StyleSheet, Text,  Dimensions, Modal, View, TouchableHighlight, Platform } from 'react-native';
+import { StyleSheet, Text, Modal, View, TouchableHighlight, Platform } from 'react-native';
 import {AddPersonPopUp} from './AddPersonPopUp'; 
 
 export default function AddPerson() {
@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
         elevation: 5,
         shadowOpacity: 0.33,
         shadowRadius: 5,
-
         ...Platform.select({
             ios: {
                 paddingLeft:10

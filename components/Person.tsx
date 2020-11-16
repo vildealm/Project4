@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import React from 'react';
 import { PopUpPerson } from './PopUpPerson';
-import { Platform, StyleSheet, Modal, Text, View, TouchableOpacity } from 'react-native';
+import {StyleSheet, Modal, Text, View, TouchableOpacity } from 'react-native';
 
 const Person = (props: any) => {
     const examplePerson = ["Ola, Normann", 100, "Norge", "tullat"];
@@ -14,7 +14,6 @@ const Person = (props: any) => {
 
     return (
         <View style={styles.personBox}>
-            
             <Modal
                 animationType="slide"
                 transparent={true}
@@ -41,7 +40,6 @@ export default Person;
 
 const styles = StyleSheet.create({
     personBox: {
-        
         marginLeft: 55,
         marginTop: 15,
         marginRight: 8, 

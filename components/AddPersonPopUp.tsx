@@ -14,7 +14,6 @@ const ADD_PERSON = gql`
 interface StateProps {
     setModalVisible(val: boolean): void;
 }
-
 interface IFormInputs {
     first_name: string;
     last_name: string;
@@ -183,7 +182,6 @@ const styles = StyleSheet.create({
                     alignItems: "center",    
             },
           }),
-
     },
     centeredView: {
         flex: 1,
@@ -191,18 +189,15 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginTop: 22,
         borderRadius: 30,
-
         ...Platform.select({
             ios: {
                 shadowOpacity: 0.7,
                 shadowRadius: 60.19,
                 elevation: 8,
             },
-            android: {
-                
+            android: {    
             },
         }),
-       
     },
     openButton: {
         backgroundColor: "#ff414d",
@@ -232,7 +227,6 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginTop: 10,
         textAlign: "center",
-        
         padding: 8,
         width: 200,
         fontSize: 16,
@@ -253,16 +247,12 @@ const styles = StyleSheet.create({
         height: 35, 
         borderBottomColor: '#232B2B',
         borderBottomWidth: 2,  
-
         ...Platform.select({
             ios: {
                 paddingBottom: 14,
-
             },
             android: {
-                paddingBottom: 0,
-                
-
+                paddingBottom: 0
             },
           }),
     }

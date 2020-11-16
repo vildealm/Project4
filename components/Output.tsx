@@ -32,8 +32,7 @@ export default function Output() {
                             if (!keys.includes(allResults.data.persons[i].id)) {
                                 prevData = prevData.concat(allResults.data.persons[i]);
                                 keys= keys.concat(allResults.data.persons[i].id);
-                            }
-                            
+                            } 
                         }
                         return prevData;
                     }
@@ -188,8 +187,7 @@ export default function Output() {
                                 returnKeyType={ 'done' }
                                 style = {styles.filterAge}
                             />
-                            <View style={pickerSelectStyles.inputIOS}
->
+                            <View style={pickerSelectStyles.inputIOS}>
                         <RNPickerSelect
                         value={location}  
                         onValueChange={(value: any) => handleLocationChange(value)}
@@ -213,8 +211,7 @@ export default function Output() {
                         />
                     </View>
                 </View>
-            </View>
-                        
+            </View>       
             <FlatList
                     data={checkStatus(activeFilter)}
                     renderItem={({ item }) => (
@@ -230,7 +227,6 @@ export default function Output() {
     );
 }
        
-
 const styles = StyleSheet.create({
     container: {
         paddingTop: 25,
@@ -253,7 +249,6 @@ const styles = StyleSheet.create({
                 marginTop: 20,
             }
         }),
-       
     }, 
     filterAge: {
         marginLeft: 20,
@@ -264,20 +259,14 @@ const styles = StyleSheet.create({
         height: 35, 
         borderBottomColor: '#232B2B',
         borderBottomWidth: 2,  
-
         ...Platform.select({
             ios: {
                 paddingBottom: 14,
-
             },
             android: {
                 paddingBottom: 0,
-                
-
             },
-          }),
-       
-            
+          }),     
     },
     filters:{
         ...Platform.select({
@@ -298,11 +287,8 @@ const styles = StyleSheet.create({
                 marginBottom: 30,
                 marginLeft: 90,
             },
-          }),
-       
+          }),  
     }
-   
-
 });
 
 const pickerSelectStyles = StyleSheet.create({
