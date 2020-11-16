@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Platform, FlatList, StyleSheet, Text, TextInput, View, Dimensions } from 'react-native';
+import { Platform, FlatList, StyleSheet, TextInput, View, Dimensions } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { GET_ALL, GET_PERSON , FILTER_SEARCH} from '../resolvers';
-import { useLazyQuery, QueryResult } from 'react-apollo';
+import { useLazyQuery } from 'react-apollo';
 import Person from './Person';
 import RNPickerSelect from 'react-native-picker-select';
 
@@ -240,7 +240,6 @@ export default function Output() {
                         <View style={styles.searchWrapper}>
                             <SearchBar
                                 round
-                                
                                 style={styles.searchField}
                                 placeholder="Search..."
                                 onChangeText={(input) => getSearchVal(input)}
