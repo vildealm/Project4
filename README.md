@@ -3,7 +3,7 @@
 
 ### Fremgangsmåte for testing av prosjekt
 Først naviger til ønsket lokasjon på din maskin, deretter:
-`git clone ` for HTTPS.
+`git clone https://gitlab.stud.idi.ntnu.no/it2810-h20/team-04/project4.git ` for HTTPS.
 
 Navigér inn i prosjektmappen:
 
