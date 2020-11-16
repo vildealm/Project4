@@ -62,12 +62,15 @@ lagret.
 Prosjektet skal basere seg på React Native, noe som ligner veldig på React. Av den grunn gjennbrukte vi mye kode fra prosjekt 3. Mye av logikken der baserte seg
 på State Hooks for komponentene. Dette gjorde at vi ikke trengte å endre så mye på kode logikken da komponentstrukturen var gjenkjennelig og lik som i React. 
 Likevel måtte vi justere litt på logikken underveis da vi oppdaget at den ikke fungerte slik den var ment. 
-Dette gjaldt filtrering og sortering, da React Native opererer anderledes. Med React Native kom også nødvendigheten med kunnskap om ulik oppførsel 
+Dette gjaldt filtrering og sortering, da React Native opererer anderledes.
+Blant de ulike tagsene som ligger innebygd i React Native måtte gruppa ta enkelte valg på de som var hensktsmessige for vårt prosjekt. Et eksempel på dette er RNPickerSelect som ga oss
+muligheten til å ha en pop-up scroll blant alternativene, hvilket ikke var tilfellet hos Picker, som vi først prøvde med. Med React Native kom også nødvendigheten med kunnskap om ulik oppførsel 
 på ulike enheter. Eksempelvis ville ikke RNPickerSelect eller Modal fungere på nært like bra på Android som på IOS. Derfor valgte vi å importere 
 Platform med Platform.select slik at vi kunne skreddersy oppførsel (styling) for IOS og android helt uavhengig av hveranre. Et negtivt aspekt ved dette for oss, er at koden ser lengre ut, 
 og dermed mindre ryddig, men da dette er vår første erfaring med React Native innså vi at dette var en vanesak. 
 I tillegg brukte vi også Dimensions, slik at størrelsen på designelementene ble justert i forhold til skjermstørrelsen til den brukte mobil enheten. Dette ble brukt
 for alle pop-up's da Modal varierte på de ulike mobilenhetene.
+
 
 #### Expo 
 I applikasjons utviklingen har vi brukt expo-cli for å initiere prosjektet gjennom expo init og muliggjør bl.a. for fortløpende dynamsik testing på iOS og Android.
