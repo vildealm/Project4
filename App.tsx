@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import ApolloClient, { InMemoryCache } from 'apollo-boost';
 import {ApolloProvider} from 'react-apollo'; 
 import Output from './components/Output';
@@ -15,7 +15,7 @@ export default function App() {
     uri: `http://${ipv4Adress}:4000`,    
     cache: new InMemoryCache()
   });
-//10.22.7.35
+
   return (
     <ApolloProvider client = {client}>
       <View style={styles.container}>
@@ -31,7 +31,7 @@ export default function App() {
     </ApolloProvider>
   );
 }
-//#d9ecf2
+
 
 const styles = StyleSheet.create({
   container: {

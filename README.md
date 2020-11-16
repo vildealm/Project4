@@ -19,34 +19,59 @@ Start Expo-serveren:
 
 Deretter scanner du QR-koden som dukker opp i nettleseren din med mobilen din.
 ## Funksjonalitet
-Applikasjonen skal ha søkegrensesnitt som gir et resultatsett
-Resultatsettet skal lastes dynamisk (blaing, lasting ved scrolling)
-Skal være mulig å få en detaljert visning av hvert objekt i resultatsettet
-Skal være støtte for å å interaktivt raffinere søkeresultatet med filterering og sortering
+Vi valgte oppgave 1 i prosjekt 4. Vi har basert vår app på backend og frontend fra Prosjekt 3, hvor vi laget en søkemotor for 
+personer. 
+#### Filtrering, søk, sortering og paginering
+Brukeren kan søke blant personene i databasen ved å benytte søkefeltet på siden. Søkefeltet er dynamisk slik at det søker for hvert 
+tegn som endrer seg. Søkefeltet er case sensitivt, fordi vi ønsket at det skulle være mulig. Resultatene av søkemotoren blir lastet opp ved dynamisk pafinering, da dette er den vanligste løsningen for mobil. Dersom brukeren scroller til bunnen av søke resultatene vil applikasjonen 
+laste de 10 neste elementene inn. I tillegg kan brukeren legge til filtrering på søkeresultatene ved å trukke på drop-down meny under søkefeltet. Da kan brukeren filtrere på alder, lokasjon. I 
+tillegg er det også mulig å sortere alfabetisk og etter alder. Dette er også i form av en drop-down meny under søkefeltet.Hvis brukeren endrer søkeord eller filtrering blir pagineringen nullstilt automatisk.
+Funksjonaliteten er veldig lik som i prosjekt 3, hvor det for brukeren sin del er hovedsaklig stylingen som er den største forskjellen. Paddingen er 
+ulike for de forskjellige mobil enhetene og derfor valgte vi heller å ha en løsning hvor paddingen er litt stor for de nyere mobil enhetene, som Iphone X,
+og mindre padding for Android og eldre Iphone versjoner. Dette gjorde vi fordi vi ønsket at funksjonaliteten på applikasjonen skulle være mulig å bruke 
+på alle mobil enheter.
+#### Detaljert visning
+Appen gir også muligheten til en detaljert beskrivelse av personene ved at det kommer en pop-up hvis man trykker på hver 
+person.  
+#### Legg til en person
+Det er også mulig å legge til personer i databasen. Hvis brukeren trykker på "+" - knappen midt på siden så dukker det opp en pop-up. Da vil det komme en 
+form hvor brukeren kan fylle ut de nødvendige feltene. Vi har implementert nødvendige validering av feltene, slik at brukeren ikke skal kunne legge til
+ugyldig verdier for Age, First name, Last name, Location og Description. Dette var også viktig for oss da ugyldig verdier gjør at personen ikke blir lagt inn i databasen, og dermed ville vi informere brukeren om 
+hva som var gyldig. Dersom alle feltene er fylt inn riktig så vil formen være mulig å submitte og pop-up forsvinner. Det gis også muligheten til å krysse
+ut av pop-up'en dersom man ikke ønsker å legge til en person. Hvis formen er fylt ut men brukeren velger å krysse ut av pop-upen bli ikke denne informasjonen
+lagret. 
 
-Vi valgte oppgave 1. Vi har basert vår app på backend og frontend fra Prosjekt 3, hvor vi laget en søkemotor for 
-personer. Resultatene av søkemotoren blir lastet ved "endless scrolling" av personer. Appen gir også muligheten til en detaljert beskrivelse av personene ved å trykke på hver 
-person boks. Det finnes drop-down meny for filtrering og sortering. Funksjonaliteten er veldig lik som i prosjekt 3, hvor det for brukeren sin del er hovedsaklig stylingen som er den største forskjellen. 
 ## Teknologi
-Som tidligere nevnt baserer appen seg på Prosjekt 3 og der brukte vi hovedsakelig State Hooks for komponentene. Dette gjorde at vi ikke trengte å endre så mye på
-logikken da komponentstrukturen var gjenkjennelig og lik som i React. Likevel måtte vi justere på logikken underveis da vi oppdaget at den ikke fungerte slik den var ment. 
-Dette gjelder for Filtrering og sortering,da React Native opererer anderledes. Med React Native kom også nødvendigheten med kunnskap om ulik oppførsel på ulike 
-enheter. Eksempelvis ville ikke RNPickerSelect eller Modal fungere på nært like bra på Android som på IOS. Derfor valgte vi å importere Platform med Platform.select 
-slik at vi kunne skreddersy oppførsel (styling) for IOS og android helt uavhengig av hveranre. Et negtivt aspekt ved dette for oss, er at koden ser lengre ut, 
-og dermed mindre ryddig, men da dette er vår første erfaring med React Native innså vi at dette var en vanesak. 
 
 #### React Native
-Vi brukte React Native som programmeringsspråk for prosjektet. React Native hadde den samme logikken som React men det var komponentene og HTML elementene som 
-var annderledes. 
+Prosjektet skal basere seg på React Native, noe som ligner veldig på React. Av den grunn gjennbrukte vi mye kode fra prosjekt 3. Mye av logikken der baserte seg
+på State Hooks for komponentene. Dette gjorde at vi ikke trengte å endre så mye på kode logikken da komponentstrukturen var gjenkjennelig og lik som i React. 
+Likevel måtte vi justere litt på logikken underveis da vi oppdaget at den ikke fungerte slik den var ment. 
+Dette gjaldt filtrering og sortering, da React Native opererer anderledes. Med React Native kom også nødvendigheten med kunnskap om ulik oppførsel 
+på ulike enheter. Eksempelvis ville ikke RNPickerSelect eller Modal fungere på nært like bra på Android som på IOS. Derfor valgte vi å importere 
+Platform med Platform.select slik at vi kunne skreddersy oppførsel (styling) for IOS og android helt uavhengig av hveranre. Et negtivt aspekt ved dette for oss, er at koden ser lengre ut, 
+og dermed mindre ryddig, men da dette er vår første erfaring med React Native innså vi at dette var en vanesak. 
+I tillegg brukte vi også Dimensions, slik at størrelsen på designelementene ble justert i forhold til skjermstørrelsen til den brukte mobil enheten. 
+
 #### Expo 
-I applikasjons utviklingen har vi brukt expo-cli for å initiere prosjektet gjennom expo init og for å gjennomføre manuell ende til ende testing på iOS og Android.
+I applikasjons utviklingen har vi brukt expo-cli for å initiere prosjektet gjennom expo init og muliggjør bl.a. for fortløpende dynamsik testing på iOS og Android.
+
+##### ApolloClient
+Vi brukte ApolloClient da dette var noe vi tok i bruk fra forrige prosjekt. ApolloClient tar imot GraphQL spørringene og sender de til serveren, og fetcher dataen i UIet.
+Her brukte vi Mutations, lazyQuery og useQuery. 
+
 #### Testing
-Vi gjorde manuell ende til ende testing ved å teste på flere brukere som hadde Android og Iphone. Vi prøvde også å teste på ulike versjoner av Android og Iphoen
-slik at vi fikk testet hvor responsiv appen var på de ulike skjermstørrelsene. Da oppdaget vi t det var det mange React Native elementer som ble støttet av Iphoen men ikke Android. Dette gjaldt
-for fontFamily, hvor det var fonter som ikke ble støttet hos Android. I tillegg var også TextInput anderledes på Android enn for Iphone. Dermed måtte vi finne
-løsninger som egnet seg for begge mobiler. På grunn av dette blir designløsningene annderledes. Dette ser vi blant annet i Pop-up'ene hvor vi har valgt i Android at 
-det skal dukke opp i bunnen av skjermen, og hos Iphone dukker pop-up'en midt i skjermen. Et annet element som hadde ulik utforming på android vs. IOS var de importede RNPickerSelect elementene. Her måtte 
-et par stylingendringer til, slik som å for eksempel endre flex-direction til column i stedenfor row, i tillegg til litt margin og padding endringer som var gjennomgårnde 
-i hele Android vs IOS prosessen. Ved siste iterasjon gjennomførte vi en test med iPhone4, som viste seg å være et viktig steg hvor vi avdekket en ganske vesentlig paddingfeil. 
-Dette er et eksempel på manuell brukertestingen som et kritisk punkt i utviklingen. 
-Hva dette var fikk vi observert på ende til ende testing. 
+Kravet for testing av manuell ende til ende testing. Testing har fåregått på følgende enheter: 
+- Iphone XS,
+- Samsung Galaxy,
+- Iphone 6,
+- Iphone 4 
+
+Vi ønsket under testingen å sjekke hvordan funksjonaliteten opererte på de ulike enhetene. I tillegg ønsket vi å sjekke hvor responsiv appen var på de 
+ulike skjermstørrelsene. Da oppdaget vi at det var det mange React Native elementer som ble støttet av Iphone men ikke Android. Dette gjaldt
+TextInput, da layouten var anderledes på Android enn for Iphone. På grunn av dette måtte vi implementere designløsningene annderledes på de uliek mobilene. 
+Dette ser vi blant annet i Pop-up'ene hvor paddingen er ulike hos mobilenehetene. Et annet element som hadde ulik utforming på android vs. IOS 
+var de importede RNPickerSelect elementene. Her måtte et par stylingendringer til, slik som å for eksempel endre flex-direction til column i stedenfor row, 
+i tillegg til litt margin og padding endringer som var gjennomgårnde i hele Android vs IOS prosessen. Ved siste iterasjon gjennomførte vi en test med 
+iPhone4, som viste seg å være et viktig steg hvor vi avdekket en ganske vesentlig paddingfeil. 
+Dette er et eksempel på manuell brukertestingen som et kritisk punkt i utviklingen. Hva dette var fikk vi observert på ende til ende testing. 

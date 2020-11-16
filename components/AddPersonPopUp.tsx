@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderTopWidth: 1,
         marginBottom: 10,
-        marginTop: 15,
+        marginTop: 10,
         textAlign: "center",
         
         padding: 8,
